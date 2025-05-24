@@ -8,15 +8,7 @@ import ChartPlaceholder from '../components/Core/ChartPlaceholder'; // Create th
 import { ArrowLeftIcon } from '@heroicons/react/24/solid';
 import Button from '../components/Core/Button';
 
-// Create a simple placeholder for charts
-// src/components/Core/ChartPlaceholder.jsx
-const ChartPlaceholder = ({ title, height = "h-64" }) => (
-  <div className={`bg-slate-200 rounded-lg flex items-center justify-center ${height} text-slate-500`}>
-    {title || "Chart Area"}
-  </div>
-);
 
-// src/components/Core/FilterGroup.jsx
 const FilterGroup = ({ onFilterChange }) => {
     // Dummy handler for now
     const handleChange = (filterType, value) => {
@@ -57,15 +49,11 @@ const AccountDetailsPage = () => {
 
   const account = accounts.find(acc => acc.id === accountId);
 
-  // Simulate transactions for this specific account (in real app, this link would exist)
   const accountTransactions = useMemo(() => {
     return allTransactions
       .filter(t => {
-        // Basic filtering logic (extend as needed)
         let passes = true;
-        if (filters.type !== 'all' && t.type !== filters.type) passes = false;
-        // Add date and cost center filtering here
-        // For now, just return all transactions for demo
+        if (filters.type !== 'all' && t.type !== filters.type) passes = false;        
         return passes;
       })
       .sort((a, b) => new Date(b.date) - new Date(a.date)); // Show newest first

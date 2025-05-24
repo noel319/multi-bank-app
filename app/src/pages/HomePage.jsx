@@ -8,15 +8,14 @@ import TransactionItem from '../components/Core/TransactionItem';
 import Modal from '../components/Core/Modal';
 import Button from '../components/Core/Button';
 import BankCardForm from '../components/Forms/BankCardForm'; 
-import { DEFAULT_BANK_CARD_FORM_DATA } from '../../utils/constants'; 
+import { DEFAULT_BANK_CARD_FORM_DATA } from '../utils/constants'; 
 
 const HomePage = () => {
   const { accounts, totalBalance, transactions, userProfile, addAccount, updateAccount, deleteAccount } = useMockData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingAccount, setEditingAccount] = useState(null);
 
-  const recentTransactions = transactions.slice(0, 3);
-
+  const recentTransactions = transactions.slice(0, 3);  
   const handleAddCardClick = () => {
     setEditingAccount(null);
     setIsModalOpen(true);
@@ -72,7 +71,7 @@ const HomePage = () => {
                 .map(account => ( // <-- USING .map()
                   <BankCard
                     key={account.id}
-                    account={account}
+                    account={account}                    
                     onEdit={handleEditCardClick}
                     onDelete={handleDeleteCard}
                   />

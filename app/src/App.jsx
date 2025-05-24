@@ -9,6 +9,7 @@ import AccountDetailsPage from './pages/AccountDetailsPage';
 import TransactionsPage from './pages/TransactionsPage';
 import CostCentersPage from './pages/CostCentersPage';
 import DashboardPage from './pages/DashboardPage';
+import './App.css';
 
 function ProtectedRoute({ children }) {
   const { user, isGapiLoaded } = useAuth(); // isGapiLoaded from original AuthContext

@@ -3,9 +3,9 @@ import { useMockData } from '../contexts/MockDataContext';
 import Modal from '../components/Core/Modal';
 import Button from '../components/Core/Button';
 import { PlusIcon } from '@heroicons/react/24/solid';
-import CostCenterForm from '../components/Forms/CostCenterForm'; // <-- IMPORT
-import CostCenterListItem from '../components/CostCenters/CostCenterListItem'; // <-- IMPORT
-import { DEFAULT_COST_CENTER_FORM_DATA } from '../../utils/constants'; // <-- IMPORT
+import CostCenterForm from '../components/Forms/CostCenterForm'; 
+import CostCenterListItem from '../components/CostCenters/CostCenterListItem'; 
+import { DEFAULT_COST_CENTER_FORM_DATA } from '../utils/constants'; 
 
 const CostCentersPage = () => {
   const { costCenters, addCostCenter, editCostCenter, deleteCostCenter } = useMockData();
@@ -47,7 +47,7 @@ const CostCentersPage = () => {
       <div className="bg-white p-4 md:p-6 rounded-lg shadow">
         {costCenters.length > 0 ? (
           <ul className="divide-y divide-slate-200">
-            {costCenters.map(cc => ( // <-- USING .map() with new component
+            {costCenters.map(cc => ( 
               <CostCenterListItem
                 key={cc.id}
                 costCenter={cc}
