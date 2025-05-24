@@ -1,13 +1,12 @@
-// src/pages/DashboardPage.jsx
 import React from 'react';
 import { useMockData } from '../contexts/MockDataContext';
 import BankCard from '../components/Core/BankCard';
 import TransactionItem from '../components/Core/TransactionItem';
 import ChartPlaceholder from '../components/Core/ChartPlaceholder';
-import { CHART_COLORS } from '../../utils/constants'; // <-- IMPORT CONSTANT
+import { CHART_COLORS } from '../../utils/constants'; 
 
 // const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82Ca9D']; // Old way
-const COLORS = CHART_COLORS; // <-- USE CONSTANT
+const COLORS = CHART_COLORS; 
 
 const DashboardPage = () => {
   const { accounts, totalBalance, transactions } = useMockData();
@@ -17,9 +16,7 @@ const DashboardPage = () => {
     value: acc.balance,
     fill: COLORS[index % COLORS.length]
   }));
-  // ... rest of the component remains largely the same, .map() was already used well here.
-  // Make sure any other array iterations are using .map()
-
+  
   return (
     <div className="space-y-8">
       <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Dashboard</h1>

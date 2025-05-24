@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 import GoogleLoginButton from '../Auth/GoogleLoginButton';
-import { NAV_ITEMS } from '../../utils/constants'; // <-- IMPORT CONSTANT
+import { NAV_ITEMS } from '../../utils/constants'; 
 
 const Header = () => {
   const { user } = useAuth();

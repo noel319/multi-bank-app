@@ -1,16 +1,21 @@
-import { Header } from './Header';
-import { Sidebar } from './Sidebar';
+// src/components/Layout/MainLayout.jsx
+import React from 'react';
+import Header from './Header';
+// import BottomNav from '../UI/BottomNav'; // If you implement a mobile bottom navigation
 
-export function MainLayout({ children }) {
+const MainLayout = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="flex flex-1">
-        <Sidebar />
-        <main className="flex-1 p-6 bg-gray-50">
-          {children}
-        </main>
-      </div>
+      <main className="flex-grow container mx-auto p-4 md:p-6">
+        {children}
+      </main>
+      {/* <BottomNav /> */} {/* Example for mobile */}
+      <footer className="text-center py-4 text-sm text-slate-500 border-t border-slate-200">
+        © {new Date().getFullYear()} Income & Expenditure Control App.
+      </footer>
     </div>
   );
-}
+};
+
+export default MainLayout;

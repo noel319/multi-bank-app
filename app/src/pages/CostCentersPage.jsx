@@ -1,4 +1,3 @@
-// src/pages/CostCentersPage.jsx
 import React, { useState } from 'react';
 import { useMockData } from '../contexts/MockDataContext';
 import Modal from '../components/Core/Modal';

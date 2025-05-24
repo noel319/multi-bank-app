@@ -7,8 +7,8 @@ import TotalBalanceCard from '../components/UI/TotalBalanceCard';
 import TransactionItem from '../components/Core/TransactionItem';
 import Modal from '../components/Core/Modal';
 import Button from '../components/Core/Button';
-import BankCardForm from '../components/Forms/BankCardForm'; // <-- IMPORT NEW FORM
-import { DEFAULT_BANK_CARD_FORM_DATA } from '../../utils/constants'; // <-- IMPORT CONSTANT
+import BankCardForm from '../components/Forms/BankCardForm'; 
+import { DEFAULT_BANK_CARD_FORM_DATA } from '../../utils/constants'; 
 
 const HomePage = () => {
   const { accounts, totalBalance, transactions, userProfile, addAccount, updateAccount, deleteAccount } = useMockData();

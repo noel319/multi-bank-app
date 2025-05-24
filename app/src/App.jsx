@@ -1,57 +1,75 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
-import { BankDataProvider } from './contexts/BankDataContext';
-import { Login } from './pages/Login';
-import { Dashboard } from './pages/Dashboard';
-import { AccountDetails } from './pages/AccountDetails';
-import { Transactions } from './pages/Transactions';
-import { CostCenters } from './pages/CostCenters';
-import { MainLayout } from './components/layout/MainLayout';
-import './index.css'
-import './App.css'
-function PrivateRoute({ children }) {
-  const { user } = useAuth();
-  return user ? children : <Navigate to="/login" />;
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { MockDataProvider } from './contexts/MockDataContext';
+import MainLayout from './components/Layout/MainLayout';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
+import AccountDetailsPage from './pages/AccountDetailsPage';
+import TransactionsPage from './pages/TransactionsPage';
+import CostCentersPage from './pages/CostCentersPage';
+import DashboardPage from './pages/DashboardPage';
+
+function ProtectedRoute({ children }) {
+  const { user, isGapiLoaded } = useAuth(); // isGapiLoaded from original AuthContext
+
+  // Wait for GAPI to load before checking user, if using real Google Sign-In
+  // For the current mock setup, isGapiLoaded is always true in the simplified AuthContext
+  if (!isGapiLoaded && !user) { // Check if GAPI is not loaded AND user is not present from a previous session
+      // This check is more for the real Google Sign-In. For mock, user is the primary check.
+      // return <div>Loading authentication...</div>; // Or a spinner
+  }
+
+  return user ? children : <Navigate to="/login" replace />;
 }
 
-export function App() {
+function AppContent() {
+  const { user } = useAuth(); // To determine initial redirect for '*' route
+
   return (
-    <AuthProvider>
-      <BankDataProvider>
-        <Router>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={
-              <PrivateRoute>
-                <MainLayout>
-                  <Dashboard />
-                </MainLayout>
-              </PrivateRoute>
-            } />
-            <Route path="/accounts/:id" element={
-              <PrivateRoute>
-                <MainLayout>
-                  <AccountDetails />
-                </MainLayout>
-              </PrivateRoute>
-            } />
-            <Route path="/transactions" element={
-              <PrivateRoute>
-                <MainLayout>
-                  <Transactions />
-                </MainLayout>
-              </PrivateRoute>
-            } />
-            <Route path="/cost-centers" element={
-              <PrivateRoute>
-                <MainLayout>
-                  <CostCenters />
-                </MainLayout>
-              </PrivateRoute>
-            } />
-          </Routes>
-        </Router>
-      </BankDataProvider>
-    </AuthProvider>
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={
+        <ProtectedRoute>
+          <MainLayout><HomePage /></MainLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/accounts/:accountId" element={
+        <ProtectedRoute>
+          <MainLayout><AccountDetailsPage /></MainLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/transactions" element={
+        <ProtectedRoute>
+          <MainLayout><TransactionsPage /></MainLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/cost-centers" element={
+        <ProtectedRoute>
+          <MainLayout><CostCentersPage /></MainLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/dashboard" element={
+        <ProtectedRoute>
+          <MainLayout><DashboardPage /></MainLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="*" element={<Navigate to={user ? "/" : "/login"} replace />} />
+    </Routes>
   );
 }
+
+function App() {
+  return (
+    <Router>
+      <AuthProvider>
+        <MockDataProvider> {/* This provides mock data for UI development */}
+          {/* AppDataProvider would wrap AppContent if using real data flow */}
+          <AppContent />
+        </MockDataProvider>
+      </AuthProvider>
+    </Router>
+  );
+}
+
+export default App;

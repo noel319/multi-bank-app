@@ -1,62 +1,66 @@
-import { useState } from 'react';
-import { CostCenterModal } from '../components/CostCenterModal';
+// src/pages/TransactionsPage.jsx
+import React, { useState, useMemo } from 'react';
+import { useMockData } from '../contexts/MockDataContext';
+import TransactionItem from '../components/Core/TransactionItem';
+import FilterGroup from '../components/Core/FilterGroup'; // Re-use FilterGroup
 
-export function CostCenters() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingCostCenter, setEditingCostCenter] = useState(null);
+const TransactionsPage = () => {
+  const { transactions: allTransactions, costCenters } = useMockData();
+  const [filters, setFilters] = useState({ date: 'all', type: 'all', costCenter: 'all' });
 
-  const handleEdit = (costCenter) => {
-    setEditingCostCenter(costCenter);
-    setIsModalOpen(true);
+  // Memoize filtered transactions for performance
+  const filteredTransactions = useMemo(() => {
+    return allTransactions
+      .filter(t => {
+        let passesDate = true;
+        // Implement date filtering logic (e.g., daily, weekly, monthly)
+        // For now, 'all' passes everything
+        // if (filters.date !== 'all') { /* ... date logic ... */ }
+
+        let passesType = true;
+        if (filters.type !== 'all' && t.type !== filters.type) {
+          passesType = false;
+        }
+        
+        let passesCostCenter = true;
+        // This requires transactions to have a costCenterId or for category to map to costCenter name
+        // Assuming t.category can be used for a simple filter by name for now
+        if (filters.costCenter !== 'all' && t.category !== filters.costCenter) { 
+            // In a real app, you'd filter by costCenter.id if transactions store costCenterId
+            // For demo, let's find if any cost center name matches the filter value and transaction category
+            const selectedCc = costCenters.find(cc => cc.id === filters.costCenter);
+            if (selectedCc && t.category !== selectedCc.name) {
+                passesCostCenter = false;
+            } else if (!selectedCc && filters.costCenter !== 'all') { // if filter is set but no matching CC found
+                 passesCostCenter = false;
+            }
+        }
+
+
+        return passesDate && passesType && passesCostCenter;
+      })
+      .sort((a, b) => new Date(b.date) - new Date(a.date)); // Show newest first
+  }, [allTransactions, filters, costCenters]);
+
+  const handleFilterChange = (filterType, value) => {
+    setFilters(prev => ({ ...prev, [filterType]: value }));
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Cost Centers</h1>
-        <button
-          onClick={() => {
-            setEditingCostCenter(null);
-            setIsModalOpen(true);
-          }}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-        >
-          Add Cost Center
-        </button>
-      </div>
+    <div className="space-y-6">
+      <h1 className="text-2xl md:text-3xl font-bold text-slate-800">All Transactions</h1>
+      
+      <FilterGroup onFilterChange={handleFilterChange} /> {/* Pass costCenters to FilterGroup if it needs to populate options */}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {costCenters.map((center) => (
-          <div 
-            key={center.id} 
-            className={`p-4 rounded-lg border ${
-              center.type === 'expense' ? 'border-red-200 bg-red-50' : 'border-blue-200 bg-blue-50'
-            }`}
-          >
-            <div className="flex justify-between">
-              <h3 className="font-medium">{center.name}</h3>
-              <div className="flex space-x-2">
-                <button 
-                  onClick={() => handleEdit(center)}
-                  className="text-blue-500 hover:text-blue-700"
-                >
-                  <EditIcon className="w-5 h-5" />
-                </button>
-                <button className="text-red-500 hover:text-red-700">
-                  <DeleteIcon className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-            <p className="text-sm text-gray-500 mt-1">{center.description}</p>
-          </div>
-        ))}
+      <div className="bg-white p-1 md:p-4 rounded-lg shadow">
+        {filteredTransactions.length > 0 ? (
+          filteredTransactions.map(tx => <TransactionItem key={tx.id} transaction={tx} />)
+        ) : (
+          <p className="text-slate-500 text-center py-10">No transactions match your current filters.</p>
+        )}
       </div>
-
-      <CostCenterModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        costCenter={editingCostCenter}
-      />
     </div>
   );
-}
+};
+
+export default TransactionsPage;
