@@ -1,4 +1,3 @@
-// src/contexts/AuthContext.jsx
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import userAvatarPlaceholder from '../assets/images/user-avatar.png'; // Ensure this path is correct
 
