@@ -133,4 +133,3 @@ def create_new_year_gsheet_file(year: int, tokens_json_string: str):
         print(f"Error creating new Google Sheet: {e}")
         return {"success": False, "error": str(e)}
 
-# Add functions to sync ALL unsynced transactions, etc.
