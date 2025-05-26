@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-Main handler for Electron-Python communication
-Handles authentication, database operations, and business logic
-"""
-
 import sys
 import json
 import argparse

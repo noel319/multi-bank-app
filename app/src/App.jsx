@@ -9,6 +9,7 @@ import AccountDetailsPage from './pages/AccountDetailsPage';
 import TransactionsPage from './pages/TransactionsPage';
 import CostCentersPage from './pages/CostCentersPage';
 import DashboardPage from './pages/DashboardPage';
+import RegisterPage from './pages/RegisterPage';
 import './App.css';
 
 const ProtectedRoute = ({ children }) => {
@@ -31,6 +32,7 @@ function AppContent() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route path="/" element={
         <ProtectedRoute>
           <MainLayout><HomePage /></MainLayout>

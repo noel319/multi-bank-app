@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
-import GoogleLoginButton from '../Auth/GoogleLoginButton';
+import {GoogleLoginButton} from '../../contexts/AuthContext';
 import { NAV_ITEMS } from '../../utils/constants'; 
 
 const Header = () => {
