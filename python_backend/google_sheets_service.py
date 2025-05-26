@@ -2,7 +2,7 @@ from googleapiclient.discovery import build
 from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request # For token refresh
 import json
-from . import db_operations # To get transactions
+import db_operations # To get transactions
 from datetime import datetime
 
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']

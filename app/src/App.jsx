@@ -11,18 +11,19 @@ import CostCentersPage from './pages/CostCentersPage';
 import DashboardPage from './pages/DashboardPage';
 import './App.css';
 
-function ProtectedRoute({ children }) {
-  const { user, isGapiLoaded } = useAuth(); // isGapiLoaded from original AuthContext
+const ProtectedRoute = ({ children }) => {
+  const { user, loading } = useAuth();
 
-  // Wait for GAPI to load before checking user, if using real Google Sign-In
-  // For the current mock setup, isGapiLoaded is always true in the simplified AuthContext
-  if (!isGapiLoaded && !user) { // Check if GAPI is not loaded AND user is not present from a previous session
-      // This check is more for the real Google Sign-In. For mock, user is the primary check.
-      // return <div>Loading authentication...</div>; // Or a spinner
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
-  return user ? children : <Navigate to="/login" replace />;
-}
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+
+  return children;
+};
 
 function AppContent() {
   const { user } = useAuth(); // To determine initial redirect for '*' route
@@ -61,15 +62,16 @@ function AppContent() {
 }
 
 function App() {
+  
   return (
-    <Router>
-      <AuthProvider>
-        <MockDataProvider> {/* This provides mock data for UI development */}
-          {/* AppDataProvider would wrap AppContent if using real data flow */}
-          <AppContent />
-        </MockDataProvider>
-      </AuthProvider>
-    </Router>
+    <AuthProvider>
+      <MockDataProvider> {/* This provides mock data for UI development */}
+        {/* AppDataProvider would wrap AppContent if using real data flow */}
+        <Router>
+          <AppContent/>
+        </Router>
+      </MockDataProvider>
+    </AuthProvider>
   );
 }
 

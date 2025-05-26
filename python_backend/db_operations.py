@@ -1,5 +1,5 @@
 import sqlite3
-from .database_setup import get_db_connection
+from database_setup import get_db_connection
 from datetime import datetime
 
 # --- Account Operations ---

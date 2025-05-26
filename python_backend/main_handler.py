@@ -1,167 +1,379 @@
+#!/usr/bin/env python3
+"""
+Main handler for Electron-Python communication
+Handles authentication, database operations, and business logic
+"""
+
 import sys
 import json
 import argparse
-from . import db_operations
-from . import google_sheets_service
-from . import bank_api_service # Placeholder
-from datetime import datetime
+import sqlite3
+import hashlib
+import secrets
+import jwt
+import datetime
+import os
+from google.oauth2 import id_token
+from google.auth.transport import requests
+import traceback
+
+# Configuration
+SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'your-secret-key-change-this')
+GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID', 'your-google-client-id')
+TOKEN_EXPIRY_HOURS = 24
+DB_PATH = 'app_database.db'
+
+class AuthHandler:
+    def __init__(self):
+        self.init_database()
+    
+    def init_database(self):
+        """Initialize the SQLite database with required tables"""
+        try:
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            
+            # Users table
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS users (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    email TEXT UNIQUE NOT NULL,
+                    password_hash TEXT,
+                    name TEXT NOT NULL,
+                    google_id TEXT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            # Sessions table for token management
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS sessions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id INTEGER,
+                    token TEXT UNIQUE NOT NULL,
+                    expires_at TIMESTAMP NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (user_id) REFERENCES users (id)
+                )
+            ''')
+            
+            # App settings table
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS app_settings (
+                    key TEXT PRIMARY KEY,
+                    value TEXT,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            conn.commit()
+            conn.close()
+            return {"success": True, "message": "Database initialized"}
+        except Exception as e:
+            return {"success": False, "error": str(e)}
+    
+    def hash_password(self, password):
+        """Hash password with salt"""
+        salt = secrets.token_hex(16)
+        password_hash = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt.encode('utf-8'), 100000)
+        return f"{salt}:{password_hash.hex()}"
+    
+    def verify_password(self, password, hashed_password):
+        """Verify password against hash"""
+        try:
+            salt, password_hash = hashed_password.split(':')
+            new_hash = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt.encode('utf-8'), 100000)
+            return password_hash == new_hash.hex()
+        except:
+            return False
+    
+    def generate_token(self, user_id):
+        """Generate JWT token for user"""
+        payload = {
+            'user_id': user_id,
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=TOKEN_EXPIRY_HOURS),
+            'iat': datetime.datetime.utcnow()
+        }
+        return jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+    
+    def verify_token(self, token):
+        """Verify JWT token"""
+        try:
+            payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+            return payload
+        except jwt.ExpiredSignatureError:
+            return None
+        except jwt.InvalidTokenError:
+            return None
+    
+    def register(self, email, password, name):
+        """Register new user"""
+        try:
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            
+            # Check if user already exists
+            cursor.execute('SELECT id FROM users WHERE email = ?', (email,))
+            if cursor.fetchone():
+                return {"success": False, "error": "User already exists"}
+            
+            # Hash password and create user
+            password_hash = self.hash_password(password)
+            cursor.execute('''
+                INSERT INTO users (email, password_hash, name)
+                VALUES (?, ?, ?)
+            ''', (email, password_hash, name))
+            
+            user_id = cursor.lastrowid
+            
+            # Generate token
+            token = self.generate_token(user_id)
+            
+            # Store session
+            expires_at = datetime.datetime.utcnow() + datetime.timedelta(hours=TOKEN_EXPIRY_HOURS)
+            cursor.execute('''
+                INSERT INTO sessions (user_id, token, expires_at)
+                VALUES (?, ?, ?)
+            ''', (user_id, token, expires_at))
+            
+            conn.commit()
+            conn.close()
+            
+            return {
+                "success": True,
+                "data": {
+                    "user": {"id": user_id, "email": email, "name": name},
+                    "token": token
+                }
+            }
+        except Exception as e:
+            return {"success": False, "error": str(e)}
+    
+    def login(self, email, password):
+        """Login user with email and password"""
+        try:
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            
+            # Get user
+            cursor.execute('''
+                SELECT id, email, password_hash, name 
+                FROM users WHERE email = ?
+            ''', (email,))
+            
+            user = cursor.fetchone()
+            if not user or not self.verify_password(password, user[2]):
+                return {"success": False, "error": "Invalid email or password"}
+            
+            user_id, email, _, name = user
+            
+            # Generate new token
+            token = self.generate_token(user_id)
+            
+            # Clean old sessions and store new one
+            cursor.execute('DELETE FROM sessions WHERE user_id = ?', (user_id,))
+            expires_at = datetime.datetime.utcnow() + datetime.timedelta(hours=TOKEN_EXPIRY_HOURS)
+            cursor.execute('''
+                INSERT INTO sessions (user_id, token, expires_at)
+                VALUES (?, ?, ?)
+            ''', (user_id, token, expires_at))
+            
+            conn.commit()
+            conn.close()
+            
+            return {
+                "success": True,
+                "data": {
+                    "user": {"id": user_id, "email": email, "name": name},
+                    "token": token
+                }
+            }
+        except Exception as e:
+            return {"success": False, "error": str(e)}
+    
+    def google_login(self, credential):
+        """Login user with Google OAuth"""
+        try:
+            # Verify Google token
+            idinfo = id_token.verify_oauth2_token(
+                credential, requests.Request(), GOOGLE_CLIENT_ID)
+            
+            google_id = idinfo['sub']
+            email = idinfo['email']
+            name = idinfo.get('name', email.split('@')[0])
+            
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            
+            # Check if user exists
+            cursor.execute('SELECT id, email, name FROM users WHERE google_id = ? OR email = ?', 
+                         (google_id, email))
+            user = cursor.fetchone()
+            
+            if user:
+                user_id, email, name = user
+                # Update google_id if not set
+                cursor.execute('UPDATE users SET google_id = ? WHERE id = ?', (google_id, user_id))
+            else:
+                # Create new user
+                cursor.execute('''
+                    INSERT INTO users (email, name, google_id)
+                    VALUES (?, ?, ?)
+                ''', (email, name, google_id))
+                user_id = cursor.lastrowid
+            
+            # Generate token
+            token = self.generate_token(user_id)
+            
+            # Clean old sessions and store new one
+            cursor.execute('DELETE FROM sessions WHERE user_id = ?', (user_id,))
+            expires_at = datetime.datetime.utcnow() + datetime.timedelta(hours=TOKEN_EXPIRY_HOURS)
+            cursor.execute('''
+                INSERT INTO sessions (user_id, token, expires_at)
+                VALUES (?, ?, ?)
+            ''', (user_id, token, expires_at))
+            
+            conn.commit()
+            conn.close()
+            
+            return {
+                "success": True,
+                "data": {
+                    "user": {"id": user_id, "email": email, "name": name},
+                    "token": token
+                }
+            }
+        except Exception as e:
+            return {"success": False, "error": f"Google authentication failed: {str(e)}"}
+    
+    def logout(self, token):
+        """Logout user by invalidating token"""
+        try:
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            cursor.execute('DELETE FROM sessions WHERE token = ?', (token,))
+            conn.commit()
+            conn.close()
+            return {"success": True, "message": "Logged out successfully"}
+        except Exception as e:
+            return {"success": False, "error": str(e)}
+    
+    def check_auth_status(self):
+        """Check if there's an active session"""
+        try:
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            
+            # Get the most recent valid session
+            cursor.execute('''
+                SELECT s.token, s.user_id, u.email, u.name
+                FROM sessions s
+                JOIN users u ON s.user_id = u.id
+                WHERE s.expires_at > datetime('now')
+                ORDER BY s.created_at DESC
+                LIMIT 1
+            ''')
+            
+            session = cursor.fetchone()
+            conn.close()
+            
+            if session:
+                token, user_id, email, name = session
+                return {
+                    "success": True,
+                    "data": {
+                        "authenticated": True,
+                        "user": {"id": user_id, "email": email, "name": name},
+                        "token": token
+                    }
+                }
+            else:
+                return {
+                    "success": True,
+                    "data": {"authenticated": False}
+                }
+        except Exception as e:
+            return {"success": False, "error": str(e)}
+    
+    def refresh_token(self, token):
+        """Refresh user token"""
+        try:
+            payload = self.verify_token(token)
+            if not payload:
+                return {"success": False, "error": "Invalid token"}
+            
+            user_id = payload['user_id']
+            new_token = self.generate_token(user_id)
+            
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            
+            # Update session with new token
+            expires_at = datetime.datetime.utcnow() + datetime.timedelta(hours=TOKEN_EXPIRY_HOURS)
+            cursor.execute('''
+                UPDATE sessions 
+                SET token = ?, expires_at = ?
+                WHERE token = ?
+            ''', (new_token, expires_at, token))
+            
+            conn.commit()
+            conn.close()
+            
+            return {
+                "success": True,
+                "data": {"token": new_token}
+            }
+        except Exception as e:
+            return {"success": False, "error": str(e)}
 
 def main():
-    parser = argparse.ArgumentParser(description="Python backend for Finance App")
-    parser.add_argument("action", type=str, help="Action to perform")
-    parser.add_argument("--payload", type=str, default="{}", help="JSON payload for the action")
-
+    """Main entry point for Python backend"""
+    parser = argparse.ArgumentParser(description='Backend handler for Electron app')
+    parser.add_argument('action', help='Action to perform')
+    parser.add_argument('--payload', default='{}', help='JSON payload for the action')
+    
     args = parser.parse_args()
-    action = args.action
+    
     try:
         payload = json.loads(args.payload)
-    except json.JSONDecodeError:
-        print(json.dumps({"success": False, "error": "Invalid JSON payload"}))
+        auth_handler = AuthHandler()
+        
+        # Route actions
+        if args.action == 'init_db_check':
+            result = auth_handler.init_database()
+        elif args.action == 'register':
+            result = auth_handler.register(
+                payload.get('email'),
+                payload.get('password'),
+                payload.get('name')
+            )
+        elif args.action == 'login':
+            result = auth_handler.login(
+                payload.get('email'),
+                payload.get('password')
+            )
+        elif args.action == 'google_login':
+            result = auth_handler.google_login(payload.get('credential'))
+        elif args.action == 'logout':
+            result = auth_handler.logout(payload.get('token'))
+        elif args.action == 'check_auth_status':
+            result = auth_handler.check_auth_status()
+        elif args.action == 'refresh_token':
+            result = auth_handler.refresh_token(payload.get('token'))
+        else:
+            result = {"success": False, "error": f"Unknown action: {args.action}"}
+        
+        print(json.dumps(result))
+        
+    except Exception as e:
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "traceback": traceback.format_exc()
+        }
+        print(json.dumps(error_result))
         sys.exit(1)
 
-    result = {"success": False, "data": None, "error": None}
-
-    try:
-        # Account Actions
-        if action == "get_all_accounts":
-            result["data"] = db_operations.get_all_accounts()
-            result["success"] = True
-        elif action == "add_account":
-            # Payload expected: {account_name, bank_name, balance, currency, ...other optional fields}
-            new_account = db_operations.add_account(payload)
-            if new_account:
-                result["data"] = new_account
-                result["success"] = True
-            else: result["error"] = "Failed to add account"
-        elif action == "update_account":
-            # Payload: {id, ...fields_to_update}
-            if db_operations.update_account(payload.pop('id'), payload):
-                result["data"] = db_operations.get_account_by_id(payload['id']) # Return updated
-                result["success"] = True
-            else: result["error"] = "Failed to update account"
-        elif action == "delete_account":
-            if db_operations.delete_account(payload.get('id')):
-                result["success"] = True
-            else: result["error"] = "Failed to delete account"
-
-        # Transaction Actions
-        elif action == "add_transaction":
-            # Payload: {account_id, concept, amount, type, transaction_date, cost_center_id, notes, currency}
-            # Ensure date is handled correctly (string YYYY-MM-DD)
-            if 'transaction_date' not in payload or not payload['transaction_date']:
-                 payload['transaction_date'] = datetime.now().strftime('%Y-%m-%d') # Auto-assign if not provided
-
-            new_transaction_result = db_operations.add_transaction(payload)
-            if new_transaction_result:
-                result["data"] = new_transaction_result
-                result["success"] = True
-                
-                # Auto-sync to Google Sheets if configured
-                gsheet_id = db_operations.get_setting('current_year_gsheet_id')
-                g_tokens_json = db_operations.get_setting('google_auth_tokens')
-                if gsheet_id and g_tokens_json:
-                    # Fetch enriched transaction data if needed for sheet formatting
-                    # For now, pass the result which contains necessary fields
-                    gs_result = google_sheets_service.append_transaction_to_gsheet(
-                        gsheet_id,
-                        new_transaction_result, # The dict returned by add_transaction
-                        g_tokens_json
-                    )
-                    if not gs_result.get("success"):
-                        print(f"Warning: Transaction added to DB but failed to sync to GSheet: {gs_result.get('error')}")
-                        # You might want to queue this for later sync
-            else:
-                result["error"] = "Failed to add transaction"
-        elif action == "get_transactions_for_account":
-            result["data"] = db_operations.get_transactions_for_account(
-                payload.get('account_id'),
-                payload.get('limit', 50),
-                payload.get('offset', 0)
-            )
-            result["success"] = True
-        elif action == "get_all_transactions":
-            result["data"] = db_operations.get_all_transactions(
-                payload.get('limit', 100),
-                payload.get('offset', 0)
-            )
-            result["success"] = True
-
-        # Cost Center Actions
-        elif action == "get_all_cost_centers":
-            result["data"] = db_operations.get_all_cost_centers()
-            result["success"] = True
-        elif action == "add_cost_center":
-            # Payload: {name, type, color (optional)}
-            cc = db_operations.add_cost_center(payload.get('name'), payload.get('type'), payload.get('color'))
-            if cc:
-                result["data"] = cc
-                result["success"] = True
-            else: result["error"] = "Failed to add cost center (name might exist)"
-        # ... update_cost_center, delete_cost_center
-
-        # Settings Actions
-        elif action == "get_setting": # Payload: {key}
-            result["data"] = {"key": payload.get('key'), "value": db_operations.get_setting(payload.get('key'))}
-            result["success"] = True
-        elif action == "update_setting": # Payload: {key, value}
-            if db_operations.update_setting(payload.get('key'), payload.get('value')):
-                result["success"] = True
-            else: result["error"] = "Failed to update setting"
-
-        # Google Sheets Actions
-        elif action == "create_new_year_gsheet": # Payload: {year, tokens_json_string}
-            gs_result = google_sheets_service.create_new_year_gsheet_file(
-                payload.get('year'),
-                payload.get('tokens_json_string') # Pass tokens from frontend/Electron
-            )
-            result.update(gs_result) # Merge success, data, error from gs_result
-
-        # Bank API Actions (Placeholders - these are very complex)
-        elif action == "sync_bank_account": # Payload: {account_id}
-            # 1. Get account details (api_integration_id) from db_operations
-            # 2. Retrieve secure access_token (e.g., from OS keychain, passed by Electron)
-            # 3. Call bank_api_service.fetch_transactions_from_bank
-            # 4. For each new transaction:
-            #    - Check if bank_transaction_id already exists in SQLite (de-duplication)
-            #    - If new, call db_operations.add_transaction (need to map/categorize concept)
-            # 5. Update account balance in SQLite with bank_api_service.get_account_balance_from_bank
-            # 6. Update last_synced_at for the account
-            # This would likely be a background task triggered by Electron, notifying UI on completion.
-            account_id_to_sync = payload.get('account_id')
-            account_info = db_operations.get_account_by_id(account_id_to_sync)
-            # Securely get access_token for account_info['api_integration_id']
-            # For demo, assume it's directly in payload (NOT FOR PRODUCTION)
-            access_token = payload.get('access_token')
-            if account_info and account_info['api_integration_id'] and access_token:
-                bank_data = bank_api_service.fetch_transactions_from_bank(
-                    account_info['api_integration_id'],
-                    access_token,
-                    account_info.get('last_synced_at')
-                )
-                if bank_data and bank_data['success']:
-                    # Process bank_data['transactions'] and update bank_data['new_balance']
-                    # ... (complex logic for de-duplication, adding to SQLite) ...
-                    db_operations.update_account(account_id_to_sync, {"balance": bank_data['new_balance'], "last_synced_at": datetime.now().isoformat()})
-                    result["data"] = {"message": "Bank sync placeholder successful", "new_balance": bank_data['new_balance']}
-                    result["success"] = True
-                else:
-                    result["error"] = "Bank sync failed"
-            else:
-                result["error"] = "Account not configured for API sync or missing token."
-
-
-        else:
-            result["error"] = f"Unknown action: {action}"
-
-    except Exception as e:
-        import traceback
-        result["error"] = f"An unexpected error occurred: {str(e)}"
-        result["traceback"] = traceback.format_exc() # For debugging
-
-    print(json.dumps(result))
-
-if __name__ == "__main__":
-    # Ensure the database exists before running any actions
-    from .database_setup import create_tables
-    create_tables()
+if __name__ == '__main__':
     main()

@@ -1,19 +1,54 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
+// Expose protected methods that allow the renderer process to use
+// the ipcRenderer without exposing the entire object
 contextBridge.exposeInMainWorld('electronAPI', {
+  // Python backend communication
+  callPython: (args) => ipcRenderer.invoke('call-python', args),
   
-  callPython: (action, payload = {}) => ipcRenderer.invoke('call-python', { action, payload }),
-
-
+  // External links
   openExternalLink: (url) => ipcRenderer.send('open-external-link', url),
-  showErrorDialog: (title, content) => ipcRenderer.invoke('show-error-dialog', { title, content }),
-  showMessageDialog: (options) => ipcRenderer.invoke('show-message-dialog', options), 
-
   
-  onBankDataUpdated: (callback) => ipcRenderer.on('bank-data-updated', (_event, value) => callback(value)),
-  removeBankDataUpdatedListener: (callback) => ipcRenderer.removeListener('bank-data-updated', callback),
-
+  // Dialog methods
+  showErrorDialog: (options) => ipcRenderer.invoke('show-error-dialog', options),
+  showMessageDialog: (options) => ipcRenderer.invoke('show-message-dialog', options),
   
-  onGoogleAuthResponse: (callback) => ipcRenderer.on('google-auth-response', (_event, value) => callback(value)),
-  removeGoogleAuthResponseListener: (callback) => ipcRenderer.removeListener('google-auth-response', callback),
+  // Auth-specific methods (optional convenience methods)
+  auth: {
+    login: (email, password) => ipcRenderer.invoke('call-python', {
+      action: 'login',
+      payload: { email, password }
+    }),
+    
+    googleLogin: (credential) => ipcRenderer.invoke('call-python', {
+      action: 'google_login',
+      payload: { credential }
+    }),
+    
+    register: (email, password, name) => ipcRenderer.invoke('call-python', {
+      action: 'register',
+      payload: { email, password, name }
+    }),
+    
+    logout: (token) => ipcRenderer.invoke('call-python', {
+      action: 'logout',
+      payload: { token }
+    }),
+    
+    checkStatus: () => ipcRenderer.invoke('call-python', {
+      action: 'check_auth_status'
+    }),
+    
+    refreshToken: (token) => ipcRenderer.invoke('call-python', {
+      action: 'refresh_token',
+      payload: { token }
+    })
+  },
+  
+  // App info
+  getAppVersion: () => ipcRenderer.invoke('get-app-version'),
+  
+  // File operations (if needed)
+  selectFile: (options) => ipcRenderer.invoke('select-file', options),
+  saveFile: (options) => ipcRenderer.invoke('save-file', options)
 });
