@@ -1,123 +1,90 @@
 // src/components/Core/BankCard.jsx
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { PencilIcon, TrashIcon } from '@heroicons/react/24/solid';
+import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { formatCurrency } from '../../utils/formatters';
 
-// Placeholder for world map pattern - replace with your actual image path
-import worldMapPatternPlaceholder from '../../assets/images/world_map_pattern.png';
-// Placeholder for Mastercard logo - replace or make cardNetworkLogoUrl a prop
-import MasterCardLogo from '../UI/MastercardLogo';
-
-
-const BankCard = ({
-  account, // Keep the account object for existing data structure
-  // Props for new design:
-  cardNetworkLogoUrl,
-  cardNumberMasked,
-  expiryDate,
-  balanceLabel = "Balance", // Default label
-  balanceAmount,
-  currencySymbol = "$", // Default currency symbol
-  bgColorClassName = "bg-blue-600", // Default background color class (Tailwind)
-  textColorClassName = "text-white", // Default text color class
-  worldMapPatternUrl = worldMapPatternPlaceholder, // Default map pattern
-  // Existing functional props:
-  onEdit,
-  onDelete,
-  clickable = true,
-}) => {
-  const navigate = useNavigate();
-  const { id, bankName } = account || {}; // bankName might not be displayed in new design but good to have for context
-
-  // Use specific props if available, otherwise fallback to account object for compatibility
-  const displayCardNumber = cardNumberMasked || `**** **** **** ${account?.last4 || '0000'}`;
-  const displayExpiry = expiryDate || account?.expiry || 'MM/YY';
-  const displayBalance = typeof balanceAmount === 'number' ? balanceAmount : (account?.balance || 0);
-  // const displayNetworkLogo = cardNetworkLogoUrl || (account?.cardType === 'MasterCard' ? mastercardLogoPlaceholder : mastercardLogoPlaceholder); // Basic logic, improve as needed
-
-  const handleCardClick = () => {
-    if (clickable && id) {
-      navigate(`/accounts/${id}`);
-    } else if (clickable) {
-      console.warn("BankCard: Clickable but no account ID provided for navigation.");
-    }
+const BankCard = ({ bank, onClick, onEdit, onDelete }) => {
+  const handleEditClick = (e) => {
+    e.stopPropagation();
+    onEdit(bank);
   };
 
-  const formattedBalance = displayBalance.toLocaleString('en-US', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
+  const handleDeleteClick = (e) => {
+    e.stopPropagation();
+    onDelete(bank.id);
+  };
+
+  const cardColorClasses = {
+    blue: 'bg-gradient-to-br from-blue-500 to-blue-700',
+    purple: 'bg-gradient-to-br from-purple-500 to-purple-700',
+    green: 'bg-gradient-to-br from-green-500 to-green-700',
+    red: 'bg-gradient-to-br from-red-500 to-red-700',
+    orange: 'bg-gradient-to-br from-orange-500 to-orange-700',
+    indigo: 'bg-gradient-to-br from-indigo-500 to-indigo-700',
+    pink: 'bg-gradient-to-br from-pink-500 to-pink-700',
+    teal: 'bg-gradient-to-br from-teal-500 to-teal-700'
+  };
+
+  const colorClass = cardColorClasses[bank.color] || cardColorClasses.blue;
 
   return (
-    <div
-      className={`relative rounded-xl shadow-lg p-5 md:p-6 flex flex-col justify-between min-w-[280px] w-full max-w-[340px] h-[190px] md:h-[200px] overflow-hidden cursor-${clickable ? 'pointer' : 'default'} ${bgColorClassName} ${textColorClassName}`}
-      onClick={handleCardClick}
+    <div 
+      className={`${colorClass} text-white p-6 rounded-xl shadow-lg cursor-pointer hover:shadow-xl transform hover:scale-105 transition-all duration-200 relative group`}
+      onClick={onClick}
     >
-      {/* World Map Background Pattern */}
-      {worldMapPatternUrl && (
-        <img
-          src={worldMapPatternUrl}
-          alt="" // Decorative
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-10 md:opacity-15 z-0 pointer-events-none"
-        />
-      )}
+      {/* Action Buttons */}
+      <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <button
+          onClick={handleEditClick}
+          className="p-1.5 bg-white/20 hover:bg-white/30 rounded-full transition-colors duration-200"
+          title="Edit Card"
+        >
+          <PencilIcon className="h-4 w-4" />
+        </button>
+        <button
+          onClick={handleDeleteClick}
+          className="p-1.5 bg-white/20 hover:bg-red-500/80 rounded-full transition-colors duration-200"
+          title="Delete Card"
+        >
+          <TrashIcon className="h-4 w-4" />
+        </button>
+      </div>
 
-      {/* Card Content - position relative to be above the pattern */}
-      <div className="relative z-10 flex flex-col justify-between h-full">
-        {/* Top Row: Network Logo, Masked Number, Expiry */}
-        <div className="flex justify-between items-center">
-          <MasterCardLogo/>
-          <span className="font-mono text-sm md:text-base tracking-wider opacity-90">
-            {displayCardNumber.slice(-9).trim()} {/* Show only last part like "**** 3535" */}
-          </span>
-          <span className="font-mono text-xs md:text-sm opacity-90">{displayExpiry}</span>
+      {/* Bank Name */}
+      <div className="mb-4">
+        <h3 className="text-lg font-semibold">{bank.bank_name}</h3>
+        <p className="text-white/80 text-sm">{bank.account_name}</p>
+      </div>
+
+      {/* Card Number */}
+      <div className="mb-6">
+        <p className="text-white/70 text-xs uppercase tracking-wider mb-1">Card Number</p>
+        <p className="font-mono text-sm">
+          {bank.card_number ? 
+            `•••• •••• •••• ${bank.card_number.slice(-4)}` : 
+            '•••• •••• •••• ••••'
+          }
+        </p>
+      </div>
+
+      {/* Balance */}
+      <div className="flex justify-between items-end">
+        <div>
+          <p className="text-white/70 text-xs uppercase tracking-wider mb-1">Balance</p>
+          <p className="text-2xl font-bold">{formatCurrency(bank.balance)}</p>
         </div>
-
-        {/* Bottom Section: Balance */}
-        <div className="mt-auto"> {/* Pushes balance to the bottom */}
-          <span className="block text-xs md:text-sm font-light opacity-80 tracking-wide">
-            {balanceLabel}
+        <div className="text-right">
+          <p className="text-white/70 text-xs uppercase tracking-wider mb-1">Status</p>
+          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+            bank.is_active ? 'bg-green-500/30 text-green-100' : 'bg-red-500/30 text-red-100'
+          }`}>
+            {bank.is_active ? 'Active' : 'Inactive'}
           </span>
-          <div className="flex items-baseline">
-            <span className="text-2xl md:text-3xl font-bold tracking-tight">
-              {currencySymbol}
-            </span>
-            <span className="text-3xl md:text-4xl font-bold tracking-tight ml-1">
-              {formattedBalance.split('.')[0]}
-            </span>
-            <span className="text-xl md:text-2xl font-bold tracking-tight opacity-80">
-              .{formattedBalance.split('.')[1]}
-            </span>
-          </div>
         </div>
       </div>
 
-      {/* Edit/Delete Icons (optional, at the bottom right, overlayed) */}
-      {clickable && onEdit && onDelete && id && (
-        <div className="absolute bottom-3 right-3 z-20 flex space-x-2">
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onEdit(account); // Still pass the full account object for editing context
-            }}
-            className="p-1.5 bg-white/20 hover:bg-white/30 rounded-full transition-colors"
-            aria-label="Edit card"
-          >
-            <PencilIcon className={`h-4 w-4 ${textColorClassName === 'text-white' ? 'text-white' : 'text-slate-700'}`} />
-          </button>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onDelete(id);
-            }}
-            className="p-1.5 bg-white/20 hover:bg-white/30 rounded-full transition-colors"
-            aria-label="Delete card"
-          >
-            <TrashIcon className={`h-4 w-4 ${textColorClassName === 'text-white' ? 'text-white' : 'text-slate-700'}`} />
-          </button>
-        </div>
-      )}
+      {/* Card Chip Design */}
+      <div className="absolute bottom-4 right-4 w-8 h-6 bg-white/20 rounded-sm"></div>
     </div>
   );
 };

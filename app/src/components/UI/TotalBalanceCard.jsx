@@ -1,31 +1,65 @@
-// src/components/UI/TotalBalanceCard.jsx
 import React from 'react';
-import { CreditCardIcon, QrCodeIcon, ArrowsRightLeftIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline'; // Or solid
-
-const ActionButton = ({ icon: Icon, label, onClick }) => (
-  <button onClick={onClick} className="flex flex-col items-center space-y-1 text-white hover:opacity-80 transition-opacity">
-    <span className="p-3 bg-white/10 rounded-lg">
-      <Icon className="h-5 w-5" />
-    </span>
-    <span className="text-xs">{label}</span>
-  </button>
-);
-
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { formatCurrency } from '../../utils/formatters';
 
 const TotalBalanceCard = ({ totalBalance }) => {
+  // Create data for the ring chart
+  const data = [
+    { name: 'Balance', value: Math.max(totalBalance, 0) },
+    { name: 'Empty', value: Math.max(10000 - totalBalance, 0) } // Assuming max display of 10000 for visual
+  ];
+
+  const COLORS = ['#3B82F6', '#E5E7EB']; // Blue for balance, light gray for empty
+
   return (
-    <div className="bg-gradient-blue p-6 rounded-2xl shadow-xl text-white">
-      <div className="mb-3">
-        <span className="text-sm opacity-80">Total</span>
-        <h2 className="text-4xl font-bold tracking-tight">
-          $ {totalBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-        </h2>
+    <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-shadow duration-200">
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <h3 className="text-lg font-semibold text-slate-800">Total Balance</h3>
+          <p className="text-sm text-slate-500">All accounts combined</p>
+        </div>
       </div>
-      <div className="grid grid-cols-4 gap-2 mt-6 pt-4 border-t border-white/20">
-        <ActionButton icon={CreditCardIcon} label="Card" onClick={() => console.log("Card action")} />
-        <ActionButton icon={QrCodeIcon} label="QR Pay" onClick={() => console.log("QR Pay action")} />
-        <ActionButton icon={ArrowsRightLeftIcon} label="Exchange" onClick={() => console.log("Exchange action")} />
-        <ActionButton icon={ArrowUpRightIcon} label="Send" onClick={() => console.log("Send action")} />
+
+      <div className="flex items-center justify-center">
+        <div className="relative w-32 h-32">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={data}
+                cx="50%"
+                cy="50%"
+                innerRadius={45}
+                outerRadius={60}
+                startAngle={90}
+                endAngle={450}
+                dataKey="value"
+                stroke="none"
+              >
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
+          
+          {/* Center Text */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <p className="text-2xl font-bold text-slate-800">
+              {formatCurrency(totalBalance)}
+            </p>
+            <p className="text-xs text-slate-500 mt-1">Total</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Growth indicator */}
+      <div className="mt-4 flex items-center justify-center">
+        <div className="flex items-center text-sm">
+          <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+          <span className="text-slate-600">
+            {totalBalance > 0 ? 'Portfolio Value' : 'Add accounts to see balance'}
+          </span>
+        </div>
       </div>
     </div>
   );
