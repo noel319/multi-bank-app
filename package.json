@@ -1,16 +1,19 @@
 {
   "name": "multi-bank-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Multi-bank finance management application",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "concurrently \"cd app && npm run dev\" \"electron .\"",
+    "build": "cd app && npm run build",
+    "postinstall": "cd app && npm install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^36.3.1"
+    "electron": "^36.3.1",
+    "concurrently": "^8.2.2"
   }
 }
