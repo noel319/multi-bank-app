@@ -116,7 +116,7 @@ class BankManager:
                 return {"success": False, "error": "Bank account not found or access denied"}
             
             # Delete associated transactions first
-            cursor.execute('DELETE FROM transaction WHERE bank_id = ?', (bank_id,))
+            cursor.execute('DELETE FROM transactions WHERE bank_id = ?', (bank_id,))
             cursor.execute('DELETE FROM billing WHERE bank_id = ?', (bank_id,))
             
             # Delete bank account

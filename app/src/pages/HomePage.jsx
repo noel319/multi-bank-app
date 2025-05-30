@@ -27,8 +27,6 @@ const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingBank, setEditingBank] = useState(null);
   const [submitting, setSubmitting] = useState(false);
-  const [importingFile, setImportingFile] = useState(false);
-
   // Load home data on component mount
   useEffect(() => {
     if (user) {
@@ -160,54 +158,7 @@ const HomePage = () => {
     } finally {
       setSubmitting(false);
     }
-  };
-
-  const handleImportTransactions = async () => {
-    try {
-      setImportingFile(true);
-      
-      // Open file dialog
-      const result = await window.electronAPI.showOpenDialog({
-        title: 'Import Transaction Data',
-        filters: [
-          { name: 'Excel Files', extensions: ['xlsx', 'xls'] },
-          { name: 'CSV Files', extensions: ['csv'] }
-        ],
-        properties: ['openFile']
-      });
-
-      if (!result.canceled && result.filePaths.length > 0) {
-        const filePath = result.filePaths[0];
-        
-        const response = await window.electronAPI.callPython({
-          action: 'import_transactions',
-          payload: { file_path: filePath }
-        });
-
-        if (response.success) {
-          await loadHomeData(); // Refresh data
-          await window.electronAPI.showMessageDialog({
-            type: 'info',
-            title: 'Success',
-            message: `Successfully imported ${response.imported_count || 0} transactions!`
-          });
-        } else {
-          await window.electronAPI.showErrorDialog({
-            title: 'Import Error',
-            content: response.error || 'Failed to import transactions'
-          });
-        }
-      }
-    } catch (error) {
-      console.error('Error importing transactions:', error);
-      await window.electronAPI.showErrorDialog({
-        title: 'Error',
-        content: 'Failed to import transaction file'
-      });
-    } finally {
-      setImportingFile(false);
-    }
-  };
+  };  
 
   const handleSyncGoogleSheets = async () => {
     try {
@@ -259,21 +210,11 @@ const HomePage = () => {
       {/* Header */}
       <div className="flex justify-between items-center mb-6 px-1">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Dashboard</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-800">BANK INFORMATION</h1>
           <p className="text-slate-500">Welcome back, {homeData.userProfile?.name || user?.name || 'User'}!</p>
         </div>
         <div className="flex items-center gap-3">
-          {/* Import/Sync Buttons */}
-          <Button 
-            onClick={handleImportTransactions} 
-            variant="secondary" 
-            size="sm"
-            disabled={importingFile}
-          >
-            <ArrowUpTrayIcon className="h-4 w-4 mr-1 inline" />
-            {importingFile ? 'Importing...' : 'Import Excel'}
-          </Button>
-          
+                  
           {user?.google_token && (
             <Button 
               onClick={handleSyncGoogleSheets} 

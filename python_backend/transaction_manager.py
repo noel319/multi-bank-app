@@ -24,7 +24,7 @@ class TransactionManager:
                 SELECT t.id, t.bank_name, t.account_name, t.price, t.state, t.fee,
                        t.cost_center_name, t.before_balance, t.after_balance, t.date,
                        b.color as bank_color
-                FROM transaction t
+                FROM transactions t
                 JOIN bank b ON t.bank_id = b.id
                 WHERE b.user_id = ?
                 ORDER BY t.date DESC, t.created_at DESC
@@ -115,7 +115,7 @@ class TransactionManager:
                     
                     # Insert transaction
                     cursor.execute('''
-                        INSERT INTO transaction (
+                        INSERT INTO transactions (
                             bank_id, bank_name, account_name, price, state, fee,
                             cost_center_name, before_balance, after_balance, date
                         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)

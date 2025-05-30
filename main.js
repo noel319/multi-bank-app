@@ -221,6 +221,38 @@ ipcMain.handle('show-save-dialog', async (event, options) => {
   }
 });
 
+// Message dialog handlers (MISSING HANDLERS)
+ipcMain.handle('show-message-dialog', async (event, options) => {
+  try {
+    const result = await dialog.showMessageBox(mainWindow, options);
+    return result;
+  } catch (error) {
+    console.error('Error showing message dialog:', error);
+    return { canceled: true, error: error.message };
+  }
+});
+
+ipcMain.handle('show-error-dialog', async (event, options) => {
+  try {
+    // For error dialogs, we can use either showErrorBox or showMessageBox
+    if (options.title && options.content) {
+      // Use showErrorBox for simple error messages
+      dialog.showErrorBox(options.title, options.content);
+      return { success: true };
+    } else {
+      // Use showMessageBox for more complex error dialogs
+      const result = await dialog.showMessageBox(mainWindow, {
+        type: 'error',
+        ...options
+      });
+      return result;
+    }
+  } catch (error) {
+    console.error('Error showing error dialog:', error);
+    return { error: error.message };
+  }
+});
+
 // File system operations
 ipcMain.handle('read-file', async (event, filePath) => {
   try {

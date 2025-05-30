@@ -58,8 +58,11 @@ const BankCard = ({ bank, onClick, onEdit, onDelete }) => {
       </div>
 
       {/* Bank Icon */}
-      <div className="mb-4">
+      <div className="mb-4 flex">
         <CreditCardIcon className="h-8 w-8 opacity-80" />
+        <h3 className="text-lg font-semibold mb-1 truncate">
+          {bank.role === "business" ? "BUSINESS ACCOUNT": "PERSONAL ACCOUNT"}
+        </h3>
       </div>
 
       {/* Bank Name */}
