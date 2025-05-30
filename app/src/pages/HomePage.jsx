@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { PlusIcon } from '@heroicons/react/24/solid';
+import { PlusIcon, ArrowUpTrayIcon } from '@heroicons/react/24/solid';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import BankCard from '../components/Core/BankCard';
 import PersonalAccountCard from '../components/UI/PersonalAccountCard';
 import TotalBalanceCard from '../components/UI/TotalBalanceCard';
@@ -13,6 +14,8 @@ import { DEFAULT_BANK_CARD_FORM_DATA } from '../utils/constants';
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
+  
   const [homeData, setHomeData] = useState({
     banks: [],
     totalBalance: 0,
@@ -24,11 +27,14 @@ const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingBank, setEditingBank] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+  const [importingFile, setImportingFile] = useState(false);
 
   // Load home data on component mount
   useEffect(() => {
-    loadHomeData();
-  }, []);
+    if (user) {
+      loadHomeData();
+    }
+  }, [user]);
 
   const loadHomeData = async () => {
     try {
@@ -74,7 +80,7 @@ const HomePage = () => {
       defaultId: 0,
       title: 'Confirm Delete',
       message: 'Are you sure you want to delete this bank card?',
-      detail: 'This action cannot be undone.'
+      detail: 'This action cannot be undone and will also delete all associated transactions.'
     });
 
     if (confirmed.response === 1) {
@@ -156,6 +162,90 @@ const HomePage = () => {
     }
   };
 
+  const handleImportTransactions = async () => {
+    try {
+      setImportingFile(true);
+      
+      // Open file dialog
+      const result = await window.electronAPI.showOpenDialog({
+        title: 'Import Transaction Data',
+        filters: [
+          { name: 'Excel Files', extensions: ['xlsx', 'xls'] },
+          { name: 'CSV Files', extensions: ['csv'] }
+        ],
+        properties: ['openFile']
+      });
+
+      if (!result.canceled && result.filePaths.length > 0) {
+        const filePath = result.filePaths[0];
+        
+        const response = await window.electronAPI.callPython({
+          action: 'import_transactions',
+          payload: { file_path: filePath }
+        });
+
+        if (response.success) {
+          await loadHomeData(); // Refresh data
+          await window.electronAPI.showMessageDialog({
+            type: 'info',
+            title: 'Success',
+            message: `Successfully imported ${response.imported_count || 0} transactions!`
+          });
+        } else {
+          await window.electronAPI.showErrorDialog({
+            title: 'Import Error',
+            content: response.error || 'Failed to import transactions'
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Error importing transactions:', error);
+      await window.electronAPI.showErrorDialog({
+        title: 'Error',
+        content: 'Failed to import transaction file'
+      });
+    } finally {
+      setImportingFile(false);
+    }
+  };
+
+  const handleSyncGoogleSheets = async () => {
+    try {
+      if (!user.google_token) {
+        await window.electronAPI.showMessageDialog({
+          type: 'info',
+          title: 'Google Sheets Not Connected',
+          message: 'Please log in with Google to sync with Google Sheets.'
+        });
+        return;
+      }
+
+      const response = await window.electronAPI.callPython({
+        action: 'sync_google_sheets'
+      });
+
+      if (response.success) {
+        await loadHomeData(); // Refresh data
+        await window.electronAPI.showMessageDialog({
+          type: 'info',
+          title: 'Success',
+          message: 'Google Sheets synchronized successfully!'
+        });
+      } else {
+        await window.electronAPI.showErrorDialog({
+          title: 'Sync Error',
+          content: response.error || 'Failed to sync with Google Sheets'
+        });
+      }
+    } catch (error) {
+      console.error('Error syncing Google Sheets:', error);
+      await window.electronAPI.showErrorDialog({
+        title: 'Error',
+        content: 'Failed to sync with Google Sheets'
+      });
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -169,23 +259,46 @@ const HomePage = () => {
       {/* Header */}
       <div className="flex justify-between items-center mb-6 px-1">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Home</h1>
-          <p className="text-slate-500">Welcome back, {homeData.userProfile?.name || 'User'}!</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Dashboard</h1>
+          <p className="text-slate-500">Welcome back, {homeData.userProfile?.name || user?.name || 'User'}!</p>
         </div>
-        {homeData.userProfile?.avatar && (
-          <img 
-            src={homeData.userProfile.avatar} 
-            alt="User" 
-            className="h-12 w-12 rounded-full" 
-          />
-        )}
+        <div className="flex items-center gap-3">
+          {/* Import/Sync Buttons */}
+          <Button 
+            onClick={handleImportTransactions} 
+            variant="secondary" 
+            size="sm"
+            disabled={importingFile}
+          >
+            <ArrowUpTrayIcon className="h-4 w-4 mr-1 inline" />
+            {importingFile ? 'Importing...' : 'Import Excel'}
+          </Button>
+          
+          {user?.google_token && (
+            <Button 
+              onClick={handleSyncGoogleSheets} 
+              variant="secondary" 
+              size="sm"
+            >
+              Sync Sheets
+            </Button>
+          )}
+          
+          {homeData.userProfile?.avatar && (
+            <img 
+              src={homeData.userProfile.avatar} 
+              alt="User" 
+              className="h-10 w-10 rounded-full" 
+            />
+          )}
+        </div>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left Side - Bank Cards */}
         <div className="lg:w-3/5 space-y-6">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold text-slate-700">Your cards</h2>
+            <h2 className="text-xl font-semibold text-slate-700">Your Bank Cards</h2>
             <Button onClick={handleAddCardClick} variant="primary" size="sm">
               <PlusIcon className="h-5 w-5 mr-1 inline" /> Add Card
             </Button>
@@ -205,7 +318,7 @@ const HomePage = () => {
             </div>
           ) : (
             <div className="text-center py-10 bg-white rounded-lg shadow">
-              <p className="text-slate-500 mb-4">No cards added yet.</p>
+              <p className="text-slate-500 mb-4">No bank cards added yet.</p>
               <Button onClick={handleAddCardClick} variant="primary">
                 <PlusIcon className="h-5 w-5 mr-2 inline" /> Add Your First Card
               </Button>
@@ -216,23 +329,36 @@ const HomePage = () => {
         {/* Right Side - Balance and Transactions */}
         <div className="lg:w-2/5 space-y-6">
           {/* Balance Cards */}
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 gap-4">
             <TotalBalanceCard totalBalance={homeData.totalBalance} />
             <PersonalAccountCard personalBalance={homeData.personalBalance} />
           </div>
 
           {/* Recent Transactions */}
           <div>
-            <h2 className="text-xl font-semibold text-slate-700 mb-3">Latest transactions</h2>
+            <div className="flex justify-between items-center mb-3">
+              <h2 className="text-xl font-semibold text-slate-700">Recent Transactions</h2>
+              <button
+                onClick={() => navigate('/transactions')}
+                className="text-sm text-blue-600 hover:text-blue-800"
+              >
+                View All
+              </button>
+            </div>
             <div className="bg-white p-4 rounded-lg shadow">
               {homeData.recentTransactions.length > 0 ? (
-                <div className="space-y-3">
+                <div className="space-y-3 max-h-96 overflow-y-auto">
                   {homeData.recentTransactions.map(transaction => (
                     <TransactionItem key={transaction.id} transaction={transaction} />
                   ))}
                 </div>
               ) : (
-                <p className="text-slate-500 text-center py-4">No recent transactions.</p>
+                <div className="text-center py-8">
+                  <p className="text-slate-500 mb-4">No recent transactions.</p>
+                  <p className="text-sm text-slate-400">
+                    Import Excel file or sync with Google Sheets to see transactions
+                  </p>
+                </div>
               )}
             </div>
           </div>

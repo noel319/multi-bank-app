@@ -1,40 +1,81 @@
-// src/components/Forms/BankCardForm.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../Core/Button';
-import LoadingSpinner from '../UI/LoadingSpinner';
 
-const BankCardForm = ({ initialData, onSubmit, onCancel, isEditing, isSubmitting }) => {
+const CARD_COLORS = [
+  { name: 'Blue', value: 'blue', class: 'bg-blue-500' },
+  { name: 'Green', value: 'green', class: 'bg-green-500' },
+  { name: 'Purple', value: 'purple', class: 'bg-purple-500' },
+  { name: 'Red', value: 'red', class: 'bg-red-500' },
+  { name: 'Orange', value: 'orange', class: 'bg-orange-500' },
+  { name: 'Teal', value: 'teal', class: 'bg-teal-500' },
+  { name: 'Indigo', value: 'indigo', class: 'bg-indigo-500' },
+  { name: 'Pink', value: 'pink', class: 'bg-pink-500' }
+];
+
+const BankCardForm = ({ 
+  initialData, 
+  onSubmit, 
+  onCancel, 
+  isEditing = false, 
+  isSubmitting = false 
+}) => {
   const [formData, setFormData] = useState({
-    bank_name: initialData?.bank_name || '',
-    account_name: initialData?.account_name || '',
-    account_number: initialData?.account_number || '',
-    routing_number: initialData?.routing_number || '',
-    username: initialData?.username || '',
-    password: initialData?.password || '',
-    color: initialData?.color || 'blue',
-    api_endpoint: initialData?.api_endpoint || '',
-    bank_type: initialData?.bank_type || 'checking'
+    bank_name: '',
+    account: '',
+    current_balance: '',
+    endpoint: '',
+    color: 'blue',
+    role: 'checking'
   });
 
   const [errors, setErrors] = useState({});
 
-  const colorOptions = [
-    { value: 'blue', label: 'Blue', class: 'bg-blue-500' },
-    { value: 'purple', label: 'Purple', class: 'bg-purple-500' },
-    { value: 'green', label: 'Green', class: 'bg-green-500' },
-    { value: 'red', label: 'Red', class: 'bg-red-500' },
-    { value: 'orange', label: 'Orange', class: 'bg-orange-500' },
-    { value: 'indigo', label: 'Indigo', class: 'bg-indigo-500' },
-    { value: 'pink', label: 'Pink', class: 'bg-pink-500' },
-    { value: 'teal', label: 'Teal', class: 'bg-teal-500' }
-  ];
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        bank_name: initialData.bank_name || '',
+        account: initialData.account || '',
+        current_balance: initialData.current_balance?.toString() || '',
+        endpoint: initialData.endpoint || '',
+        color: initialData.color || 'blue',
+        role: initialData.role || 'checking'
+      });
+    }
+  }, [initialData]);
 
-  const bankTypeOptions = [
-    { value: 'checking', label: 'Checking Account' },
-    { value: 'savings', label: 'Savings Account' },
-    { value: 'credit', label: 'Credit Card' },
-    { value: 'investment', label: 'Investment Account' }
-  ];
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.bank_name.trim()) {
+      newErrors.bank_name = 'Bank name is required';
+    }
+
+    if (!formData.account.trim()) {
+      newErrors.account = 'Account name is required';
+    }
+
+    if (!formData.current_balance.trim()) {
+      newErrors.current_balance = 'Balance is required';
+    } else if (isNaN(parseFloat(formData.current_balance))) {
+      newErrors.current_balance = 'Balance must be a valid number';
+    }
+
+    if (formData.endpoint && !isValidUrl(formData.endpoint)) {
+      newErrors.endpoint = 'Please enter a valid URL';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const isValidUrl = (string) => {
+    try {
+      new URL(string);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -42,7 +83,7 @@ const BankCardForm = ({ initialData, onSubmit, onCancel, isEditing, isSubmitting
       ...prev,
       [name]: value
     }));
-    
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
@@ -52,55 +93,36 @@ const BankCardForm = ({ initialData, onSubmit, onCancel, isEditing, isSubmitting
     }
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.bank_name.trim()) {
-      newErrors.bank_name = 'Bank name is required';
-    }
-
-    if (!formData.account_name.trim()) {
-      newErrors.account_name = 'Account name is required';
-    }
-
-    if (!formData.account_number.trim()) {
-      newErrors.account_number = 'Account number is required';
-    }
-
-    if (!formData.username.trim()) {
-      newErrors.username = 'Username is required';
-    }
-
-    if (!formData.password.trim()) {
-      newErrors.password = 'Password is required';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    if (validateForm()) {
-      onSubmit(formData);
+    if (!validateForm()) {
+      return;
     }
+
+    const submitData = {
+      ...formData,
+      current_balance: parseFloat(formData.current_balance)
+    };
+
+    onSubmit(submitData);
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* Bank Name */}
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-1">
+        <label htmlFor="bank_name" className="block text-sm font-medium text-slate-700 mb-1">
           Bank Name *
         </label>
         <input
           type="text"
+          id="bank_name"
           name="bank_name"
           value={formData.bank_name}
           onChange={handleInputChange}
           className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            errors.bank_name ? 'border-red-500' : 'border-slate-300'
+            errors.bank_name ? 'border-red-300' : 'border-slate-300'
           }`}
           placeholder="e.g., Chase Bank"
           disabled={isSubmitting}
@@ -112,185 +134,135 @@ const BankCardForm = ({ initialData, onSubmit, onCancel, isEditing, isSubmitting
 
       {/* Account Name */}
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-1">
+        <label htmlFor="account" className="block text-sm font-medium text-slate-700 mb-1">
           Account Name *
         </label>
         <input
           type="text"
-          name="account_name"
-          value={formData.account_name}
+          id="account"
+          name="account"
+          value={formData.account}
           onChange={handleInputChange}
           className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            errors.account_name ? 'border-red-500' : 'border-slate-300'
+            errors.account ? 'border-red-300' : 'border-slate-300'
           }`}
-          placeholder="e.g., John Doe Checking"
+          placeholder="e.g., Main Checking"
           disabled={isSubmitting}
         />
-        {errors.account_name && (
-          <p className="text-red-500 text-xs mt-1">{errors.account_name}</p>
+        {errors.account && (
+          <p className="text-red-500 text-xs mt-1">{errors.account}</p>
         )}
       </div>
 
-      {/* Account Number and Routing Number */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-slate-700 mb-1">
-            Account Number *
-          </label>
+      {/* Current Balance */}
+      <div>
+        <label htmlFor="current_balance" className="block text-sm font-medium text-slate-700 mb-1">
+          Current Balance *
+        </label>
+        <div className="relative">
+          <span className="absolute left-3 top-2 text-slate-500">$</span>
           <input
-            type="text"
-            name="account_number"
-            value={formData.account_number}
+            type="number"
+            id="current_balance"
+            name="current_balance"
+            value={formData.current_balance}
             onChange={handleInputChange}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-              errors.account_number ? 'border-red-500' : 'border-slate-300'
+            step="0.01"
+            className={`w-full pl-8 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+              errors.current_balance ? 'border-red-300' : 'border-slate-300'
             }`}
-            placeholder="1234567890"
-            disabled={isSubmitting}
-          />
-          {errors.account_number && (
-            <p className="text-red-500 text-xs mt-1">{errors.account_number}</p>
-          )}
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-slate-700 mb-1">
-            Routing Number
-          </label>
-          <input
-            type="text"
-            name="routing_number"
-            value={formData.routing_number}
-            onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="021000021"
+            placeholder="0.00"
             disabled={isSubmitting}
           />
         </div>
+        {errors.current_balance && (
+          <p className="text-red-500 text-xs mt-1">{errors.current_balance}</p>
+        )}
       </div>
 
-      {/* Bank Type */}
+      {/* Account Role */}
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-1">
+        <label htmlFor="role" className="block text-sm font-medium text-slate-700 mb-1">
           Account Type
         </label>
         <select
-          name="bank_type"
-          value={formData.bank_type}
+          id="role"
+          name="role"
+          value={formData.role}
           onChange={handleInputChange}
           className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           disabled={isSubmitting}
         >
-          {bankTypeOptions.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
+          <option value="checking">Checking Account</option>
+          <option value="savings">Savings Account</option>
+          <option value="business">Business Account</option>
+          <option value="credit">Credit Card</option>
+          <option value="investment">Investment Account</option>
         </select>
       </div>
 
-      {/* Login Credentials */}
-      <div className="bg-slate-50 p-4 rounded-md">
-        <h4 className="text-sm font-medium text-slate-700 mb-3">Online Banking Credentials</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Username *
-            </label>
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleInputChange}
-              className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.username ? 'border-red-500' : 'border-slate-300'
-              }`}
-              placeholder="Your banking username"
-              disabled={isSubmitting}
-            />
-            {errors.username && (
-              <p className="text-red-500 text-xs mt-1">{errors.username}</p>
-            )}
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Password *
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.password ? 'border-red-500' : 'border-slate-300'
-              }`}
-              placeholder="Your banking password"
-              disabled={isSubmitting}
-            />
-            {errors.password && (
-              <p className="text-red-500 text-xs mt-1">{errors.password}</p>
-            )}
-          </div>
-        </div>
-
-        <div className="mt-4">
-          <label className="block text-sm font-medium text-slate-700 mb-1">
-            API Endpoint (Optional)
-          </label>
-          <input
-            type="url"
-            name="api_endpoint"
-            value={formData.api_endpoint}
-            onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="https://api.bank.com/v1/"
-            disabled={isSubmitting}
-          />
-          <p className="text-xs text-slate-500 mt-1">
-            Custom API endpoint for transaction fetching
-          </p>
-        </div>
+      {/* API Endpoint (Optional) */}
+      <div>
+        <label htmlFor="endpoint" className="block text-sm font-medium text-slate-700 mb-1">
+          API Endpoint (Optional)
+        </label>
+        <input
+          type="url"
+          id="endpoint"
+          name="endpoint"
+          value={formData.endpoint}
+          onChange={handleInputChange}
+          className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            errors.endpoint ? 'border-red-300' : 'border-slate-300'
+          }`}
+          placeholder="https://api.example.com/account"
+          disabled={isSubmitting}
+        />
+        {errors.endpoint && (
+          <p className="text-red-500 text-xs mt-1">{errors.endpoint}</p>
+        )}
+        <p className="text-xs text-slate-500 mt-1">
+          Connect to your bank's API for automatic balance updates
+        </p>
       </div>
 
-      {/* Card Color */}
+      {/* Color Selection */}
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-2">
           Card Color
         </label>
         <div className="grid grid-cols-4 gap-2">
-          {colorOptions.map(color => (
-            <label
+          {CARD_COLORS.map((color) => (
+            <button
               key={color.value}
-              className="flex items-center cursor-pointer"
-            >
-              <input
-                type="radio"
-                name="color"
-                value={color.value}
-                checked={formData.color === color.value}
-                onChange={handleInputChange}
-                className="sr-only"
-                disabled={isSubmitting}
-              />
-              <div className={`w-8 h-8 rounded-full ${color.class} ${
+              type="button"
+              onClick={() => handleInputChange({ target: { name: 'color', value: color.value } })}
+              className={`p-3 rounded-md ${color.class} relative transition-all ${
                 formData.color === color.value 
-                  ? 'ring-2 ring-offset-2 ring-slate-400' 
-                  : ''
-              }`}></div>
-              <span className="ml-2 text-sm text-slate-600">{color.label}</span>
-            </label>
+                  ? 'ring-2 ring-slate-800 ring-offset-2' 
+                  : 'hover:scale-105'
+              }`}
+              disabled={isSubmitting}
+              title={color.name}
+            >
+              {formData.color === color.value && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+              )}
+            </button>
           ))}
         </div>
       </div>
 
       {/* Form Actions */}
-      <div className="flex justify-end space-x-3 pt-4 border-t">
+      <div className="flex gap-3 pt-4">
         <Button
           type="button"
-          onClick={onCancel}
           variant="secondary"
+          onClick={onCancel}
           disabled={isSubmitting}
+          className="flex-1"
         >
           Cancel
         </Button>
@@ -298,19 +270,13 @@ const BankCardForm = ({ initialData, onSubmit, onCancel, isEditing, isSubmitting
           type="submit"
           variant="primary"
           disabled={isSubmitting}
+          className="flex-1"
         >
-          {isSubmitting ? (
-            <>
-              <LoadingSpinner size="sm" className="mr-2" />
-              {isEditing ? 'Updating...' : 'Adding...'}
-            </>
-          ) : (
-            isEditing ? 'Update Card' : 'Add Card'
-          )}
+          {isSubmitting ? 'Saving...' : (isEditing ? 'Update Card' : 'Add Card')}
         </Button>
       </div>
     </form>
-  )
+  );
 };
 
 export default BankCardForm;
