@@ -8,6 +8,14 @@ export const DEFAULT_BANK_CARD_FORM_DATA = {
   role: 'checking'
 };
 
+export const NAV_ITEMS = [
+  {name: 'Home', path:'/'},
+  {name: 'Tranctions', path:'/transactions'},
+  {name: 'Dashboard', path:'/dashboard'},
+  {name: 'Cost-Centers', path:'/cost-centers'},
+  {name: 'Billing', path:'/billing'}
+];
+
 // Available bank card colors
 export const BANK_CARD_COLORS = [
   { name: 'Blue', value: 'blue' },
@@ -64,3 +72,26 @@ export const DATE_OPTIONS = {
   month: 'short',
   day: 'numeric'
 };
+
+  // Filter options (can be expanded)
+  export const DATE_FILTER_OPTIONS = [
+    { value: 'all', label: 'All Dates' },
+    { value: 'daily', label: 'Today' },
+    { value: 'weekly', label: 'This Week' },
+    { value: 'monthly', label: 'This Month' },
+];
+
+export const TRANSACTION_TYPE_FILTER_OPTIONS = [
+    { value: 'all', label: 'All Types' },
+    { value: 'income', label: 'Income' },
+    { value: 'expense', label: 'Expense' },
+];
+export const COST_CENTER_TYPES = [
+  { value: 'expense', label: 'Expense' },
+  { value: 'income', label: 'Income' },
+];
+export const DEFAULT_COST_CENTER_FORM_DATA = {
+  name: '',
+  type: 'expense', // 'expense' or 'income'
+};
+export const CHART_COLORS = ['#0A74DA', '#10B981', '#A855F7', '#F59E0B', '#EF4444', '#3B82F6'];

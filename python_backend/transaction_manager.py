@@ -1,4 +1,10 @@
+"""
+Transaction Manager Module
+Handles transaction operations, imports, and balance calculations
+"""
+
 import pandas as pd
+
 
 class TransactionManager:
     def __init__(self, db_manager, auth_manager):

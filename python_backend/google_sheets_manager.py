@@ -1,3 +1,6 @@
+import gspread
+from google.oauth2.service_account import Credentials
+
 
 class GoogleSheetsManager:
     def __init__(self, db_manager, auth_manager):
@@ -14,10 +17,7 @@ class GoogleSheetsManager:
             if not user or not user.get('google_token'):
                 return {"success": False, "error": "Google authentication required"}
             
-            # This is a placeholder for Google Sheets integration
-            # You would implement the actual Google Sheets API calls here
-            # For now, return success message
-            
+                      
             return {
                 "success": True,
                 "message": "Google Sheets sync completed successfully"

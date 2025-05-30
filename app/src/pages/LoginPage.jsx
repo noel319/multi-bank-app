@@ -233,7 +233,7 @@ const LoginPage = () => {
           <p className="text-sm text-slate-600">
             Don't have an account?{' '}
             <Link
-              to="/signup"
+              to="/register"
               className="font-medium text-blue-600 hover:text-blue-500 transition-colors"
             >
               Create one here

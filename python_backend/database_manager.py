@@ -1,4 +1,7 @@
 import sqlite3
+import os
+
+
 class DatabaseManager:
     def __init__(self, db_path="app_database.db"):
         self.db_path = db_path
@@ -83,7 +86,7 @@ class DatabaseManager:
             
             # Create transaction table
             cursor.execute('''
-                CREATE TABLE IF NOT EXISTS transaction (
+                CREATE TABLE IF NOT EXISTS transactions (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     bank_id INTEGER NOT NULL,
                     cost_center_id INTEGER,
@@ -121,4 +124,5 @@ class DatabaseManager:
             return False
     
     def get_connection(self):
+        """Get database connection"""
         return sqlite3.connect(self.db_path)

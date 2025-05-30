@@ -1,5 +1,5 @@
 import React from 'react';
-import { WalletIcon, TrendingUpIcon, TrendingDownIcon } from '@heroicons/react/24/outline';
+import { WalletIcon, ArrowUpCircleIcon, ArrowDownCircleIcon } from '@heroicons/react/24/outline';
 
 const PersonalAccountCard = ({ personalBalance }) => {
   const formatBalance = (balance) => {
@@ -11,7 +11,7 @@ const PersonalAccountCard = ({ personalBalance }) => {
   };
 
   const isPositive = personalBalance >= 0;
-  const TrendIcon = isPositive ? TrendingUpIcon : TrendingDownIcon;
+  const TrendIcon = isPositive ? ArrowUpCircleIcon : ArrowDownCircleIcon;
 
   return (
     <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 rounded-lg text-white shadow-md">

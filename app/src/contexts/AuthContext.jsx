@@ -13,23 +13,20 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [token, setToken] = useState(null);
 
-  // Check for existing session on app start
+  // Check if user is already logged in on app start
   useEffect(() => {
     checkAuthStatus();
   }, []);
 
   const checkAuthStatus = async () => {
     try {
-      setLoading(true);
       const response = await window.electronAPI.callPython({
         action: 'check_auth_status'
       });
 
-      if (response.success && response.data.authenticated) {
-        setUser(response.data.user);
-        setToken(response.data.token);
+      if (response.success && response.user) {
+        setUser(response.user);
       }
     } catch (error) {
       console.error('Auth check failed:', error);
@@ -41,13 +38,12 @@ export const AuthProvider = ({ children }) => {
   const signIn = async (email, password) => {
     try {
       const response = await window.electronAPI.callPython({
-        action: 'login',
+        action: 'login_user',
         payload: { email, password }
       });
 
       if (response.success) {
-        setUser(response.data.user);
-        setToken(response.data.token);
+        setUser(response.user);
         return response;
       } else {
         throw new Error(response.error || 'Login failed');
@@ -58,36 +54,15 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signInWithGoogle = async (credentialResponse) => {
+  const signUp = async (name, email, password) => {
     try {
       const response = await window.electronAPI.callPython({
-        action: 'google_login',
-        payload: { credential: credentialResponse.credential }
+        action: 'register_user',
+        payload: { name, email, password }
       });
 
       if (response.success) {
-        setUser(response.data.user);
-        setToken(response.data.token);
-        return response;
-      } else {
-        throw new Error(response.error || 'Google login failed');
-      }
-    } catch (error) {
-      console.error('Google sign in error:', error);
-      throw error;
-    }
-  };
-
-  const signUp = async (email, password, name) => {
-    try {
-      const response = await window.electronAPI.callPython({
-        action: 'register',
-        payload: { email, password, name }
-      });
-
-      if (response.success) {
-        setUser(response.data.user);
-        setToken(response.data.token);
+        setUser(response.user);
         return response;
       } else {
         throw new Error(response.error || 'Registration failed');
@@ -101,47 +76,42 @@ export const AuthProvider = ({ children }) => {
   const signOut = async () => {
     try {
       await window.electronAPI.callPython({
-        action: 'logout',
-        payload: { token }
+        action: 'logout_user'
       });
+      setUser(null);
     } catch (error) {
       console.error('Sign out error:', error);
-    } finally {
+      // Still clear user state even if backend call fails
       setUser(null);
-      setToken(null);
     }
   };
 
-  const refreshToken = async () => {
+  const handleGoogleAuth = async (credentialResponse) => {
     try {
       const response = await window.electronAPI.callPython({
-        action: 'refresh_token',
-        payload: { token }
+        action: 'google_auth',
+        payload: { credential: credentialResponse.credential }
       });
 
       if (response.success) {
-        setToken(response.data.token);
-        return response.data.token;
+        setUser(response.user);
+        return response;
       } else {
-        // Token refresh failed, sign out user
-        await signOut();
-        throw new Error('Token refresh failed');
+        throw new Error(response.error || 'Google authentication failed');
       }
     } catch (error) {
-      console.error('Token refresh error:', error);
+      console.error('Google auth error:', error);
       throw error;
     }
   };
 
   const value = {
     user,
-    token,
     loading,
     signIn,
-    signInWithGoogle,
     signUp,
     signOut,
-    refreshToken,
+    handleGoogleAuth,
     checkAuthStatus
   };
 
@@ -165,8 +135,8 @@ export const GoogleLoginButton = ({ onSuccess, onError }) => {
     script.onload = () => {
       if (window.google) {
         window.google.accounts.id.initialize({
-          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
-          callback: handleCredentialResponse,
+          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID, // Add this to your .env file
+          callback: onSuccess
         });
 
         window.google.accounts.id.renderButton(
@@ -174,7 +144,7 @@ export const GoogleLoginButton = ({ onSuccess, onError }) => {
           {
             theme: 'outline',
             size: 'large',
-            width: '100%',
+            width: '100%'
           }
         );
       }
@@ -183,15 +153,7 @@ export const GoogleLoginButton = ({ onSuccess, onError }) => {
     return () => {
       document.head.removeChild(script);
     };
-  }, []);
-
-  const handleCredentialResponse = async (response) => {
-    try {
-      await onSuccess(response);
-    } catch (error) {
-      onError(error);
-    }
-  };
+  }, [onSuccess]);
 
   return <div id="google-signin-button" className="w-full"></div>;
 };

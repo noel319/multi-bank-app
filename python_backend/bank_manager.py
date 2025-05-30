@@ -1,3 +1,9 @@
+"""
+Bank Manager Module
+Handles bank account operations and management
+"""
+
+
 class BankManager:
     def __init__(self, db_manager, auth_manager):
         self.db = db_manager

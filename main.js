@@ -1,7 +1,204 @@
-// Add these IPC handlers to your existing main.js file
-
+const { app, BrowserWindow, ipcMain, dialog, Notification } = require('electron');
+const path = require('path');
 const fs = require('fs').promises;
-const { Notification } = require('electron');
+const fsSync = require('fs');
+const { spawn } = require('child_process'); // Add this import
+
+const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
+
+const PYTHON_EXECUTABLE = isDev ? 'python' : path.join(process.resourcesPath, 'python_runtime', 'python');
+const SCRIPT_PATH = isDev
+  ? path.join(__dirname, 'python_backend', 'main_handler.py')
+  : path.join(process.resourcesPath, 'app.asar.unpacked', 'python_backend', 'main_handler.py');
+
+let mainWindow;
+
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    minWidth: 800,
+    minHeight: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      nodeIntegration: false,
+      enableRemoteModule: false,
+      webSecurity: !isDev
+    },
+    icon: path.join(__dirname, './app/public', 'vite.svg'),
+    show: false,
+    titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default'
+  });
+
+  const startUrl = isDev
+    ? 'http://localhost:5173'
+    : `file://${path.join(__dirname, './app/dist/index.html')}`;
+
+  mainWindow.loadURL(startUrl);
+
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
+    
+    if (isDev) {
+      mainWindow.webContents.openDevTools();
+    }
+  });
+
+  mainWindow.on('closed', () => (mainWindow = null));
+
+  if (process.platform === 'darwin') {
+    mainWindow.on('closed', () => {
+      mainWindow = null;
+    });
+  }
+
+  initializeApp();
+}
+
+function showErrorDialog(title, content) {
+  if (mainWindow) {
+    dialog.showErrorBox(title, content);
+  } else {
+    console.error(`${title}: ${content}`);
+  }
+}
+
+async function initializeApp() {
+  try {
+    console.log('Initializing application...');
+    
+    if (!fsSync.existsSync(SCRIPT_PATH)) {
+      console.error('Python script not found at:', SCRIPT_PATH);
+      showErrorDialog('Setup Error', 'Python backend not found. Please check your installation.');
+      return;
+    }
+
+    // Test Python connection
+    const response = await callPythonLogic({ action: 'init_db_check' });
+    if (response.success) {
+      console.log('Database initialized successfully');
+    } else {
+      console.error('Database initialization failed:', response.error);
+      showErrorDialog('Database Error', 'Failed to initialize database: ' + response.error);
+    }
+  } catch (error) {
+    console.error('App initialization error:', error);
+    showErrorDialog('Initialization Error', 'Failed to initialize application: ' + error.message);
+  }
+}
+
+app.whenReady().then(createWindow);
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit();
+});
+
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) createWindow();
+});
+
+// ---------------------- FIXED PYTHON LOGIC ---------------------- //
+
+async function callPythonLogic({ action, payload = {} }) {
+  return new Promise((resolve, reject) => {
+    console.log(`[Python] Calling action: ${action} with payload:`, payload);
+    
+    // Prepare arguments for Python script
+    const args = [SCRIPT_PATH, action];
+    
+    // Add payload if provided
+    if (Object.keys(payload).length > 0) {
+      args.push('--payload', JSON.stringify(payload));
+    }
+    
+    console.log(`[Python] Executing: ${PYTHON_EXECUTABLE} ${args.join(' ')}`);
+    
+    const pythonProcess = spawn(PYTHON_EXECUTABLE, args);
+    
+    let dataString = '';
+    let errorString = '';
+    
+    pythonProcess.stdout.on('data', (data) => {
+      dataString += data.toString();
+    });
+    
+    pythonProcess.stderr.on('data', (data) => {
+      errorString += data.toString();
+      console.error(`[Python Error] ${data}`);
+    });
+    
+    pythonProcess.on('close', (code) => {
+      console.log(`[Python] Process exited with code: ${code}`);
+      
+      if (code !== 0) {
+        console.error(`[Python] Error output: ${errorString}`);
+        resolve({
+          success: false,
+          error: `Python process failed with code ${code}: ${errorString || 'Unknown error'}`
+        });
+        return;
+      }
+      
+      try {
+        // Split the output by lines and find the last JSON line
+        const lines = dataString.trim().split('\n');
+        let jsonLine = '';
+        
+        // Look for the last line that looks like JSON (starts with { or [)
+        for (let i = lines.length - 1; i >= 0; i--) {
+          const line = lines[i].trim();
+          if (line.startsWith('{') || line.startsWith('[')) {
+            jsonLine = line;
+            break;
+          }
+        }
+        
+        if (!jsonLine) {
+          console.error(`[Python] No JSON found in output: ${dataString}`);
+          resolve({
+            success: false,
+            error: 'No valid JSON response found',
+            raw_output: dataString
+          });
+          return;
+        }
+        
+        const result = JSON.parse(jsonLine);
+        console.log(`[Python] Success response:`, result);
+        resolve(result);
+        
+      } catch (parseError) {
+        console.error(`[Python] JSON parse error: ${parseError.message}`);
+        console.error(`[Python] Raw output: ${dataString}`);
+        resolve({
+          success: false,
+          error: `Failed to parse Python response: ${parseError.message}`,
+          raw_output: dataString
+        });
+      }
+    });
+    
+    pythonProcess.on('error', (error) => {
+      console.error(`[Python] Process error: ${error.message}`);
+      resolve({
+        success: false,
+        error: `Failed to start Python process: ${error.message}`
+      });
+    });
+    
+    // Set timeout to prevent hanging
+    setTimeout(() => {
+      pythonProcess.kill();
+      resolve({
+        success: false,
+        error: 'Python process timed out after 30 seconds'
+      });
+    }, 30000);
+  });
+}
+
+// ---------------------- IPC HANDLERS ---------------------- //
 
 // File dialog handlers
 ipcMain.handle('show-open-dialog', async (event, options) => {
@@ -46,48 +243,29 @@ ipcMain.handle('write-file', async (event, filePath, data) => {
 });
 
 // App info handlers
-ipcMain.handle('get-app-version', () => {
-  return app.getVersion();
-});
-
-ipcMain.handle('get-app-path', () => {
-  return app.getAppPath();
-});
-
-ipcMain.handle('is-dev', () => {
-  return isDev;
-});
+ipcMain.handle('get-app-version', () => app.getVersion());
+ipcMain.handle('get-app-path', () => app.getAppPath());
+ipcMain.handle('is-dev', () => isDev);
 
 // Window control handlers
 ipcMain.handle('minimize-window', () => {
-  if (mainWindow) {
-    mainWindow.minimize();
-  }
+  if (mainWindow) mainWindow.minimize();
 });
 
 ipcMain.handle('maximize-window', () => {
   if (mainWindow) {
-    if (mainWindow.isMaximized()) {
-      mainWindow.unmaximize();
-    } else {
-      mainWindow.maximize();
-    }
+    mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize();
   }
 });
 
 ipcMain.handle('close-window', () => {
-  if (mainWindow) {
-    mainWindow.close();
-  }
+  if (mainWindow) mainWindow.close();
 });
 
 // Banking specific handlers
 ipcMain.handle('export-transactions', async (event, options) => {
   try {
-    const result = await callPythonLogic({
-      action: 'export_transactions',
-      payload: options
-    });
+    const result = await callPythonLogic({ action: 'export_transactions', payload: options });
     return result;
   } catch (error) {
     console.error('Error exporting transactions:', error);
@@ -97,10 +275,7 @@ ipcMain.handle('export-transactions', async (event, options) => {
 
 ipcMain.handle('import-transactions', async (event, filePath) => {
   try {
-    const result = await callPythonLogic({
-      action: 'import_transactions',
-      payload: { file_path: filePath }
-    });
+    const result = await callPythonLogic({ action: 'import_transactions', payload: { file_path: filePath } });
     return result;
   } catch (error) {
     console.error('Error importing transactions:', error);
@@ -109,17 +284,12 @@ ipcMain.handle('import-transactions', async (event, filePath) => {
 });
 
 // Google Sheets sync handler
-ipcMain.handle('sync-google-sheets', async (event) => {
+ipcMain.handle('sync-google-sheets', async () => {
   try {
-    const result = await callPythonLogic({
-      action: 'sync_google_sheets'
-    });
-    
-    // Notify renderer of sync completion
+    const result = await callPythonLogic({ action: 'sync_google_sheets' });
     if (mainWindow) {
       mainWindow.webContents.send('data-sync', result);
     }
-    
     return result;
   } catch (error) {
     console.error('Error syncing Google Sheets:', error);
@@ -130,12 +300,7 @@ ipcMain.handle('sync-google-sheets', async (event) => {
 // Notification handler
 ipcMain.handle('show-notification', (event, title, body, options = {}) => {
   try {
-    const notification = new Notification({
-      title,
-      body,
-      ...options
-    });
-    
+    const notification = new Notification({ title, body, ...options });
     notification.show();
     return { success: true };
   } catch (error) {
@@ -144,70 +309,33 @@ ipcMain.handle('show-notification', (event, title, body, options = {}) => {
   }
 });
 
-// Development tools
+// Dev tools (only in dev)
 ipcMain.on('open-dev-tools', () => {
   if (mainWindow && isDev) {
     mainWindow.webContents.openDevTools();
   }
 });
 
-// Auto-updater events (if you plan to implement auto-updates)
+// Auto-updater mock
 ipcMain.handle('check-for-updates', async () => {
-  // Implement auto-updater logic here if needed
   return { success: true, message: 'No updates available' };
 });
 
-// Enhanced Python logic caller with better error handling
-async function callPythonLogicEnhanced(args) {
-  try {
-    const result = await callPythonLogic(args);
-    
-    // Log successful operations
-    console.log(`Python operation '${args.action}' completed successfully`);
-    
-    return result;
-  } catch (error) {
-    // Enhanced error logging
-    console.error(`Python operation '${args.action}' failed:`, error);
-    
-    // Show error notification to user if needed
-    if (mainWindow) {
-      const notification = new Notification({
-        title: 'Operation Failed',
-        body: `Failed to execute ${args.action}: ${error.message || 'Unknown error'}`
-      });
-      notification.show();
-    }
-    
-    throw error;
-  }
-}
-
-// Enhanced IPC handler with logging
+// Enhanced Python logic with better error handling
 ipcMain.handle('call-python', async (event, args) => {
   const startTime = Date.now();
-  
   try {
     console.log(`[IPC] Starting Python call: ${args.action}`);
     const result = await callPythonLogic(args);
-    
-    const duration = Date.now() - startTime;
-    console.log(`[IPC] Python call completed in ${duration}ms: ${args.action}`);
-    
+    console.log(`[IPC] Completed in ${Date.now() - startTime}ms: ${args.action}`);
     return result;
   } catch (error) {
-    const duration = Date.now() - startTime;
-    console.error(`[IPC] Python call failed after ${duration}ms: ${args.action}`, error);
-    
-    return {
-      success: false,
-      error: error.message || 'Unknown error occurred',
-      details: error.details || 'No additional details available'
-    };
+    console.error(`[IPC] Failed after ${Date.now() - startTime}ms: ${args.action}`, error);
+    return { success: false, error: error.message || 'Unknown error' };
   }
 });
 
-// Periodic data sync (optional - runs every 5 minutes)
+// Periodic background sync
 setInterval(async () => {
   try {
     if (mainWindow && !mainWindow.isDestroyed()) {
@@ -219,4 +347,4 @@ setInterval(async () => {
   } catch (error) {
     console.error('Background sync error:', error);
   }
-}, 5 * 60 * 1000); // 5 minutes
+}, 5 * 60 * 1000); // every 5 minutes

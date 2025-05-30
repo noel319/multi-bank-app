@@ -1,7 +1,13 @@
+"""
+Authentication Manager Module
+Handles user authentication, registration, and session management
+"""
 
 import hashlib
+import jwt
 from google.auth.transport import requests
 from google.oauth2 import id_token
+
 
 class AuthManager:
     def __init__(self, db_manager):
