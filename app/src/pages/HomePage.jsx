@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PlusIcon, ArrowUpTrayIcon } from '@heroicons/react/24/solid';
+import { PlusIcon} from '@heroicons/react/24/solid';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import BankCard from '../components/Core/BankCard';

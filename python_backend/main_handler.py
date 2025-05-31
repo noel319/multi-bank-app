@@ -164,9 +164,32 @@ def handle_action(action, payload, managers):
     elif action == 'sync_background_data':
         return {"success": True, "message": "Background sync completed", "timestamp": str(sys.time.time()) if hasattr(sys, 'time') else "unknown"}
     
+    elif action == 'get_transactions_filtered':
+        return managers['transaction'].get_transactions_with_filters(payload)
+    
+    elif action == 'get_banks_list':
+        return managers['transaction'].get_banks_list()
+    
+    elif action == 'get_cost_centers_list':
+        return managers['transaction'].get_cost_centers_list()
+    
+    elif action == 'export_transactions':
+        format_type = payload.get('format', 'csv')
+        filters = payload.get('filters', {})
+        return managers['transaction'].export_transactions(filters, format_type)
+    
+    elif action == 'get_transaction_statistics':
+        filters = payload.get('filters', {})
+        return managers['transaction'].get_transaction_statistics(filters)
+    
+    elif action == 'delete_transaction':
+        transaction_id = payload.get('transaction_id')
+        if not transaction_id:
+            return {"success": False, "error": "Transaction ID is required"}
+        return managers['transaction'].delete_transaction(transaction_id)
+    
     else:
-        return {"success": False, "error": f"Unknown action: {action}"}
-
+        return {"success": False, "error": f"Unknown enhanced action: {action}"}
 
 if __name__ == "__main__":
     main()
