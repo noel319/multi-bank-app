@@ -54,13 +54,17 @@ class DatabaseManager:
             
             # Create cost_center table
             cursor.execute('''
-                CREATE TABLE IF NOT EXISTS cost_center (
+                CREATE TABLE IF NOT EXISTS cost_centers (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name TEXT NOT NULL,
                     group_name TEXT NOT NULL,
-                    cost_center_name TEXT NOT NULL,
-                    state TEXT NOT NULL,
-                    area_id INTEGER,
-                    FOREIGN KEY (area_id) REFERENCES area(id)
+                    cost_center TEXT NOT NULL,
+                    area TEXT NOT NULL,
+                    state TEXT,
+                    user_id INTEGER,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (user_id) REFERENCES users(id)
                 )
             ''')
             

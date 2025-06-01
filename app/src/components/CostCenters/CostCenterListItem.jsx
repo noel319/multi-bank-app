@@ -1,26 +1,49 @@
-// src/components/CostCenters/CostCenterListItem.jsx
 import React from 'react';
-import Button from '../Core/Button';
-import { PencilIcon, TrashIcon } from '@heroicons/react/24/solid';
-import { COST_CENTER_TYPES } from '../../utils/constants';
+import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 const CostCenterListItem = ({ costCenter, onEdit, onDelete }) => {
-  const typeLabel = COST_CENTER_TYPES.find(cct => cct.value === costCenter.type)?.label || costCenter.type;
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    if (window.confirm('Are you sure you want to delete this cost center?')) {
+      onDelete();
+    }
+  };
+
+  const handleEdit = (e) => {
+    e.stopPropagation();
+    onEdit();
+  };
+
   return (
-    <li className="py-3 flex justify-between items-center">
-      <div>
-        <span className="font-medium text-slate-700">{costCenter.name}</span>
-        <span className={`ml-2 text-xs font-semibold px-2 py-0.5 rounded-full ${costCenter.type === 'income' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-          {typeLabel}
-        </span>
-      </div>
-      <div className="space-x-2">
-        <Button variant="icon" size="sm" onClick={() => onEdit(costCenter)}>
-          <PencilIcon className="h-5 w-5 text-slate-500 hover:text-brand-blue-dark" />
-        </Button>
-        <Button variant="icon" size="sm" onClick={() => onDelete(costCenter.id)}>
-          <TrashIcon className="h-5 w-5 text-slate-500 hover:text-red-500" />
-        </Button>
+    <li className="hover:bg-gray-50 transition-colors duration-150">
+      <div className="flex items-center px-4 py-4 sm:px-6">
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center">
+            <div className="flex-shrink-0 bg-blue-100 rounded-md p-2">
+              <span className="text-blue-800 font-medium">{costCenter.cost_center}</span>
+            </div>
+            <div className="ml-4">
+              <div className="font-medium text-gray-900">{costCenter.group}</div>
+              <div className="text-sm text-gray-500">
+                Area: {costCenter.area} {costCenter.state && `(${costCenter.state})`}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <button
+            onClick={handleEdit}
+            className="p-2 rounded-full hover:bg-gray-200 transition-colors duration-150"
+          >
+            <PencilIcon className="h-5 w-5 text-gray-600" />
+          </button>
+          <button
+            onClick={handleDelete}
+            className="p-2 rounded-full hover:bg-gray-200 transition-colors duration-150"
+          >
+            <TrashIcon className="h-5 w-5 text-red-600" />
+          </button>
+        </div>
       </div>
     </li>
   );

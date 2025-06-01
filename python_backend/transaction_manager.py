@@ -1,13 +1,6 @@
-"""
-Transaction Manager Module
-Handles transaction operations, imports, and balance calculations
-"""
-
 import pandas as pd
-import json
 from datetime import datetime, timedelta
-import sqlite3
-from typing import Dict, List, Optional, Any
+from typing import Dict, Optional, Any
 
 class TransactionManager:
     def __init__(self, db_manager, auth_manager):
@@ -15,9 +8,6 @@ class TransactionManager:
         self.auth = auth_manager
 
     def get_transactions_with_filters(self, filters: Dict[str, Any] = None) -> Dict[str, Any]:
-        """
-        Get transactions with advanced filtering, sorting, and pagination
-        """
         try:
             if not self.auth.current_user_id:
                 return {"success": False, "error": "User not authenticated"}

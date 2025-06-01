@@ -90,8 +90,10 @@ export const COST_CENTER_TYPES = [
   { value: 'expense', label: 'Expense' },
   { value: 'income', label: 'Income' },
 ];
-export const DEFAULT_COST_CENTER_FORM_DATA = {
-  name: '',
-  type: 'expense', // 'expense' or 'income'
-};
 export const CHART_COLORS = ['#0A74DA', '#10B981', '#A855F7', '#F59E0B', '#EF4444', '#3B82F6'];
+export const DEFAULT_COST_CENTER_FORM_DATA = {
+  group: '',
+  cost_center: '',
+  area: '',
+  state: ''
+};

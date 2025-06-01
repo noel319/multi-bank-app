@@ -1,8 +1,3 @@
-"""
-Main Application Entry Point
-Handles command-line interface and action routing
-"""
-
 import json
 import sys
 import traceback
@@ -14,6 +9,7 @@ from bank_manager import BankManager
 from transaction_manager import TransactionManager
 from google_sheets_manager import GoogleSheetsManager
 from home_data_manager import HomeDataManager
+from cost_center_manager import CostCenterManager
 
 
 def main():
@@ -48,6 +44,7 @@ def main():
             bank_manager = BankManager(db_manager, auth_manager)
             transaction_manager = TransactionManager(db_manager, auth_manager)
             google_sheets_manager = GoogleSheetsManager(db_manager, auth_manager)
+            cost_center_manager = CostCenterManager(db_manager, auth_manager)
             home_data_manager = HomeDataManager(db_manager, auth_manager, bank_manager, transaction_manager)
         except Exception as init_error:
             print(json.dumps({
@@ -67,6 +64,7 @@ def main():
             'bank': bank_manager,
             'transaction': transaction_manager,
             'google_sheets': google_sheets_manager,
+            'cost_center':cost_center_manager,
             'home_data': home_data_manager
         })
         
@@ -155,7 +153,31 @@ def handle_action(action, payload, managers):
     # Google Sheets actions
     elif action == 'sync_google_sheets':
         return managers['google_sheets'].sync_with_google_sheets()
+    # Cost center actions
+    elif action == 'add_cost_center':
+        return managers['cost_center'].add_cost_center(payload)
     
+    elif action == 'update_cost_center':
+        return managers['cost_center'].update_cost_center(payload)
+    
+    elif action == 'delete_cost_center':
+        cost_center_id = payload.get('cost_center_id')
+        if not cost_center_id:
+            return {"success": False, "error": "Cost center ID is required"}
+        return managers['cost_center'].delete_cost_center(cost_center_id)
+    
+    elif action == 'get_cost_centers_list':
+        return managers['cost_center'].get_cost_centers_list()
+    
+    elif action == 'get_cost_center_options':
+        return managers['cost_center'].get_cost_center_options()
+    
+    elif action == 'get_cost_center_by_id':
+        cost_center_id = payload.get('cost_center_id')
+        if not cost_center_id:
+            return {"success": False, "error": "Cost center ID is required"}
+        return managers['cost_center'].get_cost_center_by_id(cost_center_id)
+ 
     # Home data action
     elif action == 'get_home_data':
         return managers['home_data'].get_home_data()

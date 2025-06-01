@@ -92,7 +92,7 @@ const TransactionsTable = ({
             <tr>
               <SortableHeader field="date">Date</SortableHeader>
               <SortableHeader field="state">Type</SortableHeader>
-              <SortableHeader field="cost_center_name">Category</SortableHeader>
+              <SortableHeader field="cost_center_name">Cost Center</SortableHeader>
               <SortableHeader field="bank_name">Bank</SortableHeader>
               <SortableHeader field="account_name">Account</SortableHeader>
               <SortableHeader field="price" className="text-right">Amount</SortableHeader>
