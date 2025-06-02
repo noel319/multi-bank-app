@@ -1,2 +1,10 @@
 /node_modules
 /app/_node_modules
+/app/build
+/python_backend/dist
+/dist
+/auto_save
+/python_backend/build
+/python_backend/__pycache__
+/python_backend/myenv
+out/

@@ -211,22 +211,20 @@ const AddBillModal = ({
         {/* Description */}
         <div>
           <label className="block text-sm font-medium text-slate-700 mb-1">
-            Description *
-          </label>
-          <input
-            type="text"
+            Income/Expense State*
+          </label>          
+          <select
             name="state"
             value={formData.state}
             onChange={handleInputChange}
-            placeholder="Enter bill description"
-            className={`w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
-              errors.state ? 'border-red-500' : 'border-slate-300'
-            }`}
+            className="w-full p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             disabled={isSubmitting}
-          />
-          {errors.state && (
-            <p className="text-red-500 text-xs mt-1">{errors.state}</p>
-          )}
+          >
+            <option value="">Select State </option>            
+            <option key='1' value="Income"> Income </option>
+            <option key='2' value="Expense"> Expense </option>
+           
+          </select>
         </div>
 
         {/* Cost Center */}

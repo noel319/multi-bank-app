@@ -4,16 +4,63 @@
   "description": "Multi-bank finance management application",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron-forge start",
     "dev": "concurrently \"cd app && npm run dev\" \"electron .\"",
-    "build": "cd app && npm run build",
-    "postinstall": "cd app && npm install"
+    "build": "electron-builder",
+    "build-win": "electron-builder --win",
+    "postinstall": "cd app && npm install",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "build": {
+    "appId": "com.example.multibankapp",
+    "productName": "Multi-Bank App",
+    "win": {
+      "target": "nsis",
+      "icon": "app/public/vite.svg"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "app/**/*",
+      "main.js",
+      "preload.js",
+      "package.json"
+    ],
+    "asar":true,
+    "extraResources": [
+      {
+        "from": "python_backend",
+        "to": "python_backend",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "app_database.db",
+        "to": "."
+      }
+    ]    
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@electron-forge/cli": "^7.8.1",
+    "@electron-forge/maker-deb": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.8.1",
+    "@electron-forge/maker-squirrel": "^7.8.1",
+    "@electron-forge/maker-zip": "^7.8.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
+    "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron/fuses": "^1.8.0",
+    "concurrently": "^8.2.2",
     "electron": "^36.3.1",
-    "concurrently": "^8.2.2"
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
   }
 }

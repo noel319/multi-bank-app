@@ -56,6 +56,12 @@ class AuthManager:
             self.current_user_id = None
         except Exception as e:
             print(f"Error clearing current user: {e}")
+            
+    def get_current_user(self):
+        """Get the currently logged-in user's data"""
+        if self.current_user_id:
+            return self.get_user_by_id(self.current_user_id)
+        return None
     
     def hash_password(self, password):
         """Hash password using SHA-256"""

@@ -4,7 +4,7 @@ import { useApp } from '../contexts/AppContext';
 import Button from '../components/Core/Button';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 import TransactionItem from '../components/Core/TransactionItem';
-import BillingTable from '../components/Tables/BillingTable';
+import BillingTable from '../components/Table/BillingTable';
 import AddBillModal from '../components/Modals/AddBillModal';
 import ExportModal from '../components/Modals/ExportModal';
 

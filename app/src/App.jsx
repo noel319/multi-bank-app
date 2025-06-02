@@ -10,6 +10,7 @@ import TransactionsPage from './pages/TransactionsPage';
 import CostCentersPage from './pages/CostCentersPage';
 import DashboardPage from './pages/DashboardPage';
 import RegisterPage from './pages/RegisterPage';
+import BillingPage from './pages/BillingPage';
 import './App.css';
 
 const ProtectedRoute = ({ children }) => {
@@ -51,6 +52,11 @@ function AppContent() {
       <Route path="/cost-centers" element={
         <ProtectedRoute>
           <MainLayout><CostCentersPage /></MainLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/billing" element={
+        <ProtectedRoute>
+          <MainLayout><BillingPage /></MainLayout>
         </ProtectedRoute>
       } />
       <Route path="/dashboard" element={
