@@ -10,7 +10,8 @@ from transaction_manager import TransactionManager
 from google_sheets_manager import GoogleSheetsManager
 from home_data_manager import HomeDataManager
 from cost_center_manager import CostCenterManager
-
+from dashboard_manager import DashboardManager
+from billing_manager import BillingManager
 
 def main():
     """Main handler function"""
@@ -46,6 +47,8 @@ def main():
             google_sheets_manager = GoogleSheetsManager(db_manager, auth_manager)
             cost_center_manager = CostCenterManager(db_manager, auth_manager)
             home_data_manager = HomeDataManager(db_manager, auth_manager, bank_manager, transaction_manager)
+            dashboard_manager = DashboardManager(db_manager, auth_manager)
+            billing_manager = BillingManager(db_manager, auth_manager) 
         except Exception as init_error:
             print(json.dumps({
                 "success": False,
@@ -65,7 +68,9 @@ def main():
             'transaction': transaction_manager,
             'google_sheets': google_sheets_manager,
             'cost_center':cost_center_manager,
-            'home_data': home_data_manager
+            'home_data': home_data_manager,
+            'dashboard': dashboard_manager,
+            'billing': billing_manager
         })
         
         print(json.dumps(result))
@@ -119,6 +124,28 @@ def handle_action(action, payload, managers):
     
     elif action == 'logout_user':
         return managers['auth'].logout_user()
+    
+    # Billing actions
+    elif action == 'get_billing_data':
+        return managers['billing'].get_billing_data()
+    
+    elif action == 'add_bill':
+        required_fields = ['date', 'bank_id', 'price', 'state']
+        if not all(field in payload for field in required_fields):
+            return {"success": False, "error": "Date, bank, amount, and description are required"}
+        return managers['billing'].add_bill(payload)
+    
+    elif action == 'delete_bill':
+        bill_id = payload.get('bill_id')
+        if not bill_id:
+            return {"success": False, "error": "Bill ID is required"}
+        return managers['billing'].delete_bill(bill_id)
+    
+    elif action == 'export_billing_data':
+        export_format = payload.get('format', 'csv')
+        filters = payload.get('filters', {})
+        return managers['billing'].export_billing_data(export_format, filters)
+
     
     # Bank management actions
     elif action == 'add_bank':
@@ -181,6 +208,19 @@ def handle_action(action, payload, managers):
     # Home data action
     elif action == 'get_home_data':
         return managers['home_data'].get_home_data()
+    # Dashboard actions
+    elif action == 'get_dashboard_data':
+        month = payload.get('month')
+        if not month:
+            return {"success": False, "error": "Month is required"}
+        return managers['dashboard'].get_dashboard_data(month)
+    
+    elif action == 'get_bank_detail_data':
+        bank_id = payload.get('bank_id')
+        month = payload.get('month')
+        if not bank_id or not month:
+            return {"success": False, "error": "Bank ID and month are required"}
+        return managers['dashboard'].get_bank_detail_data(bank_id, month)
     
     # Background sync action (for periodic updates)
     elif action == 'sync_background_data':

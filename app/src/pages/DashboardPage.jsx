@@ -1,138 +1,121 @@
-import React from 'react';
-import { useMockData } from '../contexts/MockDataContext';
-import BankCard from '../components/Core/BankCard';
-import TransactionItem from '../components/Core/TransactionItem';
-import RingChart from '../components/Charts/RingChart';
-import StatisticBarChart from '../components/Charts/StatisticBarChart';
-import SpendingCategoryList from '../components/Charts/SpendingCategoryList';
-import ExpenseTrendLineChart from '../components/Charts/ExpenseTrendLineChart';
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82Ca9D']; // Old way
-const ringChartData = [
-  { name: 'Car Loan', value: 10200, color: COLORS[0] },
-  { name: 'Investments', value: 8000, color: COLORS[1] },
-  { name: 'Mortgage', value: 12000, color: COLORS[2] },
-  { name: 'Rent', value: 6000, color: COLORS[3] },
-  { name: 'Utilities', value: 3000, color: COLORS[4] },
-  { name: 'Not Paid', value: 2000, color: COLORS[5] },
-];
-const totalForRing = ringChartData.reduce((sum, item) => sum + item.value, 0);
+import React, { useState, useEffect } from 'react';
+import { useApp } from '../contexts/AppContext';
+import BalanceRingChart from '../components/Charts/BalanceRingChart';
+import MonthlyBalanceChart from '../components/Charts/MonthlyBalanceChart';
+import CostCenterChart from '../components/Charts/CostCenterChart';
+import MonthSelector from '../components/UI/MonthSelector';
+import LoadingSpinner from '../components/UI/LoadingSpinner';
 
-const statisticBarData = [
-  { month: 'Jan', income: 9500, expense: 7000, balance: 2500 },
-  { month: 'Feb', income: 12000, expense: 9000, balance: 3000 },
-  { month: 'Mar', income: 8800, expense: 8000, balance: 800 },
-  { month: 'Apr', income: 15000, expense: 9500, balance: 5500 },
-  { month: 'May', income: 18000, expense: 9000, balance: 9000 },
-  { month: 'Jun', income: 17000, expense: 8500, balance: 8500 },
-];
-const summaryData = { income: 60711.09, expense: 49048.31, cashback: 5915.04 };
+const DashboardPage = () => {  
+  const { homeData, getDashboardData, loading: appLoading } = useApp();
+  const [dashboardData, setDashboardData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedMonth, setSelectedMonth] = useState(() => {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+  });
 
-const spendingCategories = [
-  { name: 'Utility services', amount: 3178.10 },
-  { name: 'Shopping', amount: 2178.68 },
-  { name: 'Healthcare', amount: 878.68 },
-  { name: 'Restaurant & cafe', amount: 578.68 },
-  { name: 'Shopping', amount: 420.68 }, // Duplicate name example, key will handle
-  { name: 'Fuel', amount: 178.68 },
-];
+  useEffect(() => {
+    loadDashboardData();
+  }, [selectedMonth]);
 
-const expenseTrendData = [
-  { month: 'Oct', current: 18, previous: 22 },
-  { month: 'Nov', current: 25, previous: 20 },
-  { month: 'Dec', current: 77.6, previous: 45 },
-  { month: 'Jan', current: 60, previous: 50 },
-  { month: 'Feb', current: 30, previous: 35 },
-  { month: 'Mar', current: 40, previous: null }, // Example with one series point missing
-];
-const referenceDot = { x: 'Dec', y: 77.6, label: '77.6' };
+  const loadDashboardData = async () => {
+    setLoading(true);
+    try {
+      const result = await getDashboardData(selectedMonth);
+      if (result.success) {
+        setDashboardData(result.data);
+      } else {
+        console.error('Failed to load dashboard data:', result.error);
+      }
+    } catch (error) {
+      console.error('Error loading dashboard data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-const DashboardPage = () => {
-  const { accounts, totalBalance, transactions } = useMockData();
+  if (appLoading || loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
-  const pieChartData = accounts.map((acc, index) => ({
-    name: acc.bankName,
-    value: acc.balance,
-    fill: COLORS[index % COLORS.length]
-  }));
+  if (!dashboardData) {
+    return (
+      <div className="text-center py-10">
+        <h2 className="text-xl text-slate-600">Failed to load dashboard data.</h2>
+      </div>
+    );
+  }
 
-  
   return (
-    <div className="space-y-8">
-      <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Dashboard</h1>
-
-      {/* Top Section: Total Balance Ring Chart & Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-        <div className="lg:col-span-1 bg-white p-4 rounded-lg shadow h-full flex flex-col justify-center items-center">
-          <h3 className="text-lg font-semibold text-slate-700 mb-2">Total Balance Distribution</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-2">
-                <RingChart
-                    data={ringChartData}
-                    centerLabel="Spent"
-                    centerValue={41200} // From image
-                    className="bg-white rounded-xl shadow-lg"
-                />                
-            </div>
-
-            
-           <p className="mt-2 text-2xl font-bold text-brand-blue-dark">
-            $ {totalBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-          </p>
-          <p className="text-sm text-slate-500">Consolidated Balance</p>
-        </div>
-        <div className="lg:col-span-2">
-            <h3 className="text-lg font-semibold text-slate-700 mb-3">Your Accounts</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {accounts.slice(0, 4).map(acc => ( // .map() usage
-                    <BankCard key={acc.id} account={acc} clickable={true} />
-                ))}
-            </div>
-        </div>
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Dashboard</h1>
+        <MonthSelector 
+          selectedMonth={selectedMonth}
+          onMonthChange={setSelectedMonth}
+        />
       </div>
 
-      {/* Middle Section: Vertical Bar Charts (Monthly per card) */}
+      {/* Top Section: Balance Ring Chart & Bank Cards */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Balance Ring Chart */}
+        <div className="lg:col-span-1">
+          <BalanceRingChart 
+            banks={homeData.banks}
+            totalBalance={homeData.totalBalance}
+            size={300}
+          />
+        </div>        
+      </div>
+
+      {/* Monthly Overview Per Bank Card */}
       <div>
-        <h2 className="text-xl font-semibold text-slate-700 mb-3">Monthly Overview (Per Account)</h2>
+        <h2 className="text-xl font-semibold text-slate-700 mb-4">
+          Monthly Overview - {new Date(selectedMonth + '-01').toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {accounts.slice(0,3).map(account => ( // .map() usage
-            <div key={account.id} className="bg-white p-4 rounded-lg shadow">
-              <h3 className="text-md font-medium text-slate-600 mb-2">{account.bankName} - Monthly Flow</h3>
-                <StatisticBarChart
-                  barChartData={statisticBarData}
-                  summaryData={summaryData}
-                />
-
-                <SpendingCategoryList
-                  categoriesData={spendingCategories}
-                />
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      {/* Horizontal Bar Chart - Spending/Income by Cost Center */}
-      <div>
-        <h2 className="text-xl font-semibold text-slate-700 mb-3">Analysis by Cost Center</h2>
-        <div className="bg-white p-4 rounded-lg shadow">
-            <ExpenseTrendLineChart
-                    trendData={expenseTrendData}
-                    series1Key="current"
-                    series2Key="previous"
-                    referenceDotData={referenceDot}
-                    series1Color={COLORS[0]}
-                    series2Color={COLORS[1]}
+          {dashboardData.monthlyBankData?.map(bankData => (
+            <MonthlyBalanceChart
+              key={bankData.bank_id}
+              data={bankData.monthlyData}
+              title={`${bankData.bank_name} - Monthly Flow`}
+              height={250}
             />
+          )) || <div className="col-span-full text-center text-slate-500">No monthly data available</div>}
         </div>
       </div>
 
-      {/* Bottom Section: Recent Transactions Table */}
+      {/* Annual Cost Center Analysis Per Bank */}
       <div>
-        <h2 className="text-xl font-semibold text-slate-700 mb-3">Recent Transactions</h2>
-        <div className="bg-white p-1 md:p-4 rounded-lg shadow">
-          {transactions.slice(0, 5).map(tx => ( // .map() usage
-            <TransactionItem key={tx.id} transaction={tx} />
-          ))}
+        <h2 className="text-xl font-semibold text-slate-700 mb-4">Annual Analysis by Cost Center (Per Bank)</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {dashboardData.annualBankCostCenterData?.map(bankData => (
+            <CostCenterChart
+              key={bankData.bank_id}
+              data={bankData.costCenterData}
+              title={`${bankData.bank_name} - Annual Cost Centers`}
+              layout="vertical"
+              height={400}
+            />
+          )) || <div className="col-span-full text-center text-slate-500">No annual cost center data available</div>}
         </div>
       </div>
+
+      {/* Total Annual Cost Center Analysis */}
+      <div>
+        <h2 className="text-xl font-semibold text-slate-700 mb-4">Total Annual Analysis by Cost Center</h2>
+        <CostCenterChart
+          data={dashboardData.totalAnnualCostCenterData || []}
+          title="All Banks - Annual Cost Centers"
+          layout="horizontal"
+          height={500}
+        />
+      </div>      
     </div>
   );
 };

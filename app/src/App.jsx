@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { MockDataProvider } from './contexts/MockDataContext';
+import {AppProvider } from './contexts/AppContext';
 import MainLayout from './components/Layout/MainLayout';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
@@ -38,7 +38,7 @@ function AppContent() {
           <MainLayout><HomePage /></MainLayout>
         </ProtectedRoute>
       } />
-      <Route path="/accounts/:accountId" element={
+      <Route path="/bank-details/:accountId" element={
         <ProtectedRoute>
           <MainLayout><AccountDetailsPage /></MainLayout>
         </ProtectedRoute>
@@ -67,12 +67,12 @@ function App() {
   
   return (
     <AuthProvider>
-      <MockDataProvider> {/* This provides mock data for UI development */}
+      <AppProvider> {/* This provides mock data for UI development */}
         {/* AppDataProvider would wrap AppContent if using real data flow */}
         <Router>
           <AppContent/>
         </Router>
-      </MockDataProvider>
+      </AppProvider>
     </AuthProvider>
   );
 }

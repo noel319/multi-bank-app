@@ -110,7 +110,24 @@ class DatabaseManager:
                     FOREIGN KEY (billing_id) REFERENCES billing(id)
                 )
             ''')
-            
+            # Create month_transaction table
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS month_transactions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    month_date DATE NOT NULL,
+                    bank_id INTEGER NOT NULL,
+                    cost_center_id INTEGER,
+                    bank_name TEXT NOT NULL,
+                    account_name TEXT NOT NULL,                    
+                    state TEXT NOT NULL,                    
+                    cost_center_name TEXT,
+                    total_income REAL NOT NULL,
+                    total_Expenses REAL NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (bank_id) REFERENCES bank(id),
+                    FOREIGN KEY (cost_center_id) REFERENCES cost_center(id)                    
+                )
+            ''')            
             # Create app_settings table
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS app_settings (

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { PlusIcon} from '@heroicons/react/24/solid';
+import React, { useState } from 'react';
+import { PlusIcon } from '@heroicons/react/24/solid';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useApp } from '../contexts/AppContext';
 import BankCard from '../components/Core/BankCard';
 import PersonalAccountCard from '../components/UI/PersonalAccountCard';
 import TotalBalanceCard from '../components/UI/TotalBalanceCard';
@@ -15,51 +16,22 @@ import { DEFAULT_BANK_CARD_FORM_DATA } from '../utils/constants';
 const HomePage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { 
+    homeData, 
+    loading, 
+    error, 
+    addBank, 
+    updateBank, 
+    deleteBank, 
+    syncGoogleSheets,
+    hasGoogleToken,
+    hasBanks,
+    hasTransactions 
+  } = useApp();
   
-  const [homeData, setHomeData] = useState({
-    banks: [],
-    totalBalance: 0,
-    personalBalance: 0,
-    recentTransactions: [],
-    userProfile: null
-  });
-  const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingBank, setEditingBank] = useState(null);
   const [submitting, setSubmitting] = useState(false);
-  // Load home data on component mount
-  useEffect(() => {
-    if (user) {
-      loadHomeData();
-    }
-  }, [user]);
-
-  const loadHomeData = async () => {
-    try {
-      setLoading(true);
-      const response = await window.electronAPI.callPython({
-        action: 'get_home_data'
-      });
-
-      if (response.success) {
-        setHomeData(response.data);
-      } else {
-        console.error('Failed to load home data:', response.error);
-        await window.electronAPI.showErrorDialog({
-          title: 'Error',
-          content: response.error || 'Failed to load home data'
-        });
-      }
-    } catch (error) {
-      console.error('Error loading home data:', error);
-      await window.electronAPI.showErrorDialog({
-        title: 'Error',
-        content: 'Failed to connect to backend'
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleAddCardClick = () => {
     setEditingBank(null);
@@ -72,43 +44,9 @@ const HomePage = () => {
   };
 
   const handleDeleteCard = async (bankId) => {
-    const confirmed = await window.electronAPI.showMessageDialog({
-      type: 'question',
-      buttons: ['Cancel', 'Delete'],
-      defaultId: 0,
-      title: 'Confirm Delete',
-      message: 'Are you sure you want to delete this bank card?',
-      detail: 'This action cannot be undone and will also delete all associated transactions.'
-    });
-
-    if (confirmed.response === 1) {
-      try {
-        const response = await window.electronAPI.callPython({
-          action: 'delete_bank',
-          payload: { bank_id: bankId }
-        });
-
-        if (response.success) {
-          await loadHomeData(); // Refresh data
-          await window.electronAPI.showMessageDialog({
-            type: 'info',
-            title: 'Success',
-            message: 'Bank card deleted successfully!'
-          });
-        } else {
-          await window.electronAPI.showErrorDialog({
-            title: 'Error',
-            content: response.error || 'Failed to delete bank card'
-          });
-        }
-      } catch (error) {
-        console.error('Error deleting bank:', error);
-        await window.electronAPI.showErrorDialog({
-          title: 'Error',
-          content: 'Failed to delete bank card'
-        });
-      }
-    }
+    const result = await deleteBank(bankId);
+    // Error handling is managed in the context
+    return result;
   };
 
   const handleCardClick = (bank) => {
@@ -123,78 +61,28 @@ const HomePage = () => {
   const handleFormSubmit = async (bankData) => {
     try {
       setSubmitting(true);
-      const action = editingBank ? 'update_bank' : 'add_bank';
-      const payload = editingBank 
-        ? { ...bankData, bank_id: editingBank.id }
-        : bankData;
-
-      const response = await window.electronAPI.callPython({
-        action,
-        payload
-      });
-
-      if (response.success) {
-        handleModalClose();
-        await loadHomeData(); // Refresh data
-        await window.electronAPI.showMessageDialog({
-          type: 'info',
-          title: 'Success',
-          message: editingBank 
-            ? 'Bank card updated successfully!' 
-            : 'Bank card added successfully!'
-        });
+      
+      let result;
+      if (editingBank) {
+        result = await updateBank(bankData, editingBank.id);
       } else {
-        await window.electronAPI.showErrorDialog({
-          title: 'Error',
-          content: response.error || 'Failed to save bank card'
-        });
+        result = await addBank(bankData);
       }
+
+      if (result.success) {
+        handleModalClose();
+      }
+      // Error handling is managed in the context
     } catch (error) {
-      console.error('Error saving bank:', error);
-      await window.electronAPI.showErrorDialog({
-        title: 'Error',
-        content: 'Failed to save bank card'
-      });
+      console.error('Error in form submission:', error);
     } finally {
       setSubmitting(false);
     }
-  };  
+  };
 
   const handleSyncGoogleSheets = async () => {
-    try {
-      if (!user.google_token) {
-        await window.electronAPI.showMessageDialog({
-          type: 'info',
-          title: 'Google Sheets Not Connected',
-          message: 'Please log in with Google to sync with Google Sheets.'
-        });
-        return;
-      }
-
-      const response = await window.electronAPI.callPython({
-        action: 'sync_google_sheets'
-      });
-
-      if (response.success) {
-        await loadHomeData(); // Refresh data
-        await window.electronAPI.showMessageDialog({
-          type: 'info',
-          title: 'Success',
-          message: 'Google Sheets synchronized successfully!'
-        });
-      } else {
-        await window.electronAPI.showErrorDialog({
-          title: 'Sync Error',
-          content: response.error || 'Failed to sync with Google Sheets'
-        });
-      }
-    } catch (error) {
-      console.error('Error syncing Google Sheets:', error);
-      await window.electronAPI.showErrorDialog({
-        title: 'Error',
-        content: 'Failed to sync with Google Sheets'
-      });
-    }
+    await syncGoogleSheets();
+    // Error handling is managed in the context
   };
 
   if (loading) {
@@ -211,11 +99,12 @@ const HomePage = () => {
       <div className="flex justify-between items-center mb-6 px-1">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-slate-800">BANK INFORMATION</h1>
-          <p className="text-slate-500">Welcome back, {homeData.userProfile?.name || user?.name || 'User'}!</p>
+          <p className="text-slate-500">
+            Welcome back, {homeData.userProfile?.name || user?.name || 'User'}!
+          </p>
         </div>
         <div className="flex items-center gap-3">
-                  
-          {user?.google_token && (
+          {hasGoogleToken && (
             <Button 
               onClick={handleSyncGoogleSheets} 
               variant="secondary" 
@@ -235,6 +124,23 @@ const HomePage = () => {
         </div>
       </div>
 
+      {/* Error Display */}
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div className="ml-3">
+              <h3 className="text-sm font-medium text-red-800">Error loading data</h3>
+              <p className="mt-1 text-sm text-red-700">{error}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left Side - Bank Cards */}
         <div className="lg:w-3/5 space-y-6">
@@ -245,7 +151,7 @@ const HomePage = () => {
             </Button>
           </div>
           
-          {homeData.banks.length > 0 ? (
+          {hasBanks ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {homeData.banks.map(bank => (
                 <BankCard
@@ -287,7 +193,7 @@ const HomePage = () => {
               </button>
             </div>
             <div className="bg-white p-4 rounded-lg shadow">
-              {homeData.recentTransactions.length > 0 ? (
+              {hasTransactions ? (
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {homeData.recentTransactions.map(transaction => (
                     <TransactionItem key={transaction.id} transaction={transaction} />
