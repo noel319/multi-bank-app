@@ -215,7 +215,7 @@ const DashboardPage = () => {
             <MonthlyBalanceChart
               key={bankData.bank_id}
               data={bankData.monthlyData}
-              title={`${bankData.bank_name} - Monthly Flow`}
+              title={`${bankData.bank_name}-${bankData.account} - Monthly Flow`}
               height={250}
             />
           )) || <div className="col-span-full text-center text-slate-500">No monthly data available</div>}

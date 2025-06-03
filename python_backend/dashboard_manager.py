@@ -87,17 +87,22 @@ class DashboardManager:
         """Get monthly income/expense data for each bank"""
         cursor.execute("""
             SELECT 
-                b.id as bank_id,
+                b.id AS bank_id,
                 b.bank_name,
-                COALESCE(SUM(CASE WHEN t.price > 0 THEN t.price ELSE 0 END), 0) as income,
-                COALESCE(SUM(CASE WHEN t.price < 0 THEN ABS(t.price) ELSE 0 END), 0) as expense,
-                COALESCE(SUM(t.price), 0) as balance
+                b.account,
+                COALESCE(SUM(CASE WHEN t.state = 'Income' THEN t.price ELSE 0 END), 0) AS income,
+                COALESCE(SUM(CASE WHEN t.state = 'Expense' THEN t.price ELSE 0 END), 0) AS expense,
+                COALESCE(SUM(CASE 
+                    WHEN t.state = 'Income' THEN t.price
+                    WHEN t.state = 'Expense' THEN -t.price
+                    ELSE 0
+                END), 0) AS balance
             FROM bank b
             LEFT JOIN transactions t ON b.id = t.bank_id 
                 AND strftime('%Y', t.date) = ? 
                 AND strftime('%m', t.date) = ?
             WHERE b.user_id = ?
-            GROUP BY b.id, b.bank_name
+            GROUP BY b.id, b.bank_name, b.account
             ORDER BY b.bank_name
         """, (str(year), f"{month:02d}", user_id))
 
@@ -105,21 +110,22 @@ class DashboardManager:
         
         result = []
         for bank_data in banks_data:
-            # Create monthly data array (for chart)
             monthly_data = [{
                 "month": f"{year}-{month:02d}",
-                "income": float(bank_data[2]),
-                "expense": float(bank_data[3]),
-                "balance": float(bank_data[4])
+                "income": float(bank_data[3]),
+                "expense": float(bank_data[4]),
+                "balance": float(bank_data[5])
             }]
             
             result.append({
                 "bank_id": bank_data[0],
                 "bank_name": bank_data[1],
+                "account": bank_data[2],
                 "monthlyData": monthly_data
             })
 
         return result
+
 
     def _get_annual_bank_cost_center_data(self, cursor, user_id, year):
         """Get annual cost center data for each bank"""
