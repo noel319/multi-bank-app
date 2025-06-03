@@ -29,7 +29,7 @@ class CostCenterManager:
                     user_id INTEGER,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY (user_id) REFERENCES users(id)
+                    FOREIGN KEY (user_id) REFERENCES user(id)
                 )
             ''')
             
@@ -248,10 +248,10 @@ class CostCenterManager:
             # Get all cost centers for the user
             cursor.execute(
                 """
-                SELECT id, group_name, cost_center, area, state
+                SELECT id, name, group_name, cost_center, area, state
                 FROM cost_centers
                 WHERE user_id = ?
-                ORDER BY group_name, area, cost_center
+                ORDER BY group_name, cost_center, area
                 """,
                 (user_id,)
             )
@@ -263,10 +263,11 @@ class CostCenterManager:
             for row in rows:
                 cost_centers.append({
                     "id": row[0],
-                    "group": row[1],
-                    "cost_center": row[2],
-                    "area": row[3],
-                    "state": row[4] if row[4] else ""
+                    "name":row[1],
+                    "group": row[2],
+                    "cost_center": row[3],
+                    "area": row[4],
+                    "state": row[5] if row[5] else ""
                 })
             
             return {"success": True, "cost_centers": cost_centers}
