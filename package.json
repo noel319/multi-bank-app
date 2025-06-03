@@ -6,43 +6,68 @@
   "scripts": {
     "start": "electron-forge start",
     "dev": "concurrently \"cd app && npm run dev\" \"electron .\"",
-    "build": "electron-builder",
-    "build-win": "electron-builder --win",
+    "build": "npm run build-python && npm run build-react && electron-builder",
+    "build-win": "npm run build-python && npm run build-react && electron-builder --win",
+    "build-python": "build_python.bat",
+    "build-react": "cd app && npm run build",
     "postinstall": "cd app && npm install",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "clean": "rimraf dist build app/dist"
   },
   "build": {
     "appId": "com.example.multibankapp",
     "productName": "Multi-Bank App",
+    "directories": {
+      "output": "dist/electron"
+    },
     "win": {
-      "target": "nsis",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
       "icon": "app/public/vite.svg"
     },
     "nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Multi-Bank App"
     },
     "files": [
-      "app/**/*",
+      "app/dist/**/*",
       "main.js",
       "preload.js",
-      "package.json"
+      "package.json",
+      "!python_backend/**/*",
+      "!app/src/**/*", 
+      "!app/node_modules/**/*",
+      "!python_backend/myenv/**/*",
+      "!python_backend/__pycache__/**/*",
+      "!build/**/*"
     ],
-    "asar":true,
+    "asarUnpack": [
+      "**/*.node"
+    ],
     "extraResources": [
       {
-        "from": "python_backend",
-        "to": "python_backend",
+        "from": "dist/python_runtime",
+        "to": "python_runtime",
         "filter": [
           "**/*"
         ]
       },
       {
         "from": "app_database.db",
-        "to": "."
+        "to": ".",
+        "filter": [
+          "**/*"
+        ]
       }
-    ]    
+    ]
   },
   "keywords": [],
   "author": "",
@@ -58,7 +83,8 @@
     "@electron/fuses": "^1.8.0",
     "concurrently": "^8.2.2",
     "electron": "^36.3.1",
-    "electron-builder": "^26.0.12"
+    "electron-builder": "^26.0.12",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1"

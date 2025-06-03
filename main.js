@@ -6,34 +6,48 @@ const { spawn } = require('child_process'); // Add this import
 
 const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
 
-const PYTHON_EXECUTABLE = isDev ? 'python' : path.join(process.resourcesPath, 'python_runtime', 'python');
+const PYTHON_EXECUTABLE = isDev 
+  ? path.join(__dirname, 'python_backend', 'myenv', 'Scripts', 'python.exe') // Use venv python in dev
+  : path.join(process.resourcesPath, 'python_runtime', 'main_handler.exe');
+
 const SCRIPT_PATH = isDev
   ? path.join(__dirname, 'python_backend', 'main_handler.py')
-  : path.join(process.resourcesPath, 'app.asar.unpacked', 'python_backend', 'main_handler.py');
+  : path.join(process.resourcesPath, 'python_runtime', 'main_handler.exe');
 
-let mainWindow;
+// Fallback to system python if venv doesn't exist
+const getDeployedPython = () => {
+  const venvPython = path.join(__dirname, 'python_backend', 'myenv', 'Scripts', 'python.exe');
+  if (isDev && fsSync.existsSync(venvPython)) {
+    return venvPython;
+  }
+  return isDev ? 'python' : path.join(process.resourcesPath, 'python_runtime', 'main_handler.exe');
+};
 
-function createWindow() {
-  mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
-    minWidth: 800,
-    minHeight: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-      contextIsolation: true,
-      nodeIntegration: false,
-      enableRemoteModule: false,
-      webSecurity: !isDev
-    },
-    icon: path.join(__dirname, './app/public', 'vite.svg'),
-    show: false,
-    titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default'
-  });
+let mainWindow
 
-  const startUrl = isDev
-    ? 'http://localhost:5173'
-    : `file://${path.join(__dirname, './app/dist/index.html')}`;
+  function createWindow() {
+    mainWindow = new BrowserWindow({
+      width: 1200,
+      height: 800,
+      minWidth: 800,
+      minHeight: 600,
+      webPreferences: {
+        preload: path.join(__dirname, 'preload.js'),
+        contextIsolation: true,
+        nodeIntegration: false,
+        enableRemoteModule: false,
+        webSecurity: true // Always true in production
+      },
+      icon: isDev 
+        ? path.join(__dirname, './app/public', 'icon.ico')
+        : path.join(__dirname, 'icon.ico'),
+      show: false,
+      titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default'
+    });
+  
+    const startUrl = isDev
+      ? 'http://localhost:5173'
+      : `file://${path.join(__dirname, 'app', 'dist', 'index.html')}`;
 
   mainWindow.loadURL(startUrl);
 
@@ -104,17 +118,23 @@ async function callPythonLogic({ action, payload = {} }) {
   return new Promise((resolve, reject) => {
     console.log(`[Python] Calling action: ${action} with payload:`, payload);
     
-    // Prepare arguments for Python script
-    const args = [SCRIPT_PATH, action];
+    let pythonProcess;
     
-    // Add payload if provided
-    if (Object.keys(payload).length > 0) {
-      args.push('--payload', JSON.stringify(payload));
+    if (isDev) {
+      // Development: use Python script
+      const args = [SCRIPT_PATH, action];
+      if (Object.keys(payload).length > 0) {
+        args.push('--payload', JSON.stringify(payload));
+      }
+      pythonProcess = spawn(PYTHON_EXECUTABLE, args);
+    } else {
+      // Production: use compiled executable
+      const args = [action];
+      if (Object.keys(payload).length > 0) {
+        args.push('--payload', JSON.stringify(payload));
+      }
+      pythonProcess = spawn(PYTHON_EXECUTABLE, args);
     }
-    
-    console.log(`[Python] Executing: ${PYTHON_EXECUTABLE} ${args.join(' ')}`);
-    
-    const pythonProcess = spawn(PYTHON_EXECUTABLE, args);
     
     let dataString = '';
     let errorString = '';
@@ -141,11 +161,9 @@ async function callPythonLogic({ action, payload = {} }) {
       }
       
       try {
-        // Split the output by lines and find the last JSON line
         const lines = dataString.trim().split('\n');
         let jsonLine = '';
         
-        // Look for the last line that looks like JSON (starts with { or [)
         for (let i = lines.length - 1; i >= 0; i--) {
           const line = lines[i].trim();
           if (line.startsWith('{') || line.startsWith('[')) {
@@ -187,7 +205,6 @@ async function callPythonLogic({ action, payload = {} }) {
       });
     });
     
-    // Set timeout to prevent hanging
     setTimeout(() => {
       pythonProcess.kill();
       resolve({
@@ -197,7 +214,6 @@ async function callPythonLogic({ action, payload = {} }) {
     }, 30000);
   });
 }
-
 // ---------------------- IPC HANDLERS ---------------------- //
 
 // File dialog handlers

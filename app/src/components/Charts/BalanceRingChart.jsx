@@ -1,5 +1,5 @@
 import React from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 
 const BalanceRingChart = ({ 
   banks, 
@@ -62,28 +62,33 @@ const BalanceRingChart = ({
     );
   };
 
-  const CenterLabel = ({ cx, cy }) => (
-    <g>
-      <text 
-        x={cx} 
-        y={cy - 10} 
-        textAnchor="middle" 
-        dominantBaseline="middle"
-        className="text-sm font-medium fill-slate-600"
-      >
-        Total Balance
-      </text>
-      <text 
-        x={cx} 
-        y={cy + 10} 
-        textAnchor="middle" 
-        dominantBaseline="middle"
-        className="text-lg font-bold fill-slate-800"
-      >
-        {formatCurrency(totalBalance)}
-      </text>
-    </g>
-  );
+  // Custom component to render center text
+  const CenterLabel = (props) => {
+    const { cx, cy } = props.viewBox || { cx: size/2, cy: size/2 };
+    
+    return (
+      <g>
+        <text 
+          x={cx} 
+          y={cy - 8} 
+          textAnchor="middle" 
+          dominantBaseline="middle"
+          style={{ fontSize: '12px', fontWeight: '500', fill: '#64748b' }}
+        >
+          Total Balance
+        </text>
+        <text 
+          x={cx} 
+          y={cy + 12} 
+          textAnchor="middle" 
+          dominantBaseline="middle"
+          style={{ fontSize: '16px', fontWeight: '700', fill: '#1e293b' }}
+        >
+          {formatCurrency(totalBalance)}
+        </text>
+      </g>
+    );
+  };
 
   return (
     <div className={`bg-white p-4 rounded-lg shadow ${className}`}>
@@ -108,7 +113,26 @@ const BalanceRingChart = ({
             ))}
           </Pie>
           <Tooltip content={<CustomTooltip />} />
-          <CenterLabel cx={size/2} cy={size/2} />
+          <g style={{ pointerEvents: 'none', zIndex: 10 }}>
+            <text 
+              x="50%" 
+              y="45%" 
+              textAnchor="middle" 
+              dominantBaseline="middle"
+              style={{ fontSize: '12px', fontWeight: '500', fill: '#64748b' }}
+            >
+              Total Balance
+            </text>
+            <text 
+              x="50%" 
+              y="55%" 
+              textAnchor="middle" 
+              dominantBaseline="middle"
+              style={{ fontSize: '16px', fontWeight: '700', fill: '#1e293b' }}
+            >
+              {formatCurrency(totalBalance)}
+            </text>
+          </g>
         </PieChart>
       </ResponsiveContainer>
       
@@ -132,5 +156,4 @@ const BalanceRingChart = ({
     </div>
   );
 };
-
 export default BalanceRingChart;

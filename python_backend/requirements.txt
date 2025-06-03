@@ -1,14 +1,51 @@
 
-# Core dependencies for the authentication system
-google-auth==2.23.3
-google-auth-oauthlib==1.1.0
-google-auth-httplib2==0.1.1
-PyJWT==2.8.0
 requests==2.31.0
-
-# For future Google Sheets integration
-google-api-python-client==2.103.0
 gspread==5.11.3
 
 # Optional: For more secure password hashing (upgrade from SHA-256)
 bcrypt==4.0.1
+pyinstaller
+# HTTP requests and API handling
+urllib3>=1.26.0
+certifi>=2022.0.0
+
+# Google Sheets integration
+google-api-python-client>=2.70.0
+google-auth-httplib2>=0.1.0
+google-auth-oauthlib>=0.8.0
+google-auth>=2.15.0
+googleapis-common-protos>=1.56.0
+
+# Excel and CSV file handling
+openpyxl>=3.0.10
+xlsxwriter>=3.0.8
+xlrd>=2.0.1
+
+# Date and time handling
+python-dateutil>=2.8.0
+pytz>=2022.7
+
+# Security and encryption
+cryptography>=3.4.8
+pycryptodome>=3.17.0
+
+# JSON Web Tokens (if used for auth)
+PyJWT>=2.6.0
+
+# Environment variables
+python-dotenv>=0.19.0
+
+# Utilities
+pathlib2>=2.3.7  # For older Python compatibility
+argparse  # Built-in, but listed for completeness
+
+# Banking/Financial specific (if used)
+# python-banking>=1.0.0  # Uncomment if you use banking libraries
+# yfinance>=0.2.0  # For financial data
+# plaid-python>=8.0.0  # For Plaid API integration
+
+# Development and testing (optional, comment out for production)
+# pytest>=7.0.0
+# pytest-cov>=4.0.0
+
+# Add any other specific dependencies your managers use

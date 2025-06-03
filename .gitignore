@@ -8,3 +8,5 @@
 /python_backend/__pycache__
 /python_backend/myenv
 out/
+/build
+/app/dist

@@ -1,0 +1,3019 @@
+('D:\\my git\\multi-bank-app\\dist\\python_runtime\\main_handler.exe',
+ True,
+ False,
+ False,
+ 'D:\\my '
+ 'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-console.ico',
+ None,
+ False,
+ False,
+ b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<assembly xmlns='
+ b'"urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">\n  <trustInfo x'
+ b'mlns="urn:schemas-microsoft-com:asm.v3">\n    <security>\n      <requested'
+ b'Privileges>\n        <requestedExecutionLevel level="asInvoker" uiAccess='
+ b'"false"/>\n      </requestedPrivileges>\n    </security>\n  </trustInfo>\n  '
+ b'<compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">\n    <'
+ b'application>\n      <supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f'
+ b'0}"/>\n      <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/>\n '
+ b'     <supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}"/>\n      <s'
+ b'upportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}"/>\n      <supporte'
+ b'dOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>\n    </application>\n  <'
+ b'/compatibility>\n  <application xmlns="urn:schemas-microsoft-com:asm.v3">'
+ b'\n    <windowsSettings>\n      <longPathAware xmlns="http://schemas.micros'
+ b'oft.com/SMI/2016/WindowsSettings">true</longPathAware>\n    </windowsSett'
+ b'ings>\n  </application>\n  <dependency>\n    <dependentAssembly>\n      <ass'
+ b'emblyIdentity type="win32" name="Microsoft.Windows.Common-Controls" version='
+ b'"6.0.0.0" processorArchitecture="*" publicKeyToken="6595b64144ccf1df" langua'
+ b'ge="*"/>\n    </dependentAssembly>\n  </dependency>\n</assembly>',
+ True,
+ False,
+ None,
+ None,
+ None,
+ 'D:\\my '
+ 'git\\multi-bank-app\\build\\python_temp\\main_handler\\main_handler.pkg',
+ [('pyi-contents-directory _internal', '', 'OPTION'),
+  ('PYZ-00.pyz',
+   'D:\\my git\\multi-bank-app\\build\\python_temp\\main_handler\\PYZ-00.pyz',
+   'PYZ'),
+  ('struct',
+   'D:\\my '
+   'git\\multi-bank-app\\build\\python_temp\\main_handler\\localpycs\\struct.pyc',
+   'PYMODULE'),
+  ('pyimod01_archive',
+   'D:\\my '
+   'git\\multi-bank-app\\build\\python_temp\\main_handler\\localpycs\\pyimod01_archive.pyc',
+   'PYMODULE'),
+  ('pyimod02_importers',
+   'D:\\my '
+   'git\\multi-bank-app\\build\\python_temp\\main_handler\\localpycs\\pyimod02_importers.pyc',
+   'PYMODULE'),
+  ('pyimod03_ctypes',
+   'D:\\my '
+   'git\\multi-bank-app\\build\\python_temp\\main_handler\\localpycs\\pyimod03_ctypes.pyc',
+   'PYMODULE'),
+  ('pyimod04_pywin32',
+   'D:\\my '
+   'git\\multi-bank-app\\build\\python_temp\\main_handler\\localpycs\\pyimod04_pywin32.pyc',
+   'PYMODULE'),
+  ('pyiboot01_bootstrap',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'PYSOURCE'),
+  ('pyi_rth_inspect',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('pyi_rth_setuptools',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_setuptools.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgutil',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgres',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'PYSOURCE'),
+  ('pyi_rth_cryptography_openssl',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\rthooks\\pyi_rth_cryptography_openssl.py',
+   'PYSOURCE'),
+  ('main_handler',
+   'D:\\my git\\multi-bank-app\\python_backend\\main_handler.py',
+   'PYSOURCE'),
+  ('python313.dll',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\python313.dll',
+   'BINARY'),
+  ('numpy.libs\\msvcp140-263139962577ecda4cd9469ca360a746.dll',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy.libs\\msvcp140-263139962577ecda4cd9469ca360a746.dll',
+   'BINARY'),
+  ('numpy.libs\\libscipy_openblas64_-13e2df515630b4a41f92893938845698.dll',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-13e2df515630b4a41f92893938845698.dll',
+   'BINARY'),
+  ('select.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\select.pyd',
+   'EXTENSION'),
+  ('_socket.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_socket.pyd',
+   'EXTENSION'),
+  ('_decimal.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_decimal.pyd',
+   'EXTENSION'),
+  ('_hashlib.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_hashlib.pyd',
+   'EXTENSION'),
+  ('unicodedata.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\unicodedata.pyd',
+   'EXTENSION'),
+  ('_lzma.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_lzma.pyd',
+   'EXTENSION'),
+  ('_bz2.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_bz2.pyd',
+   'EXTENSION'),
+  ('_ctypes.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_ctypes.pyd',
+   'EXTENSION'),
+  ('_overlapped.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_overlapped.pyd',
+   'EXTENSION'),
+  ('_ssl.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_ssl.pyd',
+   'EXTENSION'),
+  ('_queue.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_queue.pyd',
+   'EXTENSION'),
+  ('_multiprocessing.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('pyexpat.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\pyexpat.pyd',
+   'EXTENSION'),
+  ('_asyncio.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_asyncio.pyd',
+   'EXTENSION'),
+  ('_wmi.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_wmi.pyd',
+   'EXTENSION'),
+  ('_sqlite3.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_sqlite3.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\writers.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\writers.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\_core\\_multiarray_umath.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\_core\\_multiarray_umath.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\linalg\\_umath_linalg.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\linalg\\_umath_linalg.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('_elementtree.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_elementtree.pyd',
+   'EXTENSION'),
+  ('_uuid.pyd',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\_uuid.pyd',
+   'EXTENSION'),
+  ('_cffi_backend.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\_cffi_backend.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('cryptography\\hazmat\\bindings\\_rust.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\cryptography\\hazmat\\bindings\\_rust.pyd',
+   'EXTENSION'),
+  ('bcrypt\\_bcrypt.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\bcrypt\\_bcrypt.pyd',
+   'EXTENSION'),
+  ('charset_normalizer\\md__mypyc.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\charset_normalizer\\md__mypyc.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('charset_normalizer\\md.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\charset_normalizer\\md.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\_core\\_multiarray_tests.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\_core\\_multiarray_tests.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\mtrand.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\random\\mtrand.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_sfc64.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\random\\_sfc64.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_philox.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\random\\_philox.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_pcg64.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\random\\_pcg64.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_mt19937.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\random\\_mt19937.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\bit_generator.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\random\\bit_generator.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_generator.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\random\\_generator.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_bounded_integers.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\random\\_bounded_integers.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_common.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\random\\_common.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\fft\\_pocketfft_umath.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy\\fft\\_pocketfft_umath.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\window\\indexers.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\window\\indexers.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\window\\aggregations.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\window\\aggregations.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\vectorized.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\vectorized.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\tzconversion.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\tzconversion.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\timezones.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\timezones.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\timestamps.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\timestamps.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\timedeltas.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\timedeltas.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\strptime.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\strptime.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\period.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\period.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\parsing.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\parsing.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\offsets.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\offsets.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\np_datetime.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\np_datetime.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\nattype.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\nattype.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\fields.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\fields.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\dtypes.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\dtypes.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\conversion.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\conversion.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\ccalendar.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\ccalendar.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslibs\\base.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\base.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\tslib.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\tslib.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\testing.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\testing.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\sparse.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\sparse.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\sas.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\sas.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\reshape.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\reshape.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\properties.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\properties.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\parsers.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\parsers.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\pandas_parser.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\pandas_parser.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\pandas_datetime.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\pandas_datetime.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\ops_dispatch.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\ops_dispatch.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\ops.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\ops.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\missing.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\missing.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\lib.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\lib.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\json.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\json.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\join.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\join.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\interval.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\interval.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\internals.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\internals.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\indexing.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\indexing.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\index.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\index.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\hashtable.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\hashtable.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\hashing.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\hashing.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\groupby.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\groupby.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\byteswap.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\byteswap.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\arrays.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\arrays.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pandas\\_libs\\algos.cp313-win_amd64.pyd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\_libs\\algos.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('VCRUNTIME140.dll',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('VCRUNTIME140_1.dll',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\VCRUNTIME140_1.dll',
+   'BINARY'),
+  ('libcrypto-3.dll',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\libcrypto-3.dll',
+   'BINARY'),
+  ('libffi-8.dll',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\libffi-8.dll',
+   'BINARY'),
+  ('libssl-3.dll',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\libssl-3.dll',
+   'BINARY'),
+  ('sqlite3.dll',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs\\sqlite3.dll',
+   'BINARY'),
+  ('python3.dll',
+   'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\python3.dll',
+   'BINARY'),
+  ('pandas.libs\\msvcp140-0f2ea95580b32bcfc81c235d5751ce78.dll',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas.libs\\msvcp140-0f2ea95580b32bcfc81c235d5751ce78.dll',
+   'BINARY'),
+  ('auth_manager.py',
+   'D:\\my git\\multi-bank-app\\python_backend\\auth_manager.py',
+   'DATA'),
+  ('bank_manager.py',
+   'D:\\my git\\multi-bank-app\\python_backend\\bank_manager.py',
+   'DATA'),
+  ('billing_manager.py',
+   'D:\\my git\\multi-bank-app\\python_backend\\billing_manager.py',
+   'DATA'),
+  ('cost_center_manager.py',
+   'D:\\my git\\multi-bank-app\\python_backend\\cost_center_manager.py',
+   'DATA'),
+  ('dashboard_manager.py',
+   'D:\\my git\\multi-bank-app\\python_backend\\dashboard_manager.py',
+   'DATA'),
+  ('database_manager.py',
+   'D:\\my git\\multi-bank-app\\python_backend\\database_manager.py',
+   'DATA'),
+  ('google_sheets_manager.py',
+   'D:\\my git\\multi-bank-app\\python_backend\\google_sheets_manager.py',
+   'DATA'),
+  ('home_data_manager.py',
+   'D:\\my git\\multi-bank-app\\python_backend\\home_data_manager.py',
+   'DATA'),
+  ('requirements.txt',
+   'D:\\my git\\multi-bank-app\\python_backend\\requirements.txt',
+   'DATA'),
+  ('transaction_manager.py',
+   'D:\\my git\\multi-bank-app\\python_backend\\transaction_manager.py',
+   'DATA'),
+  ('setuptools\\_vendor\\jaraco\\text\\Lorem ipsum.txt',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\text\\Lorem '
+   'ipsum.txt',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\top_level.txt',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\top_level.txt',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\REQUESTED',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\REQUESTED',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\RECORD',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\RECORD',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
+   'DATA'),
+  ('dateutil\\zoneinfo\\dateutil-zoneinfo.tar.gz',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\dateutil\\zoneinfo\\dateutil-zoneinfo.tar.gz',
+   'DATA'),
+  ('pandas\\io\\formats\\templates\\html_style.tpl',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\io\\formats\\templates\\html_style.tpl',
+   'DATA'),
+  ('pandas\\io\\formats\\templates\\latex.tpl',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\io\\formats\\templates\\latex.tpl',
+   'DATA'),
+  ('pandas\\io\\formats\\templates\\html.tpl',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\io\\formats\\templates\\html.tpl',
+   'DATA'),
+  ('pandas\\io\\formats\\templates\\html_table.tpl',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\io\\formats\\templates\\html_table.tpl',
+   'DATA'),
+  ('pandas\\io\\formats\\templates\\latex_longtable.tpl',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\io\\formats\\templates\\latex_longtable.tpl',
+   'DATA'),
+  ('pandas\\io\\formats\\templates\\latex_table.tpl',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\io\\formats\\templates\\latex_table.tpl',
+   'DATA'),
+  ('pandas\\io\\formats\\templates\\string.tpl',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pandas\\io\\formats\\templates\\string.tpl',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Aqtobe',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Aqtobe',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Toronto',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Toronto',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Mazatlan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Mazatlan',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Kaliningrad',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Kaliningrad',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\Troll',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\Troll',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+4',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+4',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Niue',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Niue',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Vilnius',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Vilnius',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Boa_Vista',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Boa_Vista',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\NSW',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\NSW',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\Palmer',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\Palmer',
+   'DATA'),
+  ('pytz\\zoneinfo\\Navajo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Navajo',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\Central',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\Central',
+   'DATA'),
+  ('pytz\\zoneinfo\\Indian\\Chagos',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Indian\\Chagos',
+   'DATA'),
+  ('pytz\\zoneinfo\\Brazil\\East',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Brazil\\East',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Ensenada',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Ensenada',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Araguaina',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Araguaina',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Palau',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Palau',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Dushanbe',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Dushanbe',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Dhaka',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Dhaka',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Jersey',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Jersey',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Indiana\\Vincennes',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Indiana\\Vincennes',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Santarem',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Santarem',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Fakaofo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Fakaofo',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\St_Vincent',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\St_Vincent',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\La_Rioja',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\La_Rioja',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Istanbul',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Istanbul',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Tirane',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Tirane',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\DumontDUrville',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\DumontDUrville',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Auckland',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Auckland',
+   'DATA'),
+  ('pytz\\zoneinfo\\GMT0',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\GMT0',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Norfolk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Norfolk',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Bamako',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Bamako',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Nicosia',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Nicosia',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Famagusta',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Famagusta',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Indiana\\Winamac',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Indiana\\Winamac',
+   'DATA'),
+  ('pytz\\zoneinfo\\EST5EDT',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\EST5EDT',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Choibalsan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Choibalsan',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Accra',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Accra',
+   'DATA'),
+  ('pytz\\zoneinfo\\Canada\\Eastern',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Canada\\Eastern',
+   'DATA'),
+  ('pytz\\zoneinfo\\Jamaica',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Jamaica',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Atyrau',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Atyrau',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Boise',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Boise',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Wallis',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Wallis',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Nipigon',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Nipigon',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Skopje',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Skopje',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Cayman',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Cayman',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Saratov',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Saratov',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Qatar',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Qatar',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Saigon',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Saigon',
+   'DATA'),
+  ('pytz\\zoneinfo\\PRC',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\PRC',
+   'DATA'),
+  ('pytz\\zoneinfo\\Poland',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Poland',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Fiji',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Fiji',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Freetown',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Freetown',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Aruba',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Aruba',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Taipei',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Taipei',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Danmarkshavn',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Danmarkshavn',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Jayapura',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Jayapura',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Shanghai',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Shanghai',
+   'DATA'),
+  ('pytz\\zoneinfo\\Canada\\Central',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Canada\\Central',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Andorra',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Andorra',
+   'DATA'),
+  ('pytz\\zoneinfo\\PST8PDT',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\PST8PDT',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\Greenwich',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\Greenwich',
+   'DATA'),
+  ('pytz\\zoneinfo\\Brazil\\West',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Brazil\\West',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Tehran',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Tehran',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Yakutsk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Yakutsk',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Dakar',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Dakar',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Indiana\\Vevay',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Indiana\\Vevay',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Niamey',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Niamey',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Costa_Rica',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Costa_Rica',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Kathmandu',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Kathmandu',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Guyana',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Guyana',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\South',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\South',
+   'DATA'),
+  ('pytz\\zoneinfo\\tzdata.zi',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\tzdata.zi',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Port_Moresby',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Port_Moresby',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\Canary',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\Canary',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Blantyre',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Blantyre',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Edmonton',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Edmonton',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Indiana\\Tell_City',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Indiana\\Tell_City',
+   'DATA'),
+  ('pytz\\zoneinfo\\Canada\\Saskatchewan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Canada\\Saskatchewan',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Scoresbysund',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Scoresbysund',
+   'DATA'),
+  ('pytz\\zoneinfo\\Indian\\Christmas',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Indian\\Christmas',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Bahia',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Bahia',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Samarkand',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Samarkand',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Dubai',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Dubai',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\Salta',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\Salta',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Chungking',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Chungking',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\London',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\London',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Helsinki',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Helsinki',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Maseru',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Maseru',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Yap',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Yap',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Asuncion',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Asuncion',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Kanton',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Kanton',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\St_Thomas',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\St_Thomas',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Jerusalem',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Jerusalem',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Guayaquil',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Guayaquil',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Budapest',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Budapest',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Vienna',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Vienna',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Dublin',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Dublin',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Enderbury',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Enderbury',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Prague',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Prague',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Isle_of_Man',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Isle_of_Man',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Manila',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Manila',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\West',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\West',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Tahiti',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Tahiti',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\Eastern',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\Eastern',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Panama',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Panama',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Urumqi',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Urumqi',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Dili',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Dili',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-5',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-5',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Juba',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Juba',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Zaporozhye',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Zaporozhye',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Ciudad_Juarez',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Ciudad_Juarez',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Kolkata',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Kolkata',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Vladivostok',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Vladivostok',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Astrakhan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Astrakhan',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Brunei',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Brunei',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Indiana\\Marengo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Indiana\\Marengo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Harare',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Harare',
+   'DATA'),
+  ('pytz\\zoneinfo\\Arctic\\Longyearbyen',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Arctic\\Longyearbyen',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Santo_Domingo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Santo_Domingo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Ulaanbaatar',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Ulaanbaatar',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Managua',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Managua',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Indiana\\Indianapolis',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Indiana\\Indianapolis',
+   'DATA'),
+  ('pytz\\zoneinfo\\EET',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\EET',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\Mendoza',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\Mendoza',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Porto_Acre',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Porto_Acre',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Funafuti',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Funafuti',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Atka',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Atka',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Chongqing',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Chongqing',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Karachi',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Karachi',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Douala',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Douala',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\Davis',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\Davis',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Asmera',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Asmera',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+6',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+6',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Efate',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Efate',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Melbourne',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Melbourne',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Juneau',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Juneau',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Kiev',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Kiev',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Thunder_Bay',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Thunder_Bay',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Asmara',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Asmara',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\Casey',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\Casey',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Darwin',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Darwin',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Tarawa',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Tarawa',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Minsk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Minsk',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Katmandu',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Katmandu',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Bogota',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Bogota',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Chuuk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Chuuk',
+   'DATA'),
+  ('pytz\\zoneinfo\\NZ',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\NZ',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\St_Lucia',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\St_Lucia',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Bahrain',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Bahrain',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Glace_Bay',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Glace_Bay',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\El_Aaiun',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\El_Aaiun',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Ashgabat',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Ashgabat',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Kuwait',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Kuwait',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\North_Dakota\\Center',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\North_Dakota\\Center',
+   'DATA'),
+  ('pytz\\zoneinfo\\Iran',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Iran',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Tasmania',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Tasmania',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\Madeira',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\Madeira',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\Aleutian',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\Aleutian',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Novokuznetsk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Novokuznetsk',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\Buenos_Aires',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\Buenos_Aires',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\North_Dakota\\New_Salem',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\North_Dakota\\New_Salem',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Moncton',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Moncton',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Metlakatla',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Metlakatla',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Sakhalin',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Sakhalin',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Menominee',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Menominee',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Winnipeg',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Winnipeg',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Ashkhabad',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Ashkhabad',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Adelaide',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Adelaide',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+8',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+8',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Canberra',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Canberra',
+   'DATA'),
+  ('pytz\\zoneinfo\\Indian\\Comoro',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Indian\\Comoro',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Merida',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Merida',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Amsterdam',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Amsterdam',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\Vostok',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\Vostok',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Dawson',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Dawson',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Punta_Arenas',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Punta_Arenas',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Luanda',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Luanda',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Ho_Chi_Minh',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Ho_Chi_Minh',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Johannesburg',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Johannesburg',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Brussels',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Brussels',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Eucla',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Eucla',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Krasnoyarsk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Krasnoyarsk',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Kosrae',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Kosrae',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Eirunepe',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Eirunepe',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Brazzaville',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Brazzaville',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Campo_Grande',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Campo_Grande',
+   'DATA'),
+  ('pytz\\zoneinfo\\Indian\\Mahe',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Indian\\Mahe',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Kuching',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Kuching',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Jamaica',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Jamaica',
+   'DATA'),
+  ('pytz\\zoneinfo\\CST6CDT',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\CST6CDT',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Pontianak',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Pontianak',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Port-au-Prince',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Port-au-Prince',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Ouagadougou',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Ouagadougou',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Mbabane',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Mbabane',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Rainy_River',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Rainy_River',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\Cordoba',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\Cordoba',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Djibouti',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Djibouti',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Rome',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Rome',
+   'DATA'),
+  ('pytz\\zoneinfo\\Greenwich',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Greenwich',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\Mawson',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\Mawson',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Aden',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Aden',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\LHI',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\LHI',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Tokyo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Tokyo',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\San_Luis',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\San_Luis',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Fort_Wayne',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Fort_Wayne',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-10',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-10',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Kabul',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Kabul',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-14',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-14',
+   'DATA'),
+  ('pytz\\zoneinfo\\Egypt',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Egypt',
+   'DATA'),
+  ('pytz\\zoneinfo\\zone1970.tab',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\zone1970.tab',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Vatican',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Vatican',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Guatemala',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Guatemala',
+   'DATA'),
+  ('pytz\\zoneinfo\\GMT',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\GMT',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Santiago',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Santiago',
+   'DATA'),
+  ('pytz\\zoneinfo\\Indian\\Cocos',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Indian\\Cocos',
+   'DATA'),
+  ('pytz\\zoneinfo\\GB',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\GB',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\UCT',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\UCT',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Algiers',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Algiers',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Bangkok',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Bangkok',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\Ushuaia',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\Ushuaia',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Lubumbashi',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Lubumbashi',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Currie',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Currie',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Goose_Bay',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Goose_Bay',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Makassar',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Makassar',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Thimphu',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Thimphu',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Ojinaga',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Ojinaga',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\North',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\North',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Honolulu',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Honolulu',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Kentucky\\Louisville',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Kentucky\\Louisville',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-9',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-9',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Martinique',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Martinique',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Adak',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Adak',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Montserrat',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Montserrat',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Guadalcanal',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Guadalcanal',
+   'DATA'),
+  ('pytz\\zoneinfo\\Indian\\Mauritius',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Indian\\Mauritius',
+   'DATA'),
+  ('pytz\\zoneinfo\\GMT-0',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\GMT-0',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Lima',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Lima',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Berlin',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Berlin',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Samara',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Samara',
+   'DATA'),
+  ('pytz\\zoneinfo\\Indian\\Reunion',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Indian\\Reunion',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Noronha',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Noronha',
+   'DATA'),
+  ('pytz\\zoneinfo\\Singapore',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Singapore',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\Jan_Mayen',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\Jan_Mayen',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Ujung_Pandang',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Ujung_Pandang',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Busingen',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Busingen',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-11',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-11',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Yakutat',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Yakutat',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Abidjan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Abidjan',
+   'DATA'),
+  ('pytz\\zoneinfo\\Factory',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Factory',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Montreal',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Montreal',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Brisbane',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Brisbane',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+9',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+9',
+   'DATA'),
+  ('pytz\\zoneinfo\\Universal',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Universal',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Vientiane',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Vientiane',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Easter',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Easter',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Anadyr',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Anadyr',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Curacao',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Curacao',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Athens',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Athens',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Buenos_Aires',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Buenos_Aires',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Maceio',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Maceio',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Zagreb',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Zagreb',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Tunis',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Tunis',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Perth',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Perth',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Phnom_Penh',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Phnom_Penh',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Montevideo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Montevideo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\St_Helena',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\St_Helena',
+   'DATA'),
+  ('pytz\\zoneinfo\\EST',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\EST',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Cordoba',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Cordoba',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Recife',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Recife',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Bahia_Banderas',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Bahia_Banderas',
+   'DATA'),
+  ('pytz\\zoneinfo\\Zulu',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Zulu',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Paris',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Paris',
+   'DATA'),
+  ('pytz\\zoneinfo\\Kwajalein',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Kwajalein',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Tortola',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Tortola',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Yancowinna',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Yancowinna',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Santa_Isabel',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Santa_Isabel',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Kralendijk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Kralendijk',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\Cape_Verde',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\Cape_Verde',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Barnaul',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Barnaul',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Volgograd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Volgograd',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Porto-Novo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Porto-Novo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Ulyanovsk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Ulyanovsk',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Yangon',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Yangon',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Macau',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Macau',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Ust-Nera',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Ust-Nera',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Paramaribo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Paramaribo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-1',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-1',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Creston',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Creston',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Tongatapu',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Tongatapu',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Antigua',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Antigua',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Nauru',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Nauru',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Calcutta',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Calcutta',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Los_Angeles',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Los_Angeles',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Samoa',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Samoa',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Bratislava',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Bratislava',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Detroit',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Detroit',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Singapore',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Singapore',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-12',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-12',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+5',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+5',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Sydney',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Sydney',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\Jujuy',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\Jujuy',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Chicago',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Chicago',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Vancouver',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Vancouver',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Pyongyang',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Pyongyang',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Jakarta',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Jakarta',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Cayenne',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Cayenne',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\Michigan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\Michigan',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Amman',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Amman',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Swift_Current',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Swift_Current',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\St_Barthelemy',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\St_Barthelemy',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Tel_Aviv',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Tel_Aviv',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Kashgar',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Kashgar',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Malta',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Malta',
+   'DATA'),
+  ('pytz\\zoneinfo\\WET',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\WET',
+   'DATA'),
+  ('pytz\\zoneinfo\\Eire',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Eire',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Zurich',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Zurich',
+   'DATA'),
+  ('pytz\\zoneinfo\\Brazil\\Acre',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Brazil\\Acre',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Tripoli',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Tripoli',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Indiana\\Knox',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Indiana\\Knox',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\St_Kitts',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\St_Kitts',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Rangoon',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Rangoon',
+   'DATA'),
+  ('pytz\\zoneinfo\\Indian\\Maldives',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Indian\\Maldives',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Guernsey',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Guernsey',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Tashkent',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Tashkent',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Qostanay',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Qostanay',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\El_Salvador',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\El_Salvador',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Victoria',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Victoria',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Catamarca',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Catamarca',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Mendoza',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Mendoza',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT0',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT0',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\Hawaii',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\Hawaii',
+   'DATA'),
+  ('pytz\\zoneinfo\\HST',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\HST',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Maputo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Maputo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Bangui',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Bangui',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Guam',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Guam',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Bissau',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Bissau',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Nuuk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Nuuk',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\Faeroe',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\Faeroe',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Miquelon',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Miquelon',
+   'DATA'),
+  ('pytz\\zoneinfo\\GB-Eire',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\GB-Eire',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Libreville',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Libreville',
+   'DATA'),
+  ('pytz\\zoneinfo\\MST7MDT',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\MST7MDT',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Dacca',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Dacca',
+   'DATA'),
+  ('pytz\\zoneinfo\\Canada\\Yukon',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Canada\\Yukon',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Galapagos',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Galapagos',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\St_Johns',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\St_Johns',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\Samoa',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\Samoa',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Knox_IN',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Knox_IN',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Inuvik',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Inuvik',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Hermosillo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Hermosillo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\McMurdo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\McMurdo',
+   'DATA'),
+  ('pytz\\zoneinfo\\ROC',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\ROC',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\New_York',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\New_York',
+   'DATA'),
+  ('pytz\\zoneinfo\\Canada\\Pacific',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Canada\\Pacific',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\Tucuman',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\Tucuman',
+   'DATA'),
+  ('pytz\\zoneinfo\\Mexico\\General',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Mexico\\General',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Madrid',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Madrid',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Barbados',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Barbados',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Jujuy',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Jujuy',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Sitka',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Sitka',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Beirut',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Beirut',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\UTC',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\UTC',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Hobart',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Hobart',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Copenhagen',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Copenhagen',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\Universal',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\Universal',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Cancun',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Cancun',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Hovd',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Hovd',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+7',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+7',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Kirov',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Kirov',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\Azores',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\Azores',
+   'DATA'),
+  ('pytz\\zoneinfo\\Chile\\Continental',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Chile\\Continental',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Fort_Nelson',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Fort_Nelson',
+   'DATA'),
+  ('pytz\\zoneinfo\\Israel',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Israel',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Mogadishu',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Mogadishu',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Sao_Tome',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Sao_Tome',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Tbilisi',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Tbilisi',
+   'DATA'),
+  ('pytz\\zoneinfo\\Mexico\\BajaNorte',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Mexico\\BajaNorte',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Kentucky\\Monticello',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Kentucky\\Monticello',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Cairo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Cairo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Sofia',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Sofia',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Gaborone',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Gaborone',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Belize',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Belize',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Qyzylorda',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Qyzylorda',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-4',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-4',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Windhoek',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Windhoek',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\Bermuda',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\Bermuda',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Rarotonga',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Rarotonga',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Seoul',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Seoul',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Banjul',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Banjul',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\Syowa',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\Syowa',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Dar_es_Salaam',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Dar_es_Salaam',
+   'DATA'),
+  ('pytz\\zoneinfo\\zone.tab',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\zone.tab',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Grand_Turk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Grand_Turk',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Sao_Paulo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Sao_Paulo',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Lower_Princes',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Lower_Princes',
+   'DATA'),
+  ('pytz\\zoneinfo\\UCT',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\UCT',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\South_Pole',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\South_Pole',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-13',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-13',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\ComodRivadavia',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\ComodRivadavia',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Monrovia',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Monrovia',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Kampala',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Kampala',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Chita',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Chita',
+   'DATA'),
+  ('pytz\\zoneinfo\\Indian\\Kerguelen',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Indian\\Kerguelen',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Lusaka',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Lusaka',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Magadan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Magadan',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Lindeman',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Lindeman',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Kyiv',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Kyiv',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Damascus',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Damascus',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Aqtau',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Aqtau',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Baghdad',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Baghdad',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Halifax',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Halifax',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Anchorage',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Anchorage',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\Pacific',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\Pacific',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Cambridge_Bay',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Cambridge_Bay',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Blanc-Sablon',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Blanc-Sablon',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Oral',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Oral',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Pago_Pago',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Pago_Pago',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Srednekolymsk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Srednekolymsk',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Tiraspol',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Tiraspol',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Denver',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Denver',
+   'DATA'),
+  ('pytz\\zoneinfo\\zonenow.tab',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\zonenow.tab',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Indianapolis',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Indianapolis',
+   'DATA'),
+  ('pytz\\zoneinfo\\Hongkong',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Hongkong',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Simferopol',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Simferopol',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-6',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-6',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Port_of_Spain',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Port_of_Spain',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Caracas',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Caracas',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\Mountain',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\Mountain',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Rosario',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Rosario',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Muscat',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Muscat',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Hong_Kong',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Hong_Kong',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Dawson_Creek',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Dawson_Creek',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Riga',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Riga',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\East-Indiana',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\East-Indiana',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Istanbul',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Istanbul',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Ulan_Bator',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Ulan_Bator',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Lisbon',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Lisbon',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Cuiaba',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Cuiaba',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+1',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+1',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Monaco',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Monaco',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\San_Juan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\San_Juan',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Coyhaique',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Coyhaique',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\Stanley',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\Stanley',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Kigali',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Kigali',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Belgrade',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Belgrade',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Lome',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Lome',
+   'DATA'),
+  ('pytz\\zoneinfo\\Canada\\Atlantic',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Canada\\Atlantic',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Rankin_Inlet',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Rankin_Inlet',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Bougainville',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Bougainville',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Monterrey',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Monterrey',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Thule',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Thule',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\Indiana-Starke',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\Indiana-Starke',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Khartoum',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Khartoum',
+   'DATA'),
+  ('pytz\\zoneinfo\\Chile\\EasterIsland',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Chile\\EasterIsland',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\North_Dakota\\Beulah',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\North_Dakota\\Beulah',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Stockholm',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Stockholm',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Malabo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Malabo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Midway',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Midway',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Kuala_Lumpur',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Kuala_Lumpur',
+   'DATA'),
+  ('pytz\\zoneinfo\\Turkey',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Turkey',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Warsaw',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Warsaw',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Pohnpei',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Pohnpei',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Whitehorse',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Whitehorse',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Tomsk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Tomsk',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Porto_Velho',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Porto_Velho',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Puerto_Rico',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Puerto_Rico',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+3',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+3',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Noumea',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Noumea',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Coral_Harbour',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Coral_Harbour',
+   'DATA'),
+  ('pytz\\zoneinfo\\Iceland',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Iceland',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Colombo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Colombo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Bishkek',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Bishkek',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Gibraltar',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Gibraltar',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Uzhgorod',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Uzhgorod',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Wake',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Wake',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Godthab',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Godthab',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Broken_Hill',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Broken_Hill',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Indiana\\Petersburg',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Indiana\\Petersburg',
+   'DATA'),
+  ('pytz\\zoneinfo\\MST',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\MST',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Sarajevo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Sarajevo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Ljubljana',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Ljubljana',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Iqaluit',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Iqaluit',
+   'DATA'),
+  ('pytz\\zoneinfo\\NZ-CHAT',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\NZ-CHAT',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Macao',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Macao',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Addis_Ababa',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Addis_Ababa',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Conakry',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Conakry',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\Faroe',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\Faroe',
+   'DATA'),
+  ('pytz\\zoneinfo\\Brazil\\DeNoronha',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Brazil\\DeNoronha',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Resolute',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Resolute',
+   'DATA'),
+  ('pytz\\zoneinfo\\Japan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Japan',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Yellowknife',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Yellowknife',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Luxembourg',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Luxembourg',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Fortaleza',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Fortaleza',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Havana',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Havana',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Johnston',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Johnston',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Lagos',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Lagos',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Casablanca',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Casablanca',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Ndjamena',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Ndjamena',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+11',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+11',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Kinshasa',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Kinshasa',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Gaza',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Gaza',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-7',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-7',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Truk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Truk',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Novosibirsk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Novosibirsk',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-0',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-0',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Tijuana',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Tijuana',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+12',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+12',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Belem',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Belem',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Anguilla',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Anguilla',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Oslo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Oslo',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Mexico_City',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Mexico_City',
+   'DATA'),
+  ('pytz\\zoneinfo\\Indian\\Mayotte',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Indian\\Mayotte',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Harbin',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Harbin',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Phoenix',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Phoenix',
+   'DATA'),
+  ('pytz\\zoneinfo\\GMT+0',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\GMT+0',
+   'DATA'),
+  ('pytz\\zoneinfo\\Canada\\Mountain',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Canada\\Mountain',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+2',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+2',
+   'DATA'),
+  ('pytz\\zoneinfo\\W-SU',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\W-SU',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\San_Marino',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\San_Marino',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Nouakchott',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Nouakchott',
+   'DATA'),
+  ('pytz\\zoneinfo\\Portugal',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Portugal',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Timbuktu',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Timbuktu',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Mariehamn',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Mariehamn',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Dominica',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Dominica',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\Macquarie',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\Macquarie',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Rio_Branco',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Rio_Branco',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Tallinn',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Tallinn',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\Catamarca',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\Catamarca',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Pitcairn',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Pitcairn',
+   'DATA'),
+  ('pytz\\zoneinfo\\CET',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\CET',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Virgin',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Virgin',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Manaus',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Manaus',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Guadeloupe',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Guadeloupe',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+10',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+10',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Yerevan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Yerevan',
+   'DATA'),
+  ('pytz\\zoneinfo\\Libya',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Libya',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Kwajalein',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Kwajalein',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Apia',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Apia',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Moscow',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Moscow',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Nassau',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Nassau',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Argentina\\Rio_Gallegos',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Argentina\\Rio_Gallegos',
+   'DATA'),
+  ('pytz\\zoneinfo\\UTC',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\UTC',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Nicosia',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Nicosia',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Chisinau',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Chisinau',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Nairobi',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Nairobi',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Chihuahua',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Chihuahua',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Queensland',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Queensland',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Gambier',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Gambier',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Baku',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Baku',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Pangnirtung',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Pangnirtung',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\Arizona',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\Arizona',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-2',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-2',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Grenada',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Grenada',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Chatham',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Chatham',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Shiprock',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Shiprock',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Yekaterinburg',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Yekaterinburg',
+   'DATA'),
+  ('pytz\\zoneinfo\\leapseconds',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\leapseconds',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-8',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-8',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Kamchatka',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Kamchatka',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Thimbu',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Thimbu',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\La_Paz',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\La_Paz',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\Zulu',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\Zulu',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Belfast',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Belfast',
+   'DATA'),
+  ('pytz\\zoneinfo\\iso3166.tab',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\iso3166.tab',
+   'DATA'),
+  ('pytz\\zoneinfo\\US\\Alaska',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\US\\Alaska',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Majuro',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Majuro',
+   'DATA'),
+  ('pytz\\zoneinfo\\Antarctica\\Rothera',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Antarctica\\Rothera',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Hebron',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Hebron',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Atikokan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Atikokan',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\ACT',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\ACT',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Riyadh',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Riyadh',
+   'DATA'),
+  ('pytz\\zoneinfo\\ROK',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\ROK',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Matamoros',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Matamoros',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Regina',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Regina',
+   'DATA'),
+  ('pytz\\zoneinfo\\Mexico\\BajaSur',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Mexico\\BajaSur',
+   'DATA'),
+  ('pytz\\zoneinfo\\Canada\\Newfoundland',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Canada\\Newfoundland',
+   'DATA'),
+  ('pytz\\zoneinfo\\Australia\\Lord_Howe',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Australia\\Lord_Howe',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT-3',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT-3',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\Reykjavik',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\Reykjavik',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Almaty',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Almaty',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Bucharest',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Bucharest',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Kiritimati',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Kiritimati',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Ceuta',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Ceuta',
+   'DATA'),
+  ('pytz\\zoneinfo\\Etc\\GMT+0',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Etc\\GMT+0',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Vaduz',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Vaduz',
+   'DATA'),
+  ('pytz\\zoneinfo\\Cuba',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Cuba',
+   'DATA'),
+  ('pytz\\zoneinfo\\MET',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\MET',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Marquesas',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Marquesas',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Khandyga',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Khandyga',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Ponape',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Ponape',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Irkutsk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Irkutsk',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Nome',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Nome',
+   'DATA'),
+  ('pytz\\zoneinfo\\Atlantic\\South_Georgia',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Atlantic\\South_Georgia',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Tegucigalpa',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Tegucigalpa',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Louisville',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Louisville',
+   'DATA'),
+  ('pytz\\zoneinfo\\Europe\\Podgorica',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Europe\\Podgorica',
+   'DATA'),
+  ('pytz\\zoneinfo\\Asia\\Omsk',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Asia\\Omsk',
+   'DATA'),
+  ('pytz\\zoneinfo\\Indian\\Antananarivo',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Indian\\Antananarivo',
+   'DATA'),
+  ('pytz\\zoneinfo\\Africa\\Bujumbura',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Africa\\Bujumbura',
+   'DATA'),
+  ('pytz\\zoneinfo\\Pacific\\Saipan',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\Pacific\\Saipan',
+   'DATA'),
+  ('pytz\\zoneinfo\\America\\Marigot',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\pytz\\zoneinfo\\America\\Marigot',
+   'DATA'),
+  ('cryptography-45.0.3.dist-info\\RECORD',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\cryptography-45.0.3.dist-info\\RECORD',
+   'DATA'),
+  ('cryptography-45.0.3.dist-info\\licenses\\LICENSE',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\cryptography-45.0.3.dist-info\\licenses\\LICENSE',
+   'DATA'),
+  ('cryptography-45.0.3.dist-info\\WHEEL',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\cryptography-45.0.3.dist-info\\WHEEL',
+   'DATA'),
+  ('cryptography-45.0.3.dist-info\\licenses\\LICENSE.APACHE',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\cryptography-45.0.3.dist-info\\licenses\\LICENSE.APACHE',
+   'DATA'),
+  ('cryptography-45.0.3.dist-info\\INSTALLER',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\cryptography-45.0.3.dist-info\\INSTALLER',
+   'DATA'),
+  ('cryptography-45.0.3.dist-info\\REQUESTED',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\cryptography-45.0.3.dist-info\\REQUESTED',
+   'DATA'),
+  ('cryptography-45.0.3.dist-info\\METADATA',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\cryptography-45.0.3.dist-info\\METADATA',
+   'DATA'),
+  ('cryptography-45.0.3.dist-info\\licenses\\LICENSE.BSD',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\cryptography-45.0.3.dist-info\\licenses\\LICENSE.BSD',
+   'DATA'),
+  ('certifi\\cacert.pem',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\certifi\\cacert.pem',
+   'DATA'),
+  ('certifi\\py.typed',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\certifi\\py.typed',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\LICENSE.txt',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy-2.2.6.dist-info\\LICENSE.txt',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\WHEEL',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy-2.2.6.dist-info\\WHEEL',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\DELVEWHEEL',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy-2.2.6.dist-info\\DELVEWHEEL',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\RECORD',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy-2.2.6.dist-info\\RECORD',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\INSTALLER',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy-2.2.6.dist-info\\INSTALLER',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\entry_points.txt',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy-2.2.6.dist-info\\entry_points.txt',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\METADATA',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\numpy-2.2.6.dist-info\\METADATA',
+   'DATA'),
+  ('base_library.zip',
+   'D:\\my '
+   'git\\multi-bank-app\\build\\python_temp\\main_handler\\base_library.zip',
+   'DATA')],
+ [],
+ False,
+ False,
+ 1748908527,
+ [('run.exe',
+   'D:\\my '
+   'git\\multi-bank-app\\python_backend\\myenv\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
+   'EXECUTABLE')],
+ 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\python313.dll')
