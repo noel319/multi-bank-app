@@ -56,11 +56,10 @@ class CostCenterManager:
         """
         try:
             # Check user authentication
-            auth_status = self.auth_manager.check_auth_status()
-            if not auth_status.get('success'):
+            if not self.auth_manager.current_user_id:
                 return {"success": False, "error": "User not authenticated"}
             
-            user_id = auth_status.get('user_id')
+            user_id = self.auth_manager.current_user_id
             
             # Extract data from payload
             group = payload.get('group')
@@ -129,11 +128,10 @@ class CostCenterManager:
         """
         try:
             # Check user authentication
-            auth_status = self.auth_manager.check_auth_status()
-            if not auth_status.get('success'):
+            if not self.auth_manager.current_user_id:
                 return {"success": False, "error": "User not authenticated"}
             
-            user_id = auth_status.get('user_id')
+            user_id = self.auth_manager.current_user_id
             
             # Extract data from payload
             cost_center_id = payload.get('id')
@@ -193,11 +191,10 @@ class CostCenterManager:
         """
         try:
             # Check user authentication
-            auth_status = self.auth_manager.check_auth_status()
-            if not auth_status.get('success'):
+            if not self.auth_manager.current_user_id:
                 return {"success": False, "error": "User not authenticated"}
             
-            user_id = auth_status.get('user_id')
+            user_id = self.auth_manager.current_user_id
             
             conn = self.db_manager.get_connection()
             cursor = conn.cursor()
@@ -236,11 +233,10 @@ class CostCenterManager:
         """
         try:
             # Check user authentication
-            auth_status = self.auth_manager.check_auth_status()
-            if not auth_status.get('success'):
+            if not self.auth_manager.current_user_id:
                 return {"success": False, "error": "User not authenticated"}
             
-            user_id = auth_status.get('user_id')
+            user_id = self.auth_manager.current_user_id
             
             conn = self.db_manager.get_connection()
             cursor = conn.cursor()
@@ -285,11 +281,10 @@ class CostCenterManager:
         """
         try:
             # Check user authentication
-            auth_status = self.auth_manager.check_auth_status()
-            if not auth_status.get('success'):
+            if not self.auth_manager.current_user_id:
                 return {"success": False, "error": "User not authenticated"}
             
-            user_id = auth_status.get('user_id')
+            user_id = self.auth_manager.current_user_id
             
             conn = self.db_manager.get_connection()
             cursor = conn.cursor()
@@ -338,11 +333,10 @@ class CostCenterManager:
         """
         try:
             # Check user authentication
-            auth_status = self.auth_manager.check_auth_status()
-            if not auth_status.get('success'):
+            if not self.auth_manager.current_user_id:
                 return {"success": False, "error": "User not authenticated"}
             
-            user_id = auth_status.get('user_id')
+            user_id = self.auth_manager.current_user_id
             
             conn = self.db_manager.get_connection()
             cursor = conn.cursor()
