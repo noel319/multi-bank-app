@@ -1,7 +1,7 @@
 
 requests==2.31.0
 gspread==5.11.3
-
+pandas
 # Optional: For more secure password hashing (upgrade from SHA-256)
 bcrypt==4.0.1
 pyinstaller
