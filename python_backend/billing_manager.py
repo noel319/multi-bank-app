@@ -87,7 +87,7 @@ class BillingManager:
 
             # Get cost center options
             cursor.execute("""
-                SELECT id, name, group_name, cost_center
+                SELECT id, name, group_name, cost_center, area
                 FROM cost_centers
                 WHERE user_id = ? OR user_id IS NULL
                 ORDER BY name
@@ -146,7 +146,8 @@ class BillingManager:
                             "id": row[0],
                             "name": row[1],
                             "group_name": row[2],
-                            "cost_center": row[3]
+                            "cost_center": row[3],
+                            "area":row[4]
                         } for row in cost_center_options
                     ]
                 }
@@ -183,27 +184,26 @@ class BillingManager:
 
             bank_name, account_name, current_balance = bank_info
             price = float(bill_data['price'])
-            fee = float(bill_data.get('fee', 0))
+            
             
             # Calculate balances
-            total_amount = price + fee
+            total_amount = price
             after_balance = current_balance - total_amount
 
             # Insert billing record
             cursor.execute("""
                 INSERT INTO billing (
                     date, state, bank_name, account_name, bank_id,
-                    price, fee, cost_center_id, current_balance, after_balance
+                    price, cost_center_id, current_balance, after_balance
                 )
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 bill_data['date'],
                 bill_data['state'],
                 bank_name,
                 account_name,
                 bill_data['bank_id'],
-                price,
-                fee,
+                price,                
                 bill_data.get('cost_center_id'),
                 current_balance,
                 after_balance
@@ -229,8 +229,7 @@ class BillingManager:
                 bank_name,
                 account_name,
                 -total_amount,  # Negative for expense
-                bill_data['state'],
-                fee,
+                bill_data['state'],               
                 current_balance,
                 after_balance,
                 bill_data['date'],
@@ -253,8 +252,7 @@ class BillingManager:
                 'id': transaction_id,
                 'date': bill_data['date'],
                 'price': -total_amount,
-                'state': bill_data['state'],
-                'fee': fee,
+                'state': bill_data['state'],                
                 'bank_name': bank_name,
                 'account_name': account_name,
                 'before_balance': current_balance,

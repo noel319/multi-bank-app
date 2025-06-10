@@ -39,13 +39,3 @@ python-dotenv>=0.19.0
 pathlib2>=2.3.7  # For older Python compatibility
 argparse  # Built-in, but listed for completeness
 
-# Banking/Financial specific (if used)
-# python-banking>=1.0.0  # Uncomment if you use banking libraries
-# yfinance>=0.2.0  # For financial data
-# plaid-python>=8.0.0  # For Plaid API integration
-
-# Development and testing (optional, comment out for production)
-# pytest>=7.0.0
-# pytest-cov>=4.0.0
-
-# Add any other specific dependencies your managers use
