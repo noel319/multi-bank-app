@@ -19,7 +19,7 @@ const TransactionItem = ({ transaction }) => {
     });
   };
 
-  const isIncome = transaction.state === 'income';
+  const isIncome = transaction.state === 'Income';
   const IconComponent = isIncome ? ArrowUpIcon : ArrowDownIcon;
 
   return (

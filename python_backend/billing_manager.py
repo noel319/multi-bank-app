@@ -187,8 +187,10 @@ class BillingManager:
             
             
             # Calculate balances
-            total_amount = price
-            after_balance = current_balance - total_amount
+            if bill_data['state'] == "Income":
+                after_balance = current_balance + price
+            elif bill_data['state'] == "Expense":
+                after_balance = current_balance - price
 
             # Insert billing record
             cursor.execute("""
@@ -204,7 +206,7 @@ class BillingManager:
                 account_name,
                 bill_data['bank_id'],
                 price,                
-                bill_data.get('cost_center_id'),
+                bill_data['cost_center_id'],
                 current_balance,
                 after_balance
             ))
@@ -215,10 +217,10 @@ class BillingManager:
             cursor.execute("""
                 INSERT INTO transactions (
                     bank_id, cost_center_id, billing_id, bank_name, account_name,
-                    price, state, fee, cost_center_name, before_balance, after_balance, date
+                    price, state, cost_center_name, before_balance, after_balance, date
                 )
                 SELECT 
-                    ?, ?, ?, ?, ?, ?, ?, ?, 
+                    ?, ?, ?, ?, ?, ?, ?, 
                     COALESCE(cc.name, 'Uncategorized'), ?, ?, ?
                 FROM (SELECT 1) dummy
                 LEFT JOIN cost_centers cc ON cc.id = ?
@@ -228,12 +230,12 @@ class BillingManager:
                 billing_id,
                 bank_name,
                 account_name,
-                -total_amount,  # Negative for expense
+                price,  # Negative for expense
                 bill_data['state'],               
                 current_balance,
                 after_balance,
-                bill_data['date'],
-                bill_data.get('cost_center_id')
+                bill_data['date'],  
+                bill_data.get('cost_center_id'),              
             ))
 
             transaction_id = cursor.lastrowid
@@ -251,7 +253,7 @@ class BillingManager:
             self._create_auto_save_csv(bill_data['date'], {
                 'id': transaction_id,
                 'date': bill_data['date'],
-                'price': -total_amount,
+                'price': price,
                 'state': bill_data['state'],                
                 'bank_name': bank_name,
                 'account_name': account_name,
@@ -271,6 +273,9 @@ class BillingManager:
 
         except Exception as e:
             return {"success": False, "error": f"Failed to add bill: {str(e)}"}
+        finally:
+            if conn:
+                conn.close()
 
     def _create_auto_save_csv(self, transaction_date, transaction_data):
         """Create or append to monthly CSV file"""

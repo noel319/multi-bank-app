@@ -92,10 +92,9 @@ const BillingTable = ({ billingRecords, onDelete, onView }) => {
           <thead className="bg-slate-50">
             <tr>
               <SortableHeader field="date">Date</SortableHeader>
-              <SortableHeader field="state">Description</SortableHeader>
+              <SortableHeader field="state">State</SortableHeader>
               <SortableHeader field="bank_name">Bank Account</SortableHeader>
-              <SortableHeader field="price">Amount</SortableHeader>
-              <SortableHeader field="fee">Fee</SortableHeader>
+              <SortableHeader field="price">Amount</SortableHeader>              
               <SortableHeader field="cost_center_name">Cost Center</SortableHeader>
               <SortableHeader field="after_balance">Balance After</SortableHeader>
               <th className="px-4 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider">
@@ -121,11 +120,10 @@ const BillingTable = ({ billingRecords, onDelete, onView }) => {
                   </div>
                 </td>
                 <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-red-600">
-                  {formatCurrency(record.price)}
-                </td>
-                <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-900">
-                  {record.fee > 0 ? formatCurrency(record.fee) : '-'}
-                </td>
+                  <span className={record.state === 'Income' ? 'text-green-600' : 'text-red-600'}>
+                    {formatCurrency(record.price)}
+                  </span>                  
+                </td>                
                 <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-900">
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                     {record.cost_center_name}

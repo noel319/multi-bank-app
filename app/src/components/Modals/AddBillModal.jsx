@@ -44,10 +44,6 @@ const AddBillModal = ({
       .filter(Boolean)
   )];
 
-  // Debug logging to help identify the issue
-  console.log('Form data:', { group_name: formData.group_name, cost_center: formData.cost_center });
-  console.log('Cost center options:', costCenterOptions);
-  console.log('Areas for cost center:', areasForCostCenter);
 
   useEffect(() => {
     if (isOpen) {
@@ -133,7 +129,7 @@ const AddBillModal = ({
       option.area === formData.area
     );
 
-    return matchingCostCenter ? matchingCostCenter.cost_center_id : null;
+    return matchingCostCenter ? matchingCostCenter.id : null;
   };
 
   const handleSubmit = (e) => {
@@ -148,12 +144,12 @@ const AddBillModal = ({
 
     // Convert string values to appropriate types and prepare submit data
     const submitData = {
+      ...formData,
       date: formData.date,
       bank_id: parseInt(formData.bank_id),
       price: parseFloat(formData.price),
       state: formData.state,
-      // Include cost_center_id instead of individual cost center fields
-      ...(costCenterId && { cost_center_id: costCenterId })
+      cost_center_id: costCenterId
     };
 
     console.log('Submit data:', submitData); // Debug log to verify the data being sent

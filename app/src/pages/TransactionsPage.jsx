@@ -359,7 +359,7 @@ const TransactionsPage = () => {
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-slate-600">Total Transactions</p>
-                <p className="text-2xl font-semibold text-slate-900">{pagination.totalItems}</p>
+                <p className="text-2xl font-semibold text-slate-900">{transactions.length}</p>
               </div>
             </div>
           </div>
@@ -372,7 +372,7 @@ const TransactionsPage = () => {
               <div className="ml-4">
                 <p className="text-sm font-medium text-slate-600">Income Transactions</p>
                 <p className="text-2xl font-semibold text-blue-600">
-                  {statistics.incomeCount || transactions.filter(t => t.state === 'income').length}
+                  {statistics.incomeCount || transactions.filter(t => t.state === 'Income').length}
                 </p>
               </div>
             </div>
@@ -386,7 +386,7 @@ const TransactionsPage = () => {
               <div className="ml-4">
                 <p className="text-sm font-medium text-slate-600">Expense Transactions</p>
                 <p className="text-2xl font-semibold text-red-600">
-                  {statistics.expenseCount || transactions.filter(t => t.state === 'outgoing').length}
+                  {statistics.expenseCount || transactions.filter(t => t.state === 'Expense').length}
                 </p>
               </div>
             </div>

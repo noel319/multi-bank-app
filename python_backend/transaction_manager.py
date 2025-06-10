@@ -329,13 +329,13 @@ class TransactionManager:
             transactions = result['transactions']
             
             # Calculate statistics
-            total_income = sum(t['price'] for t in transactions if t['state'] == 'income')
-            total_expenses = sum(t['price'] for t in transactions if t['state'] == 'outgoing')
+            total_income = sum(t['price'] for t in transactions if t['state'] == 'Income')
+            total_expenses = sum(t['price'] for t in transactions if t['state'] == 'Expense')
             total_fees = sum(t['fee'] for t in transactions)
             net_amount = total_income - total_expenses - total_fees
             
-            income_count = len([t for t in transactions if t['state'] == 'income'])
-            expense_count = len([t for t in transactions if t['state'] == 'outgoing'])
+            income_count = len([t for t in transactions if t['state'] == 'Income'])
+            expense_count = len([t for t in transactions if t['state'] == 'Expense'])
             
             # Top categories by amount
             category_totals = {}
@@ -522,10 +522,10 @@ class TransactionManager:
                     state = row['state'].lower()
                     
                     before_balance = current_balance
-                    if state == 'income':
-                        after_balance = before_balance + price - fee
+                    if state == 'Income':
+                        after_balance = before_balance + price 
                     else:  # outgoing
-                        after_balance = before_balance - price - fee
+                        after_balance = before_balance - price 
                     
                     # Insert transaction
                     cursor.execute('''

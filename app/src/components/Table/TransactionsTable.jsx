@@ -96,7 +96,7 @@ const TransactionsTable = ({
               <SortableHeader field="bank_name">Bank</SortableHeader>
               <SortableHeader field="account_name">Account</SortableHeader>
               <SortableHeader field="price" className="text-right">Amount</SortableHeader>
-              <SortableHeader field="fee" className="text-right">Fee</SortableHeader>
+              <SortableHeader field="before_balance" className="text-right">Before Balance</SortableHeader>
               <SortableHeader field="after_balance" className="text-right">Balance</SortableHeader>
               <th className="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider">
                 Actions
@@ -105,7 +105,7 @@ const TransactionsTable = ({
           </thead>
           <tbody className="bg-white divide-y divide-slate-200">
             {transactions.map((transaction, index) => {
-              const isIncome = transaction.state === 'income';
+              const isIncome = transaction.state === 'Income';
               const rowBg = index % 2 === 0 ? 'bg-white' : 'bg-slate-50';
               
               return (
@@ -166,7 +166,7 @@ const TransactionsTable = ({
                   <td className="px-6 py-4 whitespace-nowrap text-right">
                     {transaction.fee > 0 ? (
                       <span className="text-sm text-slate-600">
-                        {formatCurrency(transaction.fee)}
+                        {formatCurrency(transaction.before_balance)}
                       </span>
                     ) : (
                       <span className="text-sm text-slate-400">-</span>
