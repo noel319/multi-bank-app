@@ -162,15 +162,11 @@ const TransactionsTable = ({
                     </span>
                   </td>
                   
-                  {/* Fee */}
+                  {/* Before Banance */}
                   <td className="px-6 py-4 whitespace-nowrap text-right">
-                    {transaction.fee > 0 ? (
-                      <span className="text-sm text-slate-600">
+                    <span className="text-sm text-slate-600">
                         {formatCurrency(transaction.before_balance)}
-                      </span>
-                    ) : (
-                      <span className="text-sm text-slate-400">-</span>
-                    )}
+                    </span>                    
                   </td>
                   
                   {/* Balance */}

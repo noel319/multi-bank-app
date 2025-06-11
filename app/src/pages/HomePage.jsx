@@ -194,10 +194,8 @@ const HomePage = () => {
             </div>
             <div className="bg-white p-4 rounded-lg shadow">
               {hasTransactions ? (
-                <div className="space-y-3 max-h-96 overflow-y-auto">
-                  {homeData.recentTransactions.map(transaction => (
-                    <TransactionItem key={transaction.id} transaction={transaction} />
-                  ))}
+                <div className="space-y-3 max-h-96 overflow-y-auto">                  
+                    <TransactionItem transactions={homeData.recentTransactions} />                 
                 </div>
               ) : (
                 <div className="text-center py-8">

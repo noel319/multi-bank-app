@@ -70,7 +70,7 @@ class BillingManager:
                 JOIN bank b ON t.bank_id = b.id
                 WHERE b.user_id = ?
                 ORDER BY t.date DESC, t.created_at DESC
-                LIMIT 50
+                LIMIT 10
             """, (current_user['id'],))
 
             recent_transactions = cursor.fetchall()

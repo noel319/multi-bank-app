@@ -245,28 +245,10 @@ const BillingPage = () => {
         onView={handleViewBill}
       />
 
-      {/* Recent Transactions */}
+      {/* Recent Transactions Table */}
       <div>
         <h2 className="text-xl font-semibold text-slate-700 mb-4">Recent Transactions</h2>
-        <div className="bg-white p-4 rounded-lg shadow">
-          {billingData.recent_transactions.length > 0 ? (
-            <div className="space-y-3 max-h-96 overflow-y-auto">
-              {billingData.recent_transactions.map(transaction => (
-                <TransactionItem 
-                  key={transaction.id} 
-                  transaction={transaction} 
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-8">
-              <p className="text-slate-500 mb-4">No recent transactions.</p>
-              <p className="text-sm text-slate-400">
-                Add bills or import transactions to see them here
-              </p>
-            </div>
-          )}
-        </div>
+        <TransactionItem transactions={billingData.recent_transactions} />
       </div>
 
       {/* Add Bill Modal */}
