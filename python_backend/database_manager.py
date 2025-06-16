@@ -15,16 +15,17 @@ class DatabaseManager:
             
             # Create user table
             cursor.execute('''
-                CREATE TABLE IF NOT EXISTS user (
+                CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
                     email TEXT UNIQUE NOT NULL,
-                    password TEXT,
-                    google_sheet TEXT,
-                    google_token TEXT,
-                    role TEXT NOT NULL DEFAULT 'user',
+                    password_hash TEXT,
+                    google_id TEXT,
+                    google_token TEXT,  
+                    google_sheet_id TEXT,  
+                    image_url TEXT,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    last_login TIMESTAMP
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             ''')
             

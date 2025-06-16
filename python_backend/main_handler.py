@@ -177,9 +177,22 @@ def handle_action(action, payload, managers):
         else:
             return managers['transaction'].import_transactions_from_file(file_path)
     
-    # Google Sheets actions
+    # Enhanced Google Sheets actions
+    elif action == 'connect_google_sheets':
+        return managers['google_sheets'].connect_to_google_sheets()
+    
+    elif action == 'check_google_sheets_status':
+        return managers['google_sheets'].check_connection_status()
+    
     elif action == 'sync_google_sheets':
         return managers['google_sheets'].sync_with_google_sheets()
+    
+    elif action == 'sync_transactions_to_sheets':
+        return managers['google_sheets'].sync_transactions_to_sheets()
+    
+    elif action == 'disconnect_google_sheets':
+        return managers['google_sheets'].disconnect_google_sheets()
+    
     # Cost center actions
     elif action == 'add_cost_center':
         return managers['cost_center'].add_cost_center(payload)

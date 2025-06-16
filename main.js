@@ -331,19 +331,172 @@ ipcMain.handle('import-transactions', async (event, filePath) => {
   }
 });
 
-// Google Sheets sync handler
-ipcMain.handle('sync-google-sheets', async () => {
+// Google Sheets specific handlers
+ipcMain.handle('connect-google-sheets', async () => {
   try {
-    const result = await callPythonLogic({ action: 'sync_google_sheets' });
-    if (mainWindow) {
-      mainWindow.webContents.send('data-sync', result);
+    const result = await callPythonLogic({ action: 'connect_google_sheets' });
+    
+    // Send status update to renderer
+    if (mainWindow && result.success) {
+      mainWindow.webContents.send('google-sheets-status-changed', {
+        connected: true,
+        spreadsheetId: result.spreadsheet_id
+      });
     }
+    
     return result;
   } catch (error) {
-    console.error('Error syncing Google Sheets:', error);
+    console.error('Error connecting to Google Sheets:', error);
     return { success: false, error: error.message };
   }
 });
+
+ipcMain.handle('check-google-sheets-status', async () => {
+  try {
+    const result = await callPythonLogic({ action: 'check_google_sheets_status' });
+    return result;
+  } catch (error) {
+    console.error('Error checking Google Sheets status:', error);
+    return { success: false, error: error.message };
+  }
+});
+
+ipcMain.handle('sync-transactions-to-sheets', async () => {
+  try {
+    const result = await callPythonLogic({ action: 'sync_transactions_to_sheets' });
+    
+    // Send sync complete notification to renderer
+    if (mainWindow && result.success) {
+      mainWindow.webContents.send('data-sync', {
+        type: 'google_sheets',
+        success: true,
+        message: `Synced ${result.transactions_count || 0} transactions`,
+        timestamp: new Date().toISOString()
+      });
+    }
+    
+    return result;
+  } catch (error) {
+    console.error('Error syncing transactions to Google Sheets:', error);
+    return { success: false, error: error.message };
+  }
+});
+
+ipcMain.handle('disconnect-google-sheets', async () => {
+  try {
+    const result = await callPythonLogic({ action: 'disconnect_google_sheets' });
+    
+    // Send status update to renderer
+    if (mainWindow && result.success) {
+      mainWindow.webContents.send('google-sheets-status-changed', {
+        connected: false,
+        spreadsheetId: null
+      });
+    }
+    
+    return result;
+  } catch (error) {
+    console.error('Error disconnecting from Google Sheets:', error);
+    return { success: false, error: error.message };
+  }
+});
+
+// Enhanced sync with better error handling and notifications
+ipcMain.handle('sync-google-sheets-enhanced', async (event, options = {}) => {
+  try {
+    const startTime = Date.now();
+    console.log('[Google Sheets] Starting enhanced sync...');
+    
+    // First check connection status
+    const statusResult = await callPythonLogic({ action: 'check_google_sheets_status' });
+    
+    if (!statusResult.success || !statusResult.connected) {
+      return {
+        success: false,
+        error: 'Google Sheets not connected. Please connect first.'
+      };
+    }
+    
+    // Perform sync
+    const syncResult = await callPythonLogic({ 
+      action: 'sync_transactions_to_sheets',
+      payload: options
+    });
+    
+    const duration = Date.now() - startTime;
+    console.log(`[Google Sheets] Sync completed in ${duration}ms`);
+    
+    // Send detailed sync result to renderer
+    if (mainWindow) {
+      mainWindow.webContents.send('data-sync', {
+        type: 'google_sheets_enhanced',
+        success: syncResult.success,
+        message: syncResult.success 
+          ? `Successfully synced ${syncResult.transactions_count || 0} transactions` 
+          : syncResult.error,
+        duration,
+        timestamp: new Date().toISOString(),
+        data: syncResult
+      });
+    }
+    
+    return syncResult;
+    
+  } catch (error) {
+    console.error('[Google Sheets] Enhanced sync error:', error);
+    return { success: false, error: error.message };
+  }
+});
+
+// Auto-sync handler (can be called periodically)
+ipcMain.handle('auto-sync-google-sheets', async () => {
+  try {
+    // Check if auto-sync is enabled (you can add this to user preferences)
+    const statusResult = await callPythonLogic({ action: 'check_google_sheets_status' });
+    
+    if (statusResult.success && statusResult.connected) {
+      const syncResult = await callPythonLogic({ action: 'sync_transactions_to_sheets' });
+      
+      if (mainWindow && syncResult.success) {
+        // Send quiet notification for auto-sync
+        mainWindow.webContents.send('data-sync', {
+          type: 'auto_sync',
+          success: true,
+          message: 'Auto-sync completed',
+          timestamp: new Date().toISOString()
+        });
+      }
+      
+      return syncResult;
+    }
+    
+    return { success: true, message: 'Google Sheets not connected, skipping auto-sync' };
+    
+  } catch (error) {
+    console.error('Auto-sync error:', error);
+    return { success: false, error: error.message };
+  }
+});
+
+// Enhanced periodic background sync with Google Sheets support
+setInterval(async () => {
+  try {
+    if (mainWindow && !mainWindow.isDestroyed()) {
+      // Regular background sync
+      const result = await callPythonLogic({ action: 'sync_background_data' });
+      if (result.success) {
+        mainWindow.webContents.send('data-sync', result);
+      }
+      
+      // Auto-sync to Google Sheets if connected (every 10 minutes)
+      if (Date.now() % (10 * 60 * 1000) < 5000) { // Rough 10-minute check
+        await callPythonLogic({ action: 'auto_sync_google_sheets' });
+      }
+    }
+  } catch (error) {
+    console.error('Background sync error:', error);
+  }
+}, 5 * 60 * 1000); // every 5 minutes
 
 // Notification handler
 ipcMain.handle('show-notification', (event, title, body, options = {}) => {

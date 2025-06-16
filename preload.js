@@ -32,8 +32,14 @@ contextBridge.exposeInMainWorld('electronAPI', {
   exportTransactions: (options) => ipcRenderer.invoke('export-transactions', options),
   importTransactions: (filePath) => ipcRenderer.invoke('import-transactions', filePath),
   
-  // Google Sheets operations
+  // Google Sheets operations (enhanced)
+  connectGoogleSheets: () => ipcRenderer.invoke('connect-google-sheets'),
+  checkGoogleSheetsStatus: () => ipcRenderer.invoke('check-google-sheets-status'),
+  syncTransactionsToSheets: () => ipcRenderer.invoke('sync-transactions-to-sheets'),
+  disconnectGoogleSheets: () => ipcRenderer.invoke('disconnect-google-sheets'),
   syncGoogleSheets: () => ipcRenderer.invoke('sync-google-sheets'),
+  autoSyncGoogleSheets: () => ipcRenderer.invoke('auto-sync-google-sheets'),
+  syncGoogleSheetsEnhanced: (options) => ipcRenderer.invoke('sync-google-sheets-enhanced', options),
   
   // Notification system
   showNotification: (title, body, options) => ipcRenderer.invoke('show-notification', title, body, options),
@@ -45,7 +51,14 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // Event listeners for app updates
   onAppUpdate: (callback) => ipcRenderer.on('app-update', callback),
   onDataSync: (callback) => ipcRenderer.on('data-sync', callback),
+  onGoogleSheetsStatusChanged: (callback) => ipcRenderer.on('google-sheets-status-changed', callback),
   
   // Remove event listeners
-  removeAllListeners: (channel) => ipcRenderer.removeAllListeners(channel)
+  removeAllListeners: (channel) => ipcRenderer.removeAllListeners(channel),
+  
+  // Google Sheets specific event listeners
+  removeGoogleSheetsListeners: () => {
+    ipcRenderer.removeAllListeners('google-sheets-status-changed');
+    ipcRenderer.removeAllListeners('data-sync');
+  }
 });
