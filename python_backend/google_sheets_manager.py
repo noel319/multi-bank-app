@@ -1,7 +1,6 @@
 import gspread
 import json
 import os
-import pickle
 import tempfile
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -17,27 +16,26 @@ class GoogleSheetsManager:
     def __init__(self, db_manager, auth_manager):
         self.db = db_manager
         self.auth = auth_manager
+        self.connection = None 
         self.SCOPES = [
             'https://www.googleapis.com/auth/spreadsheets',
             'https://www.googleapis.com/auth/drive.file'
         ]
         
-        # You'll need to get these from Google Cloud Console
-        # Download the OAuth2 client configuration
+        
         self.CLIENT_CONFIG = {
             "installed": {
-                "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
-                "project_id": "your-project-id",
+                "client_id": "724572603461-mqtembqr3tidbqgepksk1c8jrelkoi2b.apps.googleusercontent.com",
+                "project_id": "evident-sunspot-461001-d6",
                 "auth_uri": "https://accounts.google.com/o/oauth2/auth",
                 "token_uri": "https://oauth2.googleapis.com/token",
                 "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-                "client_secret": "YOUR_CLIENT_SECRET",
+                "client_secret": "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",
                 "redirect_uris": ["http://localhost:8080"]
             }
         }
     
-    def get_google_credentials(self):
-        """Get or refresh Google credentials for the current user"""
+    def get_google_credentials(self):        
         try:
             if not self.auth.current_user_id:
                 return {"success": False, "error": "User not authenticated"}
@@ -188,16 +186,18 @@ class GoogleSheetsManager:
                 'scopes': creds.scopes
             }
             
-            # Update user record with Google token
-            cursor = self.db.get_cursor()
+            # Get database connection
+            conn = self.db.get_connection()
+            cursor = conn.cursor()
             cursor.execute("""
-                UPDATE users 
+                UPDATE user 
                 SET google_token = ?, updated_at = CURRENT_TIMESTAMP 
                 WHERE id = ?
             """, (json.dumps(token_data), self.auth.current_user_id))
             
-            self.db.connection.commit()
+            conn.commit()
             cursor.close()
+            conn.close()
             
         except Exception as e:
             print(f"Error saving credentials to database: {e}")
@@ -256,15 +256,17 @@ class GoogleSheetsManager:
     def _save_spreadsheet_id(self, spreadsheet_id):
         """Save spreadsheet ID to database"""
         try:
-            cursor = self.db.get_cursor()
+            conn = self.db.get_connection()
+            cursor = conn.cursor()
             cursor.execute("""
-                UPDATE users 
+                UPDATE user
                 SET google_sheet_id = ?, updated_at = CURRENT_TIMESTAMP 
                 WHERE id = ?
             """, (spreadsheet_id, self.auth.current_user_id))
             
-            self.db.connection.commit()
+            conn.commit()
             cursor.close()
+            conn.close()
             
         except Exception as e:
             print(f"Error saving spreadsheet ID: {e}")
@@ -306,19 +308,23 @@ class GoogleSheetsManager:
             
             worksheet = spreadsheet.sheet1
             
-            # Get all transactions for user
-            cursor = self.db.get_cursor()
+            # Get all transactions for user - Fixed query to match actual schema
+            conn = self.db.get_connection()
+            cursor = conn.cursor()
             cursor.execute("""
-                SELECT t.*, b.bank_name, cc.name as cost_center_name
+                SELECT t.id, t.date, t.bank_name, t.price as amount, 
+                       t.state as description, '' as category, 
+                       t.cost_center_name, t.created_at
                 FROM transactions t
-                LEFT JOIN banks b ON t.bank_id = b.id
-                LEFT JOIN cost_centers cc ON t.cost_center_id = cc.id
-                WHERE t.user_id = ?
+                WHERE t.bank_id IN (
+                    SELECT id FROM bank WHERE user_id = ?
+                )
                 ORDER BY t.date DESC
             """, (self.auth.current_user_id,))
             
             transactions = cursor.fetchall()
             cursor.close()
+            conn.close()
             
             # Clear existing data (except headers)
             worksheet.clear()
@@ -331,16 +337,29 @@ class GoogleSheetsManager:
             if transactions:
                 data = []
                 for trans in transactions:
-                    data.append([
-                        trans['date'],
-                        trans['bank_name'] or '',
-                        trans['amount'],
-                        trans['description'] or '',
-                        trans['category'] or '',
-                        trans['cost_center_name'] or '',
-                        trans['id'],
-                        trans['created_at']
-                    ])
+                    # Handle both dict and tuple responses
+                    if isinstance(trans, dict):
+                        data.append([
+                            trans.get('date', ''),
+                            trans.get('bank_name', ''),
+                            trans.get('amount', 0),
+                            trans.get('description', ''),
+                            trans.get('category', ''),
+                            trans.get('cost_center_name', ''),
+                            trans.get('id', ''),
+                            trans.get('created_at', '')
+                        ])
+                    else:  # tuple
+                        data.append([
+                            trans[1] if len(trans) > 1 else '',  # date
+                            trans[2] if len(trans) > 2 else '',  # bank_name
+                            trans[3] if len(trans) > 3 else 0,   # amount
+                            trans[4] if len(trans) > 4 else '',  # description
+                            trans[5] if len(trans) > 5 else '',  # category
+                            trans[6] if len(trans) > 6 else '',  # cost_center_name
+                            trans[0] if len(trans) > 0 else '',  # id
+                            trans[7] if len(trans) > 7 else ''   # created_at
+                        ])
                 
                 # Batch update for better performance
                 worksheet.update(f'A2:H{len(data) + 1}', data)
@@ -390,15 +409,17 @@ class GoogleSheetsManager:
             if not self.auth.current_user_id:
                 return {"success": False, "error": "User not authenticated"}
             
-            cursor = self.db.get_cursor()
+            conn = self.db.get_connection()
+            cursor = conn.cursor()
             cursor.execute("""
-                UPDATE users 
+                UPDATE user 
                 SET google_token = NULL, google_sheet_id = NULL, updated_at = CURRENT_TIMESTAMP 
                 WHERE id = ?
             """, (self.auth.current_user_id,))
             
-            self.db.connection.commit()
+            conn.commit()
             cursor.close()
+            conn.close()
             
             return {"success": True, "message": "Successfully disconnected from Google Sheets"}
             

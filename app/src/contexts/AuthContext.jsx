@@ -229,15 +229,12 @@ export const AuthProvider = ({ children }) => {
 
 // Enhanced Google Login Button Component
 export const GoogleLoginButton = ({ 
-  variant = 'button', // 'button' or 'icon'
-  size = 'medium', // 'small', 'medium', 'large'
-  theme = 'outline', // 'outline', 'filled_blue', 'filled_black'
-  text = 'Sign in with Google',
+  variant = 'button',   
   onSuccess,
   onError,
   className = ''
 }) => {
-  const { initiateGoogleLogin, handleGoogleAuth, googleScriptLoaded } = useAuth();
+  const { initiateGoogleLogin, googleScriptLoaded } = useAuth();
   const [buttonId] = useState(`google-signin-button-${Math.random().toString(36).substr(2, 9)}`);
 
   const handleClick = async () => {
@@ -255,40 +252,6 @@ export const GoogleLoginButton = ({
       }
     }
   };
-
-  useEffect(() => {
-    if (googleScriptLoaded && window.google && variant === 'button') {
-      try {
-        const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-        if (!clientId) {
-          console.error('Google Client ID not configured');
-          return;
-        }
-
-        window.google.accounts.id.initialize({
-          client_id: clientId,
-          callback: onSuccess || handleGoogleAuth,
-          auto_select: false
-        });
-
-        // Clear any existing button content
-        const buttonElement = document.getElementById(buttonId);
-        if (buttonElement) {
-          buttonElement.innerHTML = '';
-          
-          window.google.accounts.id.renderButton(buttonElement, {
-            theme: theme,
-            size: size === 'small' ? 'small' : size === 'large' ? 'large' : 'medium',
-            width: '100%',
-            text: 'signin_with',
-            shape: 'rectangular'
-          });
-        }
-      } catch (error) {
-        console.error('Error rendering Google button:', error);
-      }
-    }
-  }, [googleScriptLoaded, buttonId, theme, size, onSuccess, handleGoogleAuth, variant]);
 
   if (variant === 'icon') {
     return (

@@ -211,7 +211,7 @@ async function callPythonLogic({ action, payload = {} }) {
         success: false,
         error: 'Python process timed out after 30 seconds'
       });
-    }, 30000);
+    }, 60000);
   });
 }
 // ---------------------- IPC HANDLERS ---------------------- //

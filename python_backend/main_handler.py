@@ -109,15 +109,7 @@ def handle_action(action, payload, managers):
         if not all([email, password]):
             return {"success": False, "error": "Email and password are required"}
         else:
-            return managers['auth'].login_user(email, password)
-    
-    elif action == 'google_auth':
-        credential = payload.get('credential')
-        
-        if not credential:
-            return {"success": False, "error": "Google credential is required"}
-        else:
-            return managers['auth'].google_auth(credential)
+            return managers['auth'].login_user(email, password)    
     
     elif action == 'check_auth_status':
         return managers['auth'].check_auth_status()

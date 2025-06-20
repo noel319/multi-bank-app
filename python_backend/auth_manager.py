@@ -149,78 +149,8 @@ class AuthManager:
             }
             
         except Exception as e:
-            return {"success": False, "error": f"Login failed: {str(e)}"}
+            return {"success": False, "error": f"Login failed: {str(e)}"}    
     
-    def google_auth(self, credential):
-        """Handle Google OAuth authentication"""
-        try:
-            # Verify the Google ID token
-            GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID"  # Replace with your actual client ID
-            
-            try:
-                idinfo = id_token.verify_oauth2_token(
-                    credential, requests.Request(), GOOGLE_CLIENT_ID)
-            except ValueError:
-                return {"success": False, "error": "Invalid Google token"}
-            
-            email = idinfo.get('email')
-            name = idinfo.get('name')
-            
-            if not email:
-                return {"success": False, "error": "No email provided by Google"}
-            
-            conn = self.db.get_connection()
-            cursor = conn.cursor()
-            
-            # Check if user exists
-            cursor.execute("SELECT id, name, email, role FROM user WHERE email = ?", (email,))
-            user = cursor.fetchone()
-            
-            if user:
-                # Update Google token and last login
-                cursor.execute('''
-                    UPDATE user SET google_token = ?, last_login = CURRENT_TIMESTAMP 
-                    WHERE id = ?
-                ''', (credential, user[0]))
-                
-                user_data = {
-                    "id": user[0],
-                    "name": user[1],
-                    "email": user[2],
-                    "role": user[3],
-                    "google_token": credential
-                }
-                user_id = user[0]
-            else:
-                # Create new user
-                cursor.execute('''
-                    INSERT INTO user (name, email, google_token, role)
-                    VALUES (?, ?, ?, 'user')
-                ''', (name, email, credential))
-                
-                user_id = cursor.lastrowid
-                user_data = {
-                    "id": user_id,
-                    "name": name,
-                    "email": email,
-                    "role": "user",
-                    "google_token": credential
-                }
-            
-            conn.commit()
-            conn.close()
-            
-            # Save current user
-            self.save_current_user(user_data["id"])
-            
-            return {
-                "success": True,
-                "message": "Google authentication successful",
-                "user": user_data
-            }
-            
-        except Exception as e:
-            return {"success": False, "error": f"Google authentication failed: {str(e)}"}
     
     def get_user_by_id(self, user_id):
         """Get user data by ID"""
@@ -228,7 +158,7 @@ class AuthManager:
             conn = self.db.get_connection()
             cursor = conn.cursor()
             cursor.execute('''
-                SELECT id, name, email, role, google_sheet, google_token, last_login
+                SELECT id, name, email, role, google_sheet_id, google_token, last_login
                 FROM user WHERE id = ?
             ''', (user_id,))
             
@@ -241,7 +171,7 @@ class AuthManager:
                     "name": user[1],
                     "email": user[2],
                     "role": user[3],
-                    "google_sheet": user[4],
+                    "google_sheet_id": user[4],
                     "google_token": user[5],
                     "last_login": user[6]
                 }
