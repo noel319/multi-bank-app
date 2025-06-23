@@ -31,24 +31,7 @@ class DatabaseManager:
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
-            ''')
-            
-            # Create banks table (fixed table name)
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS banks (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    bank_name TEXT NOT NULL,
-                    account TEXT NOT NULL,
-                    current_balance REAL NOT NULL DEFAULT 0.0,
-                    endpoint TEXT,
-                    color TEXT DEFAULT 'blue',
-                    user_id INTEGER NOT NULL,
-                    role TEXT NOT NULL DEFAULT 'checking',
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY (user_id) REFERENCES user(id)
-                )
-            ''')
-            
+            ''')            
             # Also create singular 'bank' table for backward compatibility
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS bank (

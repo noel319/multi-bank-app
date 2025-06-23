@@ -1,5 +1,5 @@
 """
-Authentication Manager Module
+Authentication Manager Module - FIXED VERSION
 Handles user authentication, registration, and session management
 """
 
@@ -20,7 +20,18 @@ class AuthManager:
         try:
             conn = self.db.get_connection()
             cursor = conn.cursor()
-            cursor.execute("SELECT value FROM app_settings WHERE key = 'current_user_id'")
+            
+            # FIXED: Use a separate table or global setting approach
+            # Option 1: Create a separate global_settings table for app-wide settings
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS global_settings (
+                    key TEXT PRIMARY KEY,
+                    value TEXT,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            
+            cursor.execute("SELECT value FROM global_settings WHERE key = 'current_user_id'")
             result = cursor.fetchone()
             conn.close()
             
@@ -35,10 +46,13 @@ class AuthManager:
         try:
             conn = self.db.get_connection()
             cursor = conn.cursor()
+            
+            # FIXED: Use global_settings table instead of app_settings
             cursor.execute('''
-                INSERT OR REPLACE INTO app_settings (key, value, updated_at)
+                INSERT OR REPLACE INTO global_settings (key, value, updated_at)
                 VALUES ('current_user_id', ?, CURRENT_TIMESTAMP)
             ''', (str(user_id),))
+            
             conn.commit()
             conn.close()
             self.current_user_id = user_id
@@ -50,7 +64,10 @@ class AuthManager:
         try:
             conn = self.db.get_connection()
             cursor = conn.cursor()
-            cursor.execute("DELETE FROM app_settings WHERE key = 'current_user_id'")
+            
+            # FIXED: Use global_settings table
+            cursor.execute("DELETE FROM global_settings WHERE key = 'current_user_id'")
+            
             conn.commit()
             conn.close()
             self.current_user_id = None

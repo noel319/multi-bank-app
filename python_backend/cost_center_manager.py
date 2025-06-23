@@ -5,10 +5,11 @@ import traceback
 class CostCenterManager:
     """Manages cost center operations including create, read, update, and delete"""
     
-    def __init__(self, db_manager, auth_manager):
-        """Initialize with database and authentication managers"""
+    def __init__(self, db_manager, auth_manager, google_sheets_manager=None):
+        """Initialize with database, authentication, and (optionally) Google Sheets managers"""
         self.db_manager = db_manager
         self.auth_manager = auth_manager
+        self.google_sheets_manager = google_sheets_manager
         self._ensure_table_exists()
     
     def _ensure_table_exists(self):
